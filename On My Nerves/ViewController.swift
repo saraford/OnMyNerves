@@ -8,18 +8,40 @@
 
 import UIKit
 
+var fabricImageList = [UIImage]()
+var fabricNameList = [String]()
+var fabricTimeList = [Int]()
+
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        // init the arrays from the data we have in storage
+        if NSUserDefaults.standardUserDefaults().objectForKey("fabricNameList") != nil {
+            
+            fabricNameList = NSUserDefaults.standardUserDefaults().objectForKey("fabricNameList") as! [String]
+            
+        }
+
+        // init the arrays from the data we have in storage
+        if NSUserDefaults.standardUserDefaults().objectForKey("fabricTimeList") != nil {
+            
+            fabricTimeList = NSUserDefaults.standardUserDefaults().objectForKey("fabricTimeList") as! [Int]
+            
+        }
+        
+        // init the arrays from the data we have in storage
+        if (SaveImage.AreImagesOnDisk()) {
+            SaveImage.retrieveImage(fabricImageList, count: fabricNameList.count)
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
 
 }
 

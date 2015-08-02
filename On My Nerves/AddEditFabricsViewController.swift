@@ -21,6 +21,10 @@ class AddEditFabricsViewController: UIViewController, UITextFieldDelegate, UIIma
         fabricNameList.append(fabricName.text)
         fabricTimeList.append(fabricTime.text.toInt()!)
         
+        SaveImage.storeImage(fabricImage.image!, index: fabricNameList.count - 1)
+        NSUserDefaults.standardUserDefaults().setObject(fabricNameList, forKey: "fabricNameList")
+        NSUserDefaults.standardUserDefaults().setObject(fabricTimeList, forKey: "fabricTimeList")
+        
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -33,12 +37,6 @@ class AddEditFabricsViewController: UIViewController, UITextFieldDelegate, UIIma
             
             doneButton.enabled = true
         }
-    }
-    
-    @IBAction func updateSeconds(sender: AnyObject) {
-        
-        // i don't think anything needs to happen here? 
-        // or if this is even needed
     }
     
     @IBAction func cancelUpdate(sender: AnyObject) {
@@ -109,7 +107,6 @@ class AddEditFabricsViewController: UIViewController, UITextFieldDelegate, UIIma
         
         return true
     }
-
     
     /*
     // MARK: - Navigation

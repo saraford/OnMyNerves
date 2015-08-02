@@ -8,11 +8,6 @@
 
 import UIKit
 
-var fabricImageList = [UIImage]()
-var fabricNameList = [String]()
-var fabricTimeList = [Int]()
-
-
 class FabricListViewController: UIViewController, UITableViewDelegate {
 
     @IBOutlet var fabricsTable: UITableView!
@@ -35,7 +30,10 @@ class FabricListViewController: UIViewController, UITableViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -48,19 +46,27 @@ class FabricListViewController: UIViewController, UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
+    
+     //   SaveImage.moveImages(fabricImageList, fromIndexPath.row, toIndexPath.row)
         
-        var itemToMove = fabricImageList[fromIndexPath.row]
-        fabricImageList.removeAtIndex(fromIndexPath.row)
-        fabricImageList.insert(itemToMove, atIndex: toIndexPath.row)
+        var nameToMove = fabricNameList[fromIndexPath.row]
+        fabricNameList.removeAtIndex(fromIndexPath.row)
+        fabricNameList.insert(nameToMove, atIndex: toIndexPath.row)
+
+        var timeToMove = fabricNameList[fromIndexPath.row]
+        fabricNameList.removeAtIndex(fromIndexPath.row)
+        fabricNameList.insert(timeToMove, atIndex: toIndexPath.row)
+
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return fabricImageList.count
+        return fabricNameList.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 
         let cell = fabricsTable.dequeueReusableCellWithIdentifier("fabricCell") as! UITableViewCell
+
         (cell.contentView.viewWithTag(1) as! UIImageView).image = fabricImageList[indexPath.row]
         (cell.contentView.viewWithTag(2) as! UILabel).text = fabricNameList[indexPath.row]
         (cell.contentView.viewWithTag(3) as! UILabel).text = "\(fabricTimeList[indexPath.row])"
@@ -69,7 +75,7 @@ class FabricListViewController: UIViewController, UITableViewDelegate {
     }
     
     override func viewDidAppear(animated: Bool) {
-        fabricsTable.reloadData()
+
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -90,12 +96,17 @@ class FabricListViewController: UIViewController, UITableViewDelegate {
         if (editingStyle == UITableViewCellEditingStyle.Delete) {
             fabricImageList.removeAtIndex(indexPath.row)
             
-            //      NSUserDefaults.standardUserDefaults().setObject(todoList, forKey: "todoList")
-   //
+            // TODO
+
+            NSUserDefaults.standardUserDefaults().setObject(fabricNameList, forKey: "fabricNameList")
+            NSUserDefaults.standardUserDefaults().setObject(fabricTimeList, forKey: "fabricTimeList")
+            
             fabricsTable.reloadData()
         }
     }
-
+    
+    
+    
     
     /*
     // MARK: - Navigation
