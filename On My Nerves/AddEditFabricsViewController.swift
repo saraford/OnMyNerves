@@ -17,11 +17,10 @@ class AddEditFabricsViewController: UIViewController, UITextFieldDelegate, UIIma
 
     @IBAction func saveUpdate(sender: UIButton) {
         
-        fabricImageList.append(fabricImage.image!)
         fabricNameList.append(fabricName.text)
         fabricTimeList.append(fabricTime.text.toInt()!)
         
-        SaveImage.storeImage(fabricImage.image!, index: fabricNameList.count - 1)
+        SaveImage.storeImage(fabricImage.image!, name: fabricName.text)
         NSUserDefaults.standardUserDefaults().setObject(fabricNameList, forKey: "fabricNameList")
         NSUserDefaults.standardUserDefaults().setObject(fabricTimeList, forKey: "fabricTimeList")
         

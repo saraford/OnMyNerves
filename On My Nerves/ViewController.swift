@@ -8,7 +8,6 @@
 
 import UIKit
 
-var fabricImageList = [UIImage]()
 var fabricNameList = [String]()
 var fabricTimeList = [Int]()
 
@@ -30,12 +29,6 @@ class ViewController: UIViewController {
             fabricTimeList = NSUserDefaults.standardUserDefaults().objectForKey("fabricTimeList") as! [Int]
             
         }
-        
-        // init the arrays from the data we have in storage
-        if (SaveImage.AreImagesOnDisk()) {
-            SaveImage.retrieveImage(fabricImageList, count: fabricNameList.count)
-        }
-        
     }
 
     override func didReceiveMemoryWarning() {

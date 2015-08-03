@@ -67,7 +67,9 @@ class FabricListViewController: UIViewController, UITableViewDelegate {
 
         let cell = fabricsTable.dequeueReusableCellWithIdentifier("fabricCell") as! UITableViewCell
 
-        (cell.contentView.viewWithTag(1) as! UIImageView).image = fabricImageList[indexPath.row]
+        var imageFilename = SaveImage.imageDirPath() + fabricNameList[indexPath.row] + ".jpg"
+
+        (cell.contentView.viewWithTag(1) as! UIImageView).image = UIImage(named: imageFilename)
         (cell.contentView.viewWithTag(2) as! UILabel).text = fabricNameList[indexPath.row]
         (cell.contentView.viewWithTag(3) as! UILabel).text = "\(fabricTimeList[indexPath.row])"
         
@@ -94,13 +96,12 @@ class FabricListViewController: UIViewController, UITableViewDelegate {
         
         // swipe to the left
         if (editingStyle == UITableViewCellEditingStyle.Delete) {
-            fabricImageList.removeAtIndex(indexPath.row)
-            
-            // TODO
 
+            //TODO need a way to delete
+            
             NSUserDefaults.standardUserDefaults().setObject(fabricNameList, forKey: "fabricNameList")
             NSUserDefaults.standardUserDefaults().setObject(fabricTimeList, forKey: "fabricTimeList")
-            
+
             fabricsTable.reloadData()
         }
     }
