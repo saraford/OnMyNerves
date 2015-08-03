@@ -9,10 +9,10 @@
 import Foundation
 import UIKit
 
-class SaveImage {
+class ImageStore {
     
     // storing images
-    class func storeImage(image: UIImage, name : String) {
+    class func saveImage(image: UIImage, name : String) {
         var documentsDirectory:String? // initially empty
         
         // how to find the location of the documents directory and saving a file in it

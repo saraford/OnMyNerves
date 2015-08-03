@@ -10,6 +10,7 @@ import UIKit
 
 var fabricNameList = [String]()
 var fabricTimeList = [Int]()
+var fabricImageList = [String]()
 
 class ViewController: UIViewController {
 
@@ -29,6 +30,14 @@ class ViewController: UIViewController {
             fabricTimeList = NSUserDefaults.standardUserDefaults().objectForKey("fabricTimeList") as! [Int]
             
         }
+        
+        // init the arrays from the data we have in storage
+        if NSUserDefaults.standardUserDefaults().objectForKey("fabricImageList") != nil {
+            
+            fabricImageList = NSUserDefaults.standardUserDefaults().objectForKey("fabricImageList") as! [String]
+            
+        }
+
     }
 
     override func didReceiveMemoryWarning() {

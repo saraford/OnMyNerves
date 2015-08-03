@@ -67,7 +67,7 @@ class FabricListViewController: UIViewController, UITableViewDelegate {
 
         let cell = fabricsTable.dequeueReusableCellWithIdentifier("fabricCell") as! UITableViewCell
 
-        var imageFilename = SaveImage.imageDirPath() + fabricNameList[indexPath.row] + ".jpg"
+        var imageFilename = ImageStore.imageDirPath() + fabricNameList[indexPath.row] + ".jpg"
 
         (cell.contentView.viewWithTag(1) as! UIImageView).image = UIImage(named: imageFilename)
         (cell.contentView.viewWithTag(2) as! UILabel).text = fabricNameList[indexPath.row]
