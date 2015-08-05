@@ -7,9 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		46D1BBD11B6EB6C900F92D78 /* ImageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D1BBD01B6EB6C900F92D78 /* ImageStore.swift */; };
 		46D1BBD31B6F123300F92D78 /* Fabric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D1BBD21B6F123300F92D78 /* Fabric.swift */; };
-		46D1BBD61B6F198800F92D78 /* FabricModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 46D1BBD41B6F198800F92D78 /* FabricModel.xcdatamodeld */; };
 		46F0D58E1B6C6F7300229D7D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F0D58D1B6C6F7300229D7D /* AppDelegate.swift */; };
 		46F0D5901B6C6F7300229D7D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F0D58F1B6C6F7300229D7D /* ViewController.swift */; };
 		46F0D5931B6C6F7300229D7D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46F0D5911B6C6F7300229D7D /* Main.storyboard */; };
@@ -32,9 +30,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		46D1BBD01B6EB6C900F92D78 /* ImageStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageStore.swift; sourceTree = "<group>"; };
 		46D1BBD21B6F123300F92D78 /* Fabric.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fabric.swift; sourceTree = "<group>"; };
-		46D1BBD51B6F198800F92D78 /* FabricModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FabricModel.xcdatamodel; sourceTree = "<group>"; };
 		46F0D5881B6C6F7300229D7D /* On My Nerves.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "On My Nerves.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		46F0D58C1B6C6F7300229D7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		46F0D58D1B6C6F7300229D7D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -98,9 +94,7 @@
 				46F0D58B1B6C6F7300229D7D /* Supporting Files */,
 				46F0D63D1B6D178500229D7D /* AddEditFabricsViewController.swift */,
 				46F0D63F1B6D5CFA00229D7D /* FabricListViewController.swift */,
-				46D1BBD01B6EB6C900F92D78 /* ImageStore.swift */,
 				46D1BBD21B6F123300F92D78 /* Fabric.swift */,
-				46D1BBD41B6F198800F92D78 /* FabricModel.xcdatamodeld */,
 			);
 			path = "On My Nerves";
 			sourceTree = "<group>";
@@ -232,12 +226,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				46F0D5901B6C6F7300229D7D /* ViewController.swift in Sources */,
-				46D1BBD11B6EB6C900F92D78 /* ImageStore.swift in Sources */,
 				46F0D58E1B6C6F7300229D7D /* AppDelegate.swift in Sources */,
 				46F0D63E1B6D178500229D7D /* AddEditFabricsViewController.swift in Sources */,
 				46D1BBD31B6F123300F92D78 /* Fabric.swift in Sources */,
 				46F0D6401B6D5CFA00229D7D /* FabricListViewController.swift in Sources */,
-				46D1BBD61B6F198800F92D78 /* FabricModel.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -447,19 +439,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		46D1BBD41B6F198800F92D78 /* FabricModel.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				46D1BBD51B6F198800F92D78 /* FabricModel.xcdatamodel */,
-			);
-			currentVersion = 46D1BBD51B6F198800F92D78 /* FabricModel.xcdatamodel */;
-			path = FabricModel.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 46F0D5801B6C6F7300229D7D /* Project object */;
 }

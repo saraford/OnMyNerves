@@ -34,7 +34,6 @@ class FabricListViewController: UIViewController, UITableViewDelegate {
     }
     
     
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -46,32 +45,45 @@ class FabricListViewController: UIViewController, UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-    
-     //   SaveImage.moveImages(fabricImageList, fromIndexPath.row, toIndexPath.row)
+
+        // need to move the objects first
+        var fabricToMove = fabrics[fromIndexPath.row]
+        fabrics.removeAtIndex(fromIndexPath.row)
+        fabrics.insert(fabricToMove, atIndex: toIndexPath.row)
         
-        var nameToMove = fabricNameList[fromIndexPath.row]
-        fabricNameList.removeAtIndex(fromIndexPath.row)
-        fabricNameList.insert(nameToMove, atIndex: toIndexPath.row)
+        // now the arrays for the data we're saving to disk
+        var nameToMove = fabricNamesArray[fromIndexPath.row]
+        fabricNamesArray.removeAtIndex(fromIndexPath.row)
+        fabricNamesArray.insert(nameToMove, atIndex: toIndexPath.row)
 
-        var timeToMove = fabricNameList[fromIndexPath.row]
-        fabricNameList.removeAtIndex(fromIndexPath.row)
-        fabricNameList.insert(timeToMove, atIndex: toIndexPath.row)
+        var timeToMove = fabricTimesArray[fromIndexPath.row]
+        fabricTimesArray.removeAtIndex(fromIndexPath.row)
+        fabricTimesArray.insert(timeToMove, atIndex: toIndexPath.row)
 
+        var imageToMove = fabricImagenamesArray[fromIndexPath.row]
+        fabricImagenamesArray.removeAtIndex(fromIndexPath.row)
+        fabricImagenamesArray.insert(imageToMove, atIndex: toIndexPath.row)
+        
+        // resave everything
+        NSUserDefaults.standardUserDefaults().setObject(fabricNamesArray, forKey: "fabricNames")
+        NSUserDefaults.standardUserDefaults().setObject(fabricTimesArray, forKey: "fabricTimes")
+        NSUserDefaults.standardUserDefaults().setObject(fabricImagenamesArray, forKey: "fabricImagenames")
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return fabricNameList.count
+        return fabrics.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 
         let cell = fabricsTable.dequeueReusableCellWithIdentifier("fabricCell") as! UITableViewCell
-
-        var imageFilename = ImageStore.imageDirPath() + fabricNameList[indexPath.row] + ".jpg"
-
-        (cell.contentView.viewWithTag(1) as! UIImageView).image = UIImage(named: imageFilename)
-        (cell.contentView.viewWithTag(2) as! UILabel).text = fabricNameList[indexPath.row]
-        (cell.contentView.viewWithTag(3) as! UILabel).text = "\(fabricTimeList[indexPath.row])"
+        
+        var imageFilename = fabrics[indexPath.row].fabricImageName
+        var image = fabrics[indexPath.row].retrieveImage()
+        
+        (cell.contentView.viewWithTag(1) as! UIImageView).image = image
+        (cell.contentView.viewWithTag(2) as! UILabel).text = fabrics[indexPath.row].fabricName
+        (cell.contentView.viewWithTag(3) as! UILabel).text = "\(fabrics[indexPath.row].fabricTime)"
         
         return cell
     }
@@ -82,7 +94,7 @@ class FabricListViewController: UIViewController, UITableViewDelegate {
     
     override func viewWillAppear(animated: Bool) {
         
-        if (fabricNameList.count == 0) {
+        if (fabrics.count == 0) {
             reorderButton.enabled = false
         } else {
             reorderButton.enabled = true
@@ -97,17 +109,27 @@ class FabricListViewController: UIViewController, UITableViewDelegate {
         // swipe to the left
         if (editingStyle == UITableViewCellEditingStyle.Delete) {
 
-            //TODO need a way to delete
-            
-            NSUserDefaults.standardUserDefaults().setObject(fabricNameList, forKey: "fabricNameList")
-            NSUserDefaults.standardUserDefaults().setObject(fabricTimeList, forKey: "fabricTimeList")
+            var index = indexPath.row
 
+            // delete the image
+            fabrics[index].deleteImage()
+            
+            // delete the object
+            fabrics.removeAtIndex(index)
+            
+            // delete stuff on the array to be saved to disk
+            fabricNamesArray.removeAtIndex(index)
+            fabricTimesArray.removeAtIndex(index)
+            fabricImagenamesArray.removeAtIndex(index)
+
+            // resave everything
+            NSUserDefaults.standardUserDefaults().setObject(fabricNamesArray, forKey: "fabricNames")
+            NSUserDefaults.standardUserDefaults().setObject(fabricTimesArray, forKey: "fabricTimes")
+            NSUserDefaults.standardUserDefaults().setObject(fabricImagenamesArray, forKey: "fabricImagenames")
+            
             fabricsTable.reloadData()
         }
     }
-    
-    
-    
     
     /*
     // MARK: - Navigation

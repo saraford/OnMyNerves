@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "On_My_Nerves.AddEditFabricsViewController.saveUpdate (On_My_Nerves.AddEditFabricsViewController)(ObjectiveC.UIButton) -&gt; ():AddEditFabricsViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "fabricNamesArray">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "On_My_Nerves.FabricListViewController.tableView (On_My_Nerves.FabricListViewController)(ObjectiveC.UITableView, cellForRowAtIndexPath : ObjectiveC.NSIndexPath) -&gt; ObjectiveC.UITableViewCell:FabricListViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "fabrics">
+            </PersistentString>
+            <PersistentString
+               value = "indexPath.row">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "static On_My_Nerves.ImageStore.saveImage (On_My_Nerves.ImageStore.Type)(ObjectiveC.UIImage, name : Swift.String) -&gt; ():ImageStore.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "savePath">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "On_My_Nerves.ViewController.viewDidLoad (On_My_Nerves.ViewController)() -&gt; ():ViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "fabricNamesArray">
+            </PersistentString>
+            <PersistentString
+               value = "fabrics">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

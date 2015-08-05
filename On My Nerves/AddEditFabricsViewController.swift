@@ -16,13 +16,29 @@ class AddEditFabricsViewController: UIViewController, UITextFieldDelegate, UIIma
     @IBOutlet weak var fabricTime: UITextField!
 
     @IBAction func saveUpdate(sender: UIButton) {
+
+        var index: Int = 0
+        if (fabrics.count > 0) {
+            index = fabrics.count - 1
+        }
+
+        // create a new fabric
+        var newFabric = Fabric()
         
-        fabricNameList.append(fabricName.text)
-        fabricTimeList.append(fabricTime.text.toInt()!)
+        newFabric.fabricName = fabricName.text
+        newFabric.fabricTime = fabricTime.text.toInt()!
+        newFabric.saveImage(fabricImage.image!)
+
+        fabrics.append(newFabric)
         
-        ImageStore.saveImage(fabricImage.image!, name: fabricName.text)
-        NSUserDefaults.standardUserDefaults().setObject(fabricNameList, forKey: "fabricNameList")
-        NSUserDefaults.standardUserDefaults().setObject(fabricTimeList, forKey: "fabricTimeList")
+        // add data to the arrays to save to disk
+        fabricNamesArray.append(fabricName.text)
+        fabricTimesArray.append(fabricTime.text.toInt()!)
+        fabricImagenamesArray.append(newFabric.fabricImageName)
+        
+        NSUserDefaults.standardUserDefaults().setObject(fabricNamesArray, forKey: "fabricNames")
+        NSUserDefaults.standardUserDefaults().setObject(fabricTimesArray, forKey: "fabricTimes")
+        NSUserDefaults.standardUserDefaults().setObject(fabricImagenamesArray, forKey: "fabricImagenames")
         
         self.dismissViewControllerAnimated(true, completion: nil)
     }

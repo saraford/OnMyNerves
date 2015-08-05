@@ -28,21 +28,47 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cws-gE-jJK">
-                                <rect key="frame" x="284" y="285" width="33" height="30"/>
+                                <rect key="frame" x="260" y="402" width="80" height="58"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="38"/>
                                 <state key="normal" title="Start">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="startStopTimer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gVk-Mj-ot1"/>
+                                </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ob-dw-5sJ">
+                                <rect key="frame" x="279" y="337" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zYy-Fc-K1N">
+                                <rect key="frame" x="200" y="91" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="IFR-Oc-dwp"/>
+                                    <constraint firstAttribute="width" constant="200" id="jH1-gu-Za8"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="Cws-gE-jJK" secondAttribute="centerX" id="9OE-OO-tEM"/>
+                            <constraint firstItem="zYy-Fc-K1N" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="27" id="5il-K3-KwT"/>
+                            <constraint firstItem="6dM-5a-cxQ" firstAttribute="top" secondItem="Cws-gE-jJK" secondAttribute="bottom" constant="17" id="BIw-8u-CeA"/>
                             <constraint firstAttribute="centerX" secondItem="6dM-5a-cxQ" secondAttribute="centerX" id="FrH-vh-kLl"/>
+                            <constraint firstItem="Cws-gE-jJK" firstAttribute="centerX" secondItem="5ob-dw-5sJ" secondAttribute="centerX" id="JjW-Ou-Zge"/>
+                            <constraint firstItem="Cws-gE-jJK" firstAttribute="centerX" secondItem="6dM-5a-cxQ" secondAttribute="centerX" id="RZK-CO-Egq"/>
+                            <constraint firstItem="Cws-gE-jJK" firstAttribute="centerX" secondItem="zYy-Fc-K1N" secondAttribute="centerX" id="iOa-gu-7Qn"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="6dM-5a-cxQ" secondAttribute="bottom" constant="65" id="kOh-bf-Is3"/>
-                            <constraint firstAttribute="centerY" secondItem="Cws-gE-jJK" secondAttribute="centerY" id="pNM-Ur-TIq"/>
+                            <constraint firstItem="Cws-gE-jJK" firstAttribute="top" secondItem="5ob-dw-5sJ" secondAttribute="bottom" constant="44" id="oLB-QC-bVl"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Timer" id="nIV-sP-dNc"/>
+                    <connections>
+                        <outlet property="currentFabricImage" destination="zYy-Fc-K1N" id="qFF-kP-TBv"/>
+                        <outlet property="startStopTimer" destination="Cws-gE-jJK" id="nec-uJ-LXi"/>
+                        <outlet property="times" destination="5ob-dw-5sJ" id="wAH-ql-cqY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
