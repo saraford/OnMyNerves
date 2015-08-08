@@ -3,21 +3,10 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "On_My_Nerves.AddEditFabricsViewController.saveUpdate (On_My_Nerves.AddEditFabricsViewController)(ObjectiveC.UIButton) -&gt; ():AddEditFabricsViewController.swift">
+         contextName = "static On_My_Nerves.ImageStore.saveImage (On_My_Nerves.ImageStore.Type)(ObjectiveC.UIImage, name : Swift.String) -&gt; ():ImageStore.swift">
          <PersistentStrings>
             <PersistentString
-               value = "fabricNamesArray">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "On_My_Nerves.ViewController.doSomethingForNow (On_My_Nerves.ViewController)() -&gt; ():ViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "fabrics.count">
-            </PersistentString>
-            <PersistentString
-               value = "currentFabricIndex">
+               value = "savePath">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -33,21 +22,21 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "static On_My_Nerves.ImageStore.saveImage (On_My_Nerves.ImageStore.Type)(ObjectiveC.UIImage, name : Swift.String) -&gt; ():ImageStore.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "savePath">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "On_My_Nerves.ViewController.viewDidLoad (On_My_Nerves.ViewController)() -&gt; ():ViewController.swift">
+         contextName = "On_My_Nerves.AddEditFabricsViewController.saveUpdate (On_My_Nerves.AddEditFabricsViewController)(ObjectiveC.UIButton) -&gt; ():AddEditFabricsViewController.swift">
          <PersistentStrings>
             <PersistentString
                value = "fabricNamesArray">
             </PersistentString>
             <PersistentString
-               value = "fabrics">
+               value = "passedValue">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "On_My_Nerves.AddEditFabricsViewController.viewDidLoad (On_My_Nerves.AddEditFabricsViewController)() -&gt; ():AddEditFabricsViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "passedValue">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -59,6 +48,28 @@
             </PersistentString>
             <PersistentString
                value = "myStopTime">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "On_My_Nerves.ViewController.doSomethingForNow (On_My_Nerves.ViewController)() -&gt; ():ViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "fabrics.count">
+            </PersistentString>
+            <PersistentString
+               value = "currentFabricIndex">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "On_My_Nerves.ViewController.viewDidLoad (On_My_Nerves.ViewController)() -&gt; ():ViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "fabricNamesArray">
+            </PersistentString>
+            <PersistentString
+               value = "fabrics">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

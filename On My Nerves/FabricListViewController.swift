@@ -45,25 +45,37 @@ class FabricListViewController: UIViewController, UITableViewDelegate {
     }
     
     var valueToPass:Int!
+    var fromTableView:Bool = false
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        println("You selected cell #\(indexPath.row)!")
-        
         valueToPass = indexPath.row
+        fromTableView = true
         performSegueWithIdentifier("fabricSegue", sender: self)
         
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
+
+        // keep getting an error when trying to have two segues
         if (segue.identifier == "fabricSegue") {
-            
-            // initialize new view controller and cast it as your view controller
+
             var viewController = segue.destinationViewController as! AddEditFabricsViewController
-            // your new view controller should have property that will store passed value
-            viewController.passedValue = valueToPass
+            
+            if (fromTableView) {
+               
+                println("you clicked a cell!")
+                viewController.passedValue = valueToPass
+                
+            } else {
+
+                println("you clicked the + button!")
+                viewController.passedValue = nil
+                
+            }
+
+           fromTableView = false
+
         }
-        
     }
     
     

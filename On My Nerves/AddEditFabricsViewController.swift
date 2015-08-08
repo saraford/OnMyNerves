@@ -53,9 +53,7 @@ class AddEditFabricsViewController: UIViewController, UITextFieldDelegate, UIIma
             fabricTimesArray[passedValue] = fabricTime.text.toInt()!
             fabricImagenamesArray[passedValue] = fabrics[passedValue].fabricImageName
             
-            // reset the passedValue now that we're done handling the edit
-            passedValue == nil
-            
+            passedValue = nil
         }
         
         // and now update
@@ -104,13 +102,30 @@ class AddEditFabricsViewController: UIViewController, UITextFieldDelegate, UIIma
         self.dismissViewControllerAnimated(true, completion: nil)
         
     }
+
+    func resetUI() {
     
+        // populate it with the current Fabric
+        fabricName.text = "Drew"
+        fabricTime.text = "5"
+        fabricImage.image = UIImage(named: "DrewBrees.png")
+
+    }
+    
+    // this isn't called from the add (+), only from the edit
     override func viewWillAppear(animated: Bool) {
 
-        //STARTHERE: Need to figure out whether this is being called from a tap on the cell or
-        // from being dismissed by the imagePickerController
-        println(passedValue)
+        // am I being called?
+        println("viewWillAppear")
         
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        println("viewDidLoad: the valuePassed is \(passedValue)")
+        
+        // set the UI 
         // if there's content, then it came from a tap
         if (passedValue != nil) {
             
@@ -118,13 +133,12 @@ class AddEditFabricsViewController: UIViewController, UITextFieldDelegate, UIIma
             fabricName.text = fabrics[passedValue].fabricName
             fabricTime.text = "\(fabrics[passedValue].fabricTime)"
             fabricImage.image = fabrics[passedValue].retrieveImage()
-            
-        }
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
 
+        } else {
+            
+            resetUI()
+        }
+        
         // needed for the keyboard
         self.fabricName.delegate = self
         self.fabricTime.delegate = self
