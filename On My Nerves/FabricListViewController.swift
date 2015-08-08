@@ -44,6 +44,29 @@ class FabricListViewController: UIViewController, UITableViewDelegate {
         return true
     }
     
+    var valueToPass:Int!
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        println("You selected cell #\(indexPath.row)!")
+        
+        valueToPass = indexPath.row
+        performSegueWithIdentifier("fabricSegue", sender: self)
+        
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if (segue.identifier == "fabricSegue") {
+            
+            // initialize new view controller and cast it as your view controller
+            var viewController = segue.destinationViewController as! AddEditFabricsViewController
+            // your new view controller should have property that will store passed value
+            viewController.passedValue = valueToPass
+        }
+        
+    }
+    
+    
     func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
 
         // need to move the objects first

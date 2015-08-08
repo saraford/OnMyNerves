@@ -11,6 +11,17 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "On_My_Nerves.ViewController.doSomethingForNow (On_My_Nerves.ViewController)() -&gt; ():ViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "fabrics.count">
+            </PersistentString>
+            <PersistentString
+               value = "currentFabricIndex">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "On_My_Nerves.FabricListViewController.tableView (On_My_Nerves.FabricListViewController)(ObjectiveC.UITableView, cellForRowAtIndexPath : ObjectiveC.NSIndexPath) -&gt; ObjectiveC.UITableViewCell:FabricListViewController.swift">
          <PersistentStrings>
             <PersistentString
@@ -37,6 +48,17 @@
             </PersistentString>
             <PersistentString
                value = "fabrics">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "On_My_Nerves.ViewController.startTimer (On_My_Nerves.ViewController)(Swift.Int) -&gt; ():ViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "startTime">
+            </PersistentString>
+            <PersistentString
+               value = "myStopTime">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

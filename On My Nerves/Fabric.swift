@@ -41,7 +41,6 @@ class Fabric {
             println("Error writing image to disk \(result)")
         }
         
-
 //        var data = NSData(contentsOfFile: savePath)
 //        var image = UIImage(data: data!)
        

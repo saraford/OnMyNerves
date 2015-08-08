@@ -15,27 +15,50 @@ class AddEditFabricsViewController: UIViewController, UITextFieldDelegate, UIIma
     @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var fabricTime: UITextField!
 
+    var passedValue: Int!
+    
     @IBAction func saveUpdate(sender: UIButton) {
 
-        var index: Int = 0
-        if (fabrics.count > 0) {
-            index = fabrics.count - 1
+        if (passedValue == nil) {
+            
+            // newly created fabric
+            var index: Int = 0
+            if (fabrics.count > 0) {
+                index = fabrics.count - 1
+            }
+            
+            // create a new fabric
+            var newFabric = Fabric()
+            
+            newFabric.fabricName = fabricName.text
+            newFabric.fabricTime = fabricTime.text.toInt()!
+            newFabric.saveImage(fabricImage.image!)
+            
+            fabrics.append(newFabric)
+            
+            // add data to the arrays to save to disk
+            fabricNamesArray.append(fabricName.text)
+            fabricTimesArray.append(fabricTime.text.toInt()!)
+            fabricImagenamesArray.append(newFabric.fabricImageName)
+            
+        } else {
+            
+            // save the info the user entered into the fields
+            fabrics[passedValue].fabricName = fabricName.text
+            fabrics[passedValue].fabricTime = fabricTime.text.toInt()!
+            fabrics[passedValue].saveImage(fabricImage.image!)
+
+            // update data to the arrays to save to disk
+            fabricNamesArray[passedValue] = fabricName.text
+            fabricTimesArray[passedValue] = fabricTime.text.toInt()!
+            fabricImagenamesArray[passedValue] = fabrics[passedValue].fabricImageName
+            
+            // reset the passedValue now that we're done handling the edit
+            passedValue == nil
+            
         }
-
-        // create a new fabric
-        var newFabric = Fabric()
         
-        newFabric.fabricName = fabricName.text
-        newFabric.fabricTime = fabricTime.text.toInt()!
-        newFabric.saveImage(fabricImage.image!)
-
-        fabrics.append(newFabric)
-        
-        // add data to the arrays to save to disk
-        fabricNamesArray.append(fabricName.text)
-        fabricTimesArray.append(fabricTime.text.toInt()!)
-        fabricImagenamesArray.append(newFabric.fabricImageName)
-        
+        // and now update
         NSUserDefaults.standardUserDefaults().setObject(fabricNamesArray, forKey: "fabricNames")
         NSUserDefaults.standardUserDefaults().setObject(fabricTimesArray, forKey: "fabricTimes")
         NSUserDefaults.standardUserDefaults().setObject(fabricImagenamesArray, forKey: "fabricImagenames")
@@ -75,9 +98,28 @@ class AddEditFabricsViewController: UIViewController, UITextFieldDelegate, UIIma
     
     // once an image has been chosen, this is called
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
-        
-        self.dismissViewControllerAnimated(true, completion: nil)
+
         fabricImage.image = image;
+        println(image)
+        self.dismissViewControllerAnimated(true, completion: nil)
+        
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+
+        //STARTHERE: Need to figure out whether this is being called from a tap on the cell or
+        // from being dismissed by the imagePickerController
+        println(passedValue)
+        
+        // if there's content, then it came from a tap
+        if (passedValue != nil) {
+            
+            // populate it with the current Fabric
+            fabricName.text = fabrics[passedValue].fabricName
+            fabricTime.text = "\(fabrics[passedValue].fabricTime)"
+            fabricImage.image = fabrics[passedValue].retrieveImage()
+            
+        }
     }
     
     override func viewDidLoad() {
