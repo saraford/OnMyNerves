@@ -41,7 +41,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="startStopTimer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Abe-KD-BlE"/>
+                                            <action selector="startPauseTimer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="T62-xP-brb"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="STx-RV-tHf">
@@ -65,6 +65,15 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="He9-4P-bkg">
+                                        <rect key="frame" x="545" y="230" width="40" height="30"/>
+                                        <state key="normal" title="Reset">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="resetFabrics:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QAC-7b-iHb"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="STx-RV-tHf" firstAttribute="leading" secondItem="qLa-24-JyE" secondAttribute="leading" constant="8" id="3Ub-1Y-NZq"/>
@@ -73,10 +82,12 @@
                                     <constraint firstAttribute="centerY" secondItem="5ob-dw-5sJ" secondAttribute="centerY" id="OQd-QV-EF8"/>
                                     <constraint firstAttribute="centerY" secondItem="STx-RV-tHf" secondAttribute="centerY" id="U8F-tF-IE5"/>
                                     <constraint firstAttribute="centerY" secondItem="CcH-9m-azA" secondAttribute="centerY" id="WyO-O8-iYf"/>
+                                    <constraint firstAttribute="bottom" secondItem="He9-4P-bkg" secondAttribute="bottom" constant="8" id="XXQ-z5-v9q"/>
                                     <constraint firstAttribute="centerX" secondItem="Cws-gE-jJK" secondAttribute="centerX" id="hLq-he-DcP"/>
                                     <constraint firstItem="ujz-uj-7DT" firstAttribute="top" secondItem="qLa-24-JyE" secondAttribute="top" constant="8" id="hmD-S1-Jo3"/>
                                     <constraint firstItem="5ob-dw-5sJ" firstAttribute="leading" secondItem="CcH-9m-azA" secondAttribute="trailing" constant="8" id="i0q-ZA-6MX"/>
                                     <constraint firstAttribute="trailing" secondItem="5ob-dw-5sJ" secondAttribute="trailing" constant="15" id="lEX-Bi-UHp"/>
+                                    <constraint firstAttribute="trailing" secondItem="He9-4P-bkg" secondAttribute="trailing" constant="15" id="mGF-dW-815"/>
                                     <constraint firstItem="CcH-9m-azA" firstAttribute="leading" secondItem="STx-RV-tHf" secondAttribute="trailing" constant="8" id="rZl-U0-m1C"/>
                                 </constraints>
                             </view>

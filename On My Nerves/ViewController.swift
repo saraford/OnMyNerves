@@ -60,7 +60,7 @@ class ViewController: UIViewController {
             }
             
             // show the initial UI
-            showFabricDetails()
+            resetFabricDetails()
             
         }
         
@@ -75,20 +75,33 @@ class ViewController: UIViewController {
         
     }
     
-
+    
+    @IBAction func resetFabrics(sender: UIButton) {
+    
+        // we're not running and need to pause
+        startStopTimerButton.setTitle("Start", forState: UIControlState.Normal)
+        
+        stopTimer()
+        
+        // refresh the UI
+        currentFabricIndex = 1
+        resetFabricDetails()
+        
+    }
+    
     
     
 
     var fabricCounter: Int = 0
     var countdownTime: Int!
-    @IBAction func startStopTimer(sender: UIButton) {
+    @IBAction func startPauseTimer(sender: UIButton) {
         
         printFabrics()
         
         // we're not running and need to start
         if !(fabricTimer.valid) {
             
-            startStopTimerButton.setTitle("Cancel", forState: UIControlState.Normal)
+            startStopTimerButton.setTitle("Pause", forState: UIControlState.Normal)
             
             // show countdown
             displayTimeLabel.text = "\(fabrics[fabricCounter].fabricTime)"
@@ -97,14 +110,8 @@ class ViewController: UIViewController {
             startTimer()
         }
         else {
-            
-            // we're running and need to stop
-            stopTimer()
 
-            startStopTimerButton.setTitle("Start", forState: UIControlState.Normal)
-            
-            // reset the UI to state prior to starting
-     //       resetUI()
+
         }
 
     }
@@ -124,7 +131,7 @@ class ViewController: UIViewController {
     
     
 
-    func showFabricDetails() {
+    func resetFabricDetails() {
 
         var currentFabric = fabrics[currentFabricIndex]
   
@@ -146,7 +153,7 @@ class ViewController: UIViewController {
     func startTimer() {
         
         // show the UI
-        showFabricDetails()
+        resetFabricDetails()
         timeRemaining = fabrics[currentFabricIndex].fabricTime
         
         // so we grab the current time and the fabric time to it
@@ -225,7 +232,7 @@ class ViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated);
 
-        showFabricDetails()
+        resetFabricDetails()
     }
     
     // this is fired after every scheduled FabricTime interval via the notification service
