@@ -81,13 +81,18 @@ class AddEditFabricsViewController: UIViewController, UITextFieldDelegate, UIIma
     
     }
     
+    
     @IBAction func choosePhoto(sender: AnyObject) {
         // creates a view controller that goes out of the app to the photo library or camera
+        
         var image = UIImagePickerController()
         image.delegate = self
         
-        // change this to camera for the actual camera on the phone
-        image.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+        if (sender.tag == 5) {
+            image.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+        } else {
+            image.sourceType = UIImagePickerControllerSourceType.Camera
+        }
         image.allowsEditing = false
         
         // shows this view controller

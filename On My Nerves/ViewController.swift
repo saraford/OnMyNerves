@@ -74,6 +74,10 @@ class ViewController: UIViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "doSomethingForNow", name: "FabricSwitch", object: nil)
         
     }
+    
+
+    
+    
 
     var fabricCounter: Int = 0
     var countdownTime: Int!
@@ -88,7 +92,7 @@ class ViewController: UIViewController {
             
             // show countdown
             displayTimeLabel.text = "\(fabrics[fabricCounter].fabricTime)"
-            timeElapsedLabel.text = "0"
+            timeElapsedLabel.text = "0:00"
             
             startTimer()
         }
@@ -123,8 +127,8 @@ class ViewController: UIViewController {
     func showFabricDetails() {
 
         var currentFabric = fabrics[currentFabricIndex]
-        
-        self.displayTimeLabel.text = "\(currentFabric.fabricTime)"
+  
+        displayTime(displayTimeLabel, time: currentFabric.fabricTime)
         
         currentFabricImage.image = currentFabric.retrieveImage()
         
@@ -132,7 +136,7 @@ class ViewController: UIViewController {
         
         progressBar.progress = 0.0
         
-        timeElapsedLabel.text = "0"
+        timeElapsedLabel.text = "0:00"
     }
     
     // Oh boy oh boy! here we go!!!
@@ -196,19 +200,33 @@ class ViewController: UIViewController {
 
         // update progress bar
         progressBar.progress =  Float(timeElapsed) / Float(fabrics[currentFabricIndex].fabricTime)
-
+        
+        displayTime(displayTimeLabel, time: timeRemaining)
+        
+        var timeElapsedToDisplay = Int(floor(timeElapsed))
+        displayTime(timeElapsedLabel, time: timeElapsedToDisplay)
+        
+    }
+    
+    func displayTime(label: UILabel, time: Int) {
         
         // UI prettiness because Apple can't give me a NSDate.Now.ToString()
         // gods I miss C#
-        if (timeRemaining > 9) {
-            displayTimeLabel.text = "\(timeRemaining)"
+        if (time > 9) {
+            label.text = "0:\(time)"
+            
         } else {
-            displayTimeLabel.text = "\(timeRemaining)"
+            label.text = "0:0\(time)"
+            
         }
         
-        timeElapsedLabel.text = "\(Int(floor(timeElapsed)))"
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated);
+
+        showFabricDetails()
+    }
     
     // this is fired after every scheduled FabricTime interval via the notification service
     // this is fired regardless user taps notification or it comes while app is running
