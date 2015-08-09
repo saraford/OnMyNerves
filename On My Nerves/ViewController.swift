@@ -20,7 +20,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var startStopTimerButton: UIButton!
     @IBOutlet weak var currentFabricImage: UIImageView!
     @IBOutlet weak var currentFabricName: UILabel!
-
+    @IBOutlet weak var progressBar: UIProgressView!
+    @IBOutlet weak var timeElapsedLabel: UILabel!
+    
     // if true, user opened app without tapping notification so we need to skip the real notification
     var skipBecauseUserDidNotTapNotification:Bool = false;
     
@@ -86,6 +88,7 @@ class ViewController: UIViewController {
             
             // show countdown
             displayTimeLabel.text = "\(fabrics[fabricCounter].fabricTime)"
+            timeElapsedLabel.text = "0"
             
             startTimer()
         }
@@ -126,6 +129,10 @@ class ViewController: UIViewController {
         currentFabricImage.image = currentFabric.retrieveImage()
         
         currentFabricName.text = currentFabric.fabricName
+        
+        progressBar.progress = 0.0
+        
+        timeElapsedLabel.text = "0"
     }
     
     // Oh boy oh boy! here we go!!!
@@ -177,6 +184,7 @@ class ViewController: UIViewController {
     }
     
     // the actual NSTimer loop - this is only used to update the 9:59 text and nothing else
+    var timeElapsed:Int = 0
     func updateFabricTime() {
         
         //Find the difference between current time and the original start time
@@ -185,6 +193,10 @@ class ViewController: UIViewController {
         
         // current display time
         timeRemaining = timeRemaining - 1
+
+        // update progress bar
+        progressBar.progress =  Float(timeElapsed) / Float(fabrics[currentFabricIndex].fabricTime)
+
         
         // UI prettiness because Apple can't give me a NSDate.Now.ToString()
         // gods I miss C#
@@ -193,9 +205,11 @@ class ViewController: UIViewController {
         } else {
             displayTimeLabel.text = "\(timeRemaining)"
         }
+        
+        timeElapsedLabel.text = "\(Int(floor(timeElapsed)))"
     }
     
-
+    
     // this is fired after every scheduled FabricTime interval via the notification service
     // this is fired regardless user taps notification or it comes while app is running
     func doSomethingForNow() {
