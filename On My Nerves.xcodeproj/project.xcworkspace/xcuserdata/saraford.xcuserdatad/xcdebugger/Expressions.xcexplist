@@ -3,33 +3,6 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "static On_My_Nerves.ImageStore.saveImage (On_My_Nerves.ImageStore.Type)(ObjectiveC.UIImage, name : Swift.String) -&gt; ():ImageStore.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "savePath">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "On_My_Nerves.FabricListViewController.tableView (On_My_Nerves.FabricListViewController)(ObjectiveC.UITableView, cellForRowAtIndexPath : ObjectiveC.NSIndexPath) -&gt; ObjectiveC.UITableViewCell:FabricListViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "fabrics">
-            </PersistentString>
-            <PersistentString
-               value = "indexPath.row">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "On_My_Nerves.ViewController.updateFabricTime (On_My_Nerves.ViewController)() -&gt; ():ViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "Float(fabrics[currentFabricIndex].fabricTime)">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
          contextName = "On_My_Nerves.AddEditFabricsViewController.saveUpdate (On_My_Nerves.AddEditFabricsViewController)(ObjectiveC.UIButton) -&gt; ():AddEditFabricsViewController.swift">
          <PersistentStrings>
             <PersistentString
@@ -37,6 +10,17 @@
             </PersistentString>
             <PersistentString
                value = "passedValue">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "On_My_Nerves.ViewController.updateFabricTime (On_My_Nerves.ViewController)() -&gt; ():ViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "elapsedTimePaused">
+            </PersistentString>
+            <PersistentString
+               value = "Float(fabrics[currentFabricIndex].fabricTime)">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -60,11 +44,62 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "static On_My_Nerves.ImageStore.saveImage (On_My_Nerves.ImageStore.Type)(ObjectiveC.UIImage, name : Swift.String) -&gt; ():ImageStore.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "savePath">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "On_My_Nerves.FabricListViewController.tableView (On_My_Nerves.FabricListViewController)(ObjectiveC.UITableView, cellForRowAtIndexPath : ObjectiveC.NSIndexPath) -&gt; ObjectiveC.UITableViewCell:FabricListViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "fabrics">
+            </PersistentString>
+            <PersistentString
+               value = "indexPath.row">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "On_My_Nerves.ViewController.startTimer (On_My_Nerves.ViewController)() -&gt; ():ViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "timeRemaining">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "On_My_Nerves.ViewController.startPauseTimer (On_My_Nerves.ViewController)(ObjectiveC.UIButton) -&gt; ():ViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "timeElapsed">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "On_My_Nerves.ViewController.doSomethingForNow (On_My_Nerves.ViewController)() -&gt; ():ViewController.swift">
          <PersistentStrings>
             <PersistentString
                value = "fabrics.count">
             </PersistentString>
+            <PersistentString
+               value = "currentFabricIndex">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "On_My_Nerves.ViewController.prevButton (On_My_Nerves.ViewController)(ObjectiveC.UIButton) -&gt; ():ViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "currentFabricIndex">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "On_My_Nerves.ViewController.nextFabric (On_My_Nerves.ViewController)(ObjectiveC.UIButton) -&gt; ():ViewController.swift">
+         <PersistentStrings>
             <PersistentString
                value = "currentFabricIndex">
             </PersistentString>
@@ -78,6 +113,9 @@
             </PersistentString>
             <PersistentString
                value = "fabrics">
+            </PersistentString>
+            <PersistentString
+               value = "NSUserDefaults.standardUserDefaults().objectForKey(&quot;fabricNames&quot;)">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

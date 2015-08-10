@@ -22,6 +22,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var currentFabricName: UILabel!
     @IBOutlet weak var progressBar: UIProgressView!
     @IBOutlet weak var timeElapsedLabel: UILabel!
+    @IBOutlet weak var navBarTitle: UINavigationItem!
+    @IBOutlet weak var prevButton: UIButton!
+    @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var restartButton: UIButton!
     
     // if true, user opened app without tapping notification so we need to skip the real notification
     var skipBecauseUserDidNotTapNotification:Bool = false;
@@ -42,28 +46,33 @@ class ViewController: UIViewController {
         if NSUserDefaults.standardUserDefaults().objectForKey("fabricNames") != nil {
             
             fabricNamesArray = NSUserDefaults.standardUserDefaults().objectForKey("fabricNames") as! [String]
-            fabricTimesArray = NSUserDefaults.standardUserDefaults().objectForKey("fabricTimes") as! [Int]
-            fabricImagenamesArray = NSUserDefaults.standardUserDefaults().objectForKey("fabricImagenames") as! [String]
             
-            // create the Fabric class and fill it in
-            for var index = 0; index < fabricNamesArray.count; index++ {
+            // bug: even if the objectForKey exists, it might be a 0 value. who knew?
+            if (fabricNamesArray.count > 0) {
+            
+                fabricTimesArray = NSUserDefaults.standardUserDefaults().objectForKey("fabricTimes") as! [Int]
+                fabricImagenamesArray = NSUserDefaults.standardUserDefaults().objectForKey("fabricImagenames") as! [String]
                 
-                var newFabric = Fabric()
+                // create the Fabric class and fill it in
+                for var index = 0; index < fabricNamesArray.count; index++ {
+                    
+                    var newFabric = Fabric()
+                    
+                    newFabric.fabricName = fabricNamesArray[index]
+                    
+                    newFabric.fabricTime = fabricTimesArray[index]
+                    
+                    newFabric.fabricImageName = fabricImagenamesArray[index]
+                    
+                    fabrics.append(newFabric)
+                }
                 
-                newFabric.fabricName = fabricNamesArray[index]
+                // show the initial UI
+                resetFabricDetails()
                 
-                newFabric.fabricTime = fabricTimesArray[index]
-                
-                newFabric.fabricImageName = fabricImagenamesArray[index]
-                
-                fabrics.append(newFabric)
             }
             
-            // show the initial UI
-            resetFabricDetails()
-            
         }
-        
         
         UIApplication.sharedApplication().cancelAllLocalNotifications()
         
@@ -84,34 +93,105 @@ class ViewController: UIViewController {
         stopTimer()
         
         // refresh the UI
-        currentFabricIndex = 1
+        currentFabricIndex = 0
         resetFabricDetails()
         
     }
     
     
+    @IBAction func nextFabric(sender: UIButton) {
+
+        // verify just in case
+        if (currentFabricIndex < fabrics.count - 1) {
+            
+            // if we're currently running, keep going
+            if (fabricTimer.valid) {
+                
+                stopTimer()
+                
+                currentFabricIndex++
+                
+                resetFabricDetails()
+                
+                startTimer()
+                
+            } else {
+                
+                currentFabricIndex++
+                
+                resetFabricDetails()
+                
+            }
+        
+        }
+        
+    }
+    
+    
+    
+    @IBAction func prevButton(sender: UIButton) {
+
+        // verify just in case
+        if (currentFabricIndex > 0) {
+            
+            currentFabricIndex--
+            
+            resetFabricDetails()
+            
+            // if we're currently running, keep going
+            if (fabricTimer.valid) {
+                startTimer()
+            }
+            
+        }
+        
+    }
+    
     
 
     var fabricCounter: Int = 0
     var countdownTime: Int!
+    var isPaused:Bool = false
+    var elapsedTimePaused: Int!
     @IBAction func startPauseTimer(sender: UIButton) {
         
-        printFabrics()
+//        printFabrics()
         
         // we're not running and need to start
         if !(fabricTimer.valid) {
             
             startStopTimerButton.setTitle("Pause", forState: UIControlState.Normal)
             
-            // show countdown
-            displayTimeLabel.text = "\(fabrics[fabricCounter].fabricTime)"
-            timeElapsedLabel.text = "0:00"
+            if (isPaused) {
+                
+                // need to carry over the elapsed time
+                elapsedTimePaused = timeElapsed
+                
+                isPaused = false
+                
+            } else {
+            
+                // show countdown
+                displayTimeLabel.text = "\(fabrics[fabricCounter].fabricTime)"
+                timeElapsedLabel.text = "0:00"
+                
+                // show the UI
+                resetFabricDetails()
+                timeRemaining = fabrics[currentFabricIndex].fabricTime
+                
+            }
             
             startTimer()
         }
         else {
 
-
+            // there is no pause on a NSTimer, so we kill timer and recreate
+            isPaused = true
+            
+            startStopTimerButton.setTitle("Resume", forState: UIControlState.Normal)
+            
+            // stop Timer and cancel the notifications
+            stopTimer()
         }
 
     }
@@ -135,7 +215,8 @@ class ViewController: UIViewController {
 
         var currentFabric = fabrics[currentFabricIndex]
   
-        displayTime(displayTimeLabel, time: currentFabric.fabricTime)
+        timeRemaining = currentFabric.fabricTime
+        displayTime(displayTimeLabel, time: timeRemaining)
         
         currentFabricImage.image = currentFabric.retrieveImage()
         
@@ -144,6 +225,10 @@ class ViewController: UIViewController {
         progressBar.progress = 0.0
         
         timeElapsedLabel.text = "0:00"
+        
+        elapsedTimePaused = 0
+        
+        navBarTitle.title = "Fabric \(currentFabricIndex + 1) of \(fabrics.count)"
     }
     
     // Oh boy oh boy! here we go!!!
@@ -152,17 +237,14 @@ class ViewController: UIViewController {
     var timeRemaining:Int!
     func startTimer() {
         
-        // show the UI
-        resetFabricDetails()
-        timeRemaining = fabrics[currentFabricIndex].fabricTime
-        
         // so we grab the current time and the fabric time to it
         startTime = NSDate()
-        println("Start time at...")
-        printDate(startTime)
+        //println("Start time at...")
+       // printDate(startTime)
+       
         myStopTime = NSDate(timeIntervalSinceNow: NSTimeInterval(timeRemaining))
-        println("Stop time at...")
-        printDate(myStopTime)
+       // println("Stop time at...")
+       // printDate(myStopTime)
         
         // this minuteTimer is ONLY used to display the timer countdown in the UI
         // so each second it will go from 9:59, 9:58, blah blah blah
@@ -191,6 +273,9 @@ class ViewController: UIViewController {
     func resetUI() {
         
         currentFabricIndex = 0
+        
+        resetFabricDetails()
+        
         startStopTimerButton.setTitle("Start", forState: UIControlState.Normal)
     }
     
@@ -199,8 +284,8 @@ class ViewController: UIViewController {
     func updateFabricTime() {
         
         //Find the difference between current time and the original start time
-        var timeElapsed:NSTimeInterval = NSDate().timeIntervalSinceDate(startTime)
-        var secondsElapsed = Int(round(timeElapsed))
+        // if coming back from pause, add elapsedTimePaused; otherwise this is 0
+        timeElapsed = Int(floor(NSDate().timeIntervalSinceDate(startTime))) + elapsedTimePaused
         
         // current display time
         timeRemaining = timeRemaining - 1
@@ -210,7 +295,7 @@ class ViewController: UIViewController {
         
         displayTime(displayTimeLabel, time: timeRemaining)
         
-        var timeElapsedToDisplay = Int(floor(timeElapsed))
+        var timeElapsedToDisplay = timeElapsed
         displayTime(timeElapsedLabel, time: timeElapsedToDisplay)
         
     }
@@ -232,7 +317,24 @@ class ViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated);
 
-        resetFabricDetails()
+        if (fabrics.count > 0) {
+            resetFabricDetails()
+            
+            // disable all play controls
+            startStopTimerButton.enabled = true
+            prevButton.enabled = true
+            nextButton.enabled = true
+            restartButton.enabled = true
+            
+        } else {
+            
+            // disable all play controls
+            startStopTimerButton.enabled = false
+            prevButton.enabled = false
+            nextButton.enabled = false
+            restartButton.enabled = false
+        }
+        
     }
     
     // this is fired after every scheduled FabricTime interval via the notification service
@@ -246,21 +348,21 @@ class ViewController: UIViewController {
             var trueStopTime = NSDate()
             
             //   NSLog("Stop Time:")
-            printDate(trueStopTime)
+            // printDate(trueStopTime)
             
             stopTimer()
+
+            // in case there was any paused time
+            elapsedTimePaused = 0
             
             // continue to next Fabric or end
             currentFabricIndex++
             if (currentFabricIndex < fabrics.count) {
-            
+                
                 // rock on
                 showAlertAndContinue("Fabric Done!", message: "Move to next fabric")
                 
             } else {
-                
-                // we're all done
-                resetUI()
                 
                 showAlertToEnd("We're all done!", message: "Kick ass!")
             }
@@ -279,10 +381,17 @@ class ViewController: UIViewController {
         let alertController = UIAlertController(title: title, message:
             message, preferredStyle: UIAlertControllerStyle.Alert)
         
+        
         // after the user dismisses the alert we can start the next 1 minute run
         alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {
-            action in self.startTimer()
-        }))
+            action in
+            
+                // refreshing the UI here so it doesn't appear behind the alert. Feels odd
+                self.resetFabricDetails()
+
+                self.startTimer()
+            }
+        ))
         
         self.presentViewController(alertController, animated: true, completion: nil)
     }
@@ -294,8 +403,12 @@ class ViewController: UIViewController {
         
         // after the user dismisses the alert we can start the next 1 minute run
         alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {
-            action in println("yo we've stopped the timer")
+            action in
+            
+                // println("yo we've stopped the timer")
 
+                // we're all done
+                self.resetUI()
             
         }))
         

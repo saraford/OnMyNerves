@@ -5,7 +5,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Timer-->
+        <!--Fabrics-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="On_My_Nerves" customModuleProvider="target" sceneMemberID="viewController">
@@ -20,7 +20,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dl8-Qv-L8b">
                                 <rect key="frame" x="0.0" y="64" width="600" height="268"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DrewBrees.png" translatesAutoresizingMaskIntoConstraints="NO" id="zYy-Fc-K1N">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zYy-Fc-K1N">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="268"/>
                                     </imageView>
                                 </subviews>
@@ -66,29 +66,51 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="He9-4P-bkg">
-                                        <rect key="frame" x="545" y="230" width="40" height="30"/>
-                                        <state key="normal" title="Reset">
+                                        <rect key="frame" x="8" y="222" width="50" height="30"/>
+                                        <state key="normal" title="Restart">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="resetFabrics:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QAC-7b-iHb"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dbe-dX-8np">
+                                        <rect key="frame" x="346" y="222" width="32" height="30"/>
+                                        <state key="normal" title="Next">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="nextFabric:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aZO-oM-Esw"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bT0-ol-e49">
+                                        <rect key="frame" x="224" y="222" width="31" height="30"/>
+                                        <state key="normal" title="Prev">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="prevButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZtU-UJ-jbW"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="STx-RV-tHf" firstAttribute="leading" secondItem="qLa-24-JyE" secondAttribute="leading" constant="8" id="3Ub-1Y-NZq"/>
+                                    <constraint firstItem="dbe-dX-8np" firstAttribute="leading" secondItem="Cws-gE-jJK" secondAttribute="trailing" constant="16" id="GPH-U5-6tO"/>
+                                    <constraint firstAttribute="bottom" secondItem="He9-4P-bkg" secondAttribute="bottom" constant="16" id="Gsn-Ku-4Ou"/>
                                     <constraint firstAttribute="bottom" secondItem="Cws-gE-jJK" secondAttribute="bottom" constant="8" id="JTi-tF-2GK"/>
                                     <constraint firstAttribute="centerX" secondItem="ujz-uj-7DT" secondAttribute="centerX" id="Mzk-Jh-gqC"/>
                                     <constraint firstAttribute="centerY" secondItem="5ob-dw-5sJ" secondAttribute="centerY" id="OQd-QV-EF8"/>
                                     <constraint firstAttribute="centerY" secondItem="STx-RV-tHf" secondAttribute="centerY" id="U8F-tF-IE5"/>
                                     <constraint firstAttribute="centerY" secondItem="CcH-9m-azA" secondAttribute="centerY" id="WyO-O8-iYf"/>
-                                    <constraint firstAttribute="bottom" secondItem="He9-4P-bkg" secondAttribute="bottom" constant="8" id="XXQ-z5-v9q"/>
+                                    <constraint firstAttribute="bottom" secondItem="bT0-ol-e49" secondAttribute="bottom" constant="16" id="buj-E4-jaV"/>
+                                    <constraint firstItem="He9-4P-bkg" firstAttribute="leading" secondItem="qLa-24-JyE" secondAttribute="leading" constant="8" id="fer-Ra-XCb"/>
+                                    <constraint firstItem="Cws-gE-jJK" firstAttribute="leading" secondItem="bT0-ol-e49" secondAttribute="trailing" constant="16" id="gF4-J2-qlm"/>
                                     <constraint firstAttribute="centerX" secondItem="Cws-gE-jJK" secondAttribute="centerX" id="hLq-he-DcP"/>
                                     <constraint firstItem="ujz-uj-7DT" firstAttribute="top" secondItem="qLa-24-JyE" secondAttribute="top" constant="8" id="hmD-S1-Jo3"/>
                                     <constraint firstItem="5ob-dw-5sJ" firstAttribute="leading" secondItem="CcH-9m-azA" secondAttribute="trailing" constant="8" id="i0q-ZA-6MX"/>
                                     <constraint firstAttribute="trailing" secondItem="5ob-dw-5sJ" secondAttribute="trailing" constant="15" id="lEX-Bi-UHp"/>
-                                    <constraint firstAttribute="trailing" secondItem="He9-4P-bkg" secondAttribute="trailing" constant="15" id="mGF-dW-815"/>
                                     <constraint firstItem="CcH-9m-azA" firstAttribute="leading" secondItem="STx-RV-tHf" secondAttribute="trailing" constant="8" id="rZl-U0-m1C"/>
+                                    <constraint firstAttribute="bottom" secondItem="dbe-dX-8np" secondAttribute="bottom" constant="16" id="wk2-k2-cwf"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -104,7 +126,7 @@
                             <constraint firstAttribute="trailing" secondItem="qLa-24-JyE" secondAttribute="trailing" id="zC0-Dl-wXf"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Timer" id="nIV-sP-dNc">
+                    <navigationItem key="navigationItem" title="Fabrics" id="nIV-sP-dNc">
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="iGG-pM-OsH">
                             <connections>
                                 <segue destination="gVO-92-i6A" kind="show" id="gXd-Us-1am"/>
@@ -115,7 +137,11 @@
                         <outlet property="currentFabricImage" destination="zYy-Fc-K1N" id="qFF-kP-TBv"/>
                         <outlet property="currentFabricName" destination="ujz-uj-7DT" id="inx-G3-oRW"/>
                         <outlet property="displayTimeLabel" destination="5ob-dw-5sJ" id="rYG-AR-HWd"/>
+                        <outlet property="navBarTitle" destination="nIV-sP-dNc" id="DYp-Pc-wLD"/>
+                        <outlet property="nextButton" destination="dbe-dX-8np" id="WWZ-DO-DfE"/>
+                        <outlet property="prevButton" destination="bT0-ol-e49" id="8e8-qE-exx"/>
                         <outlet property="progressBar" destination="CcH-9m-azA" id="MFY-YE-Q72"/>
+                        <outlet property="restartButton" destination="He9-4P-bkg" id="3kO-UZ-gzD"/>
                         <outlet property="startStopTimerButton" destination="Cws-gE-jJK" id="5Of-w1-Yln"/>
                         <outlet property="timeElapsedLabel" destination="STx-RV-tHf" id="hS6-KW-ku0"/>
                     </connections>
