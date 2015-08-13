@@ -27,6 +27,11 @@ class ViewController: UIViewController {
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var restartButton: UIButton!
     
+    var startTime:NSDate!
+    var myStopTime:NSDate!
+    var timeRemaining:Int!
+    
+    //STARTHERE: REMOVE THIS
     // if true, user opened app without tapping notification so we need to skip the real notification
     var skipBecauseUserDidNotTapNotification:Bool = false;
     
@@ -37,19 +42,22 @@ class ViewController: UIViewController {
     var currentFabricIndex: Int = 0
     
     // for handling missed/ignored notifications
-    // private var foregroundNotification: NSObjectProtocol!
+    private var foregroundNotification: NSObjectProtocol!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // recreate the arrays saving the data        
+        
+        // recreate the arrays saving the data
         if NSUserDefaults.standardUserDefaults().objectForKey("fabricNames") != nil {
+            
+            println("loading the data")
             
             fabricNamesArray = NSUserDefaults.standardUserDefaults().objectForKey("fabricNames") as! [String]
             
             // bug: even if the objectForKey exists, it might be a 0 value. who knew?
             if (fabricNamesArray.count > 0) {
-            
+                
                 fabricTimesArray = NSUserDefaults.standardUserDefaults().objectForKey("fabricTimes") as! [Int]
                 fabricImagenamesArray = NSUserDefaults.standardUserDefaults().objectForKey("fabricImagenames") as! [String]
                 
@@ -68,11 +76,48 @@ class ViewController: UIViewController {
                 }
                 
                 // show the initial UI
-                resetFabricDetails()
+                self.resetFabricDetails()
                 
-            }
+            } // end if there is valid saved data
             
+        } // end if the key exists on disk, implying there is saved data
+
+        
+        
+        // first check if the user missed a notification
+        foregroundNotification = NSNotificationCenter.defaultCenter().addObserverForName(UIApplicationWillEnterForegroundNotification, object: nil, queue: NSOperationQueue.mainQueue()) {
+            [unowned self] notification in
+            
+            // next, if we're running...
+            if (self.fabricTimer.valid) {
+                
+                println("must have missed a notification")
+                
+                // from docs: current scheduled local notifications - a notification is only current if it has *not* gone off yet. otherwise this list will be 0.
+                var notifications = UIApplication.sharedApplication().scheduledLocalNotifications as! [UILocalNotification]
+                
+                // if the count is 0, means either user has tapped notification or has missed it
+                if (notifications.count == 0) {
+                    
+                    // if Now > myStopTime, either user tapped or opened app after missing notification. either way we need to stop and clear the notifications
+                    if (NSDate().compare(self.myStopTime) == NSComparisonResult.OrderedDescending) {
+                        
+                        // need to fake the UI that the updateFabricTimer() actually stopped without going over
+                        // otherwise, we'll have a negative timeRemaining and way too much timeElapsed
+                        self.displayTime(self.timeElapsedLabel, time: fabrics[self.currentFabricIndex].fabricTime)
+                        self.displayTimeLabel.text = "0:00"
+                        
+                        // pretend the user hit the notification
+                        self.doSomethingForNow()
+                        
+                        // user did not tap - I think i can remove this
+                        self.skipBecauseUserDidNotTapNotification = true
+                    }
+                    
+                }
+            }
         }
+        
         
         UIApplication.sharedApplication().cancelAllLocalNotifications()
         
@@ -82,7 +127,11 @@ class ViewController: UIViewController {
         // this is the event that is fired after each scheduled Fabric Time, regardless user taps or app is active
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "doSomethingForNow", name: "FabricSwitch", object: nil)
         
-    }
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "resetToDefaults", name: "Terminating", object: nil)
+
+        // end notification closure
+        
+    }// view did load
     
     
     @IBAction func resetFabrics(sender: UIButton) {
@@ -218,7 +267,11 @@ class ViewController: UIViewController {
         println("-----------------")
     }
     
-    
+    func resetToDefaults() {
+        
+        currentFabricIndex = 0
+        resetFabricDetails()
+    }
     
 
     func resetFabricDetails() {
@@ -243,9 +296,6 @@ class ViewController: UIViewController {
     }
     
     // Oh boy oh boy! here we go!!!
-    var startTime:NSDate!
-    var myStopTime:NSDate!
-    var timeRemaining:Int!
     func startTimer() {
         
         // so we grab the current time and the fabric time to it

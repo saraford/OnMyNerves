@@ -20,12 +20,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Sound |
             UIUserNotificationType.Alert , categories: nil))
         
+        // AVAudioSessionCategoryPlayback is needed to play if on silent
+//        AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, error: nil)
+//        AVAudioSession.sharedInstance().setActive(true, error: nil)
+
+        
         return true
     }
     
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
         
         NSNotificationCenter.defaultCenter().postNotificationName("FabricSwitch", object: self)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "resetToDefaults", name: "Terminating", object: nil)
     }
 
     func applicationWillResignActive(application: UIApplication) {
@@ -49,6 +55,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        
+        NSNotificationCenter.defaultCenter().postNotificationName("Terminating", object: self)
     }
     
 }
