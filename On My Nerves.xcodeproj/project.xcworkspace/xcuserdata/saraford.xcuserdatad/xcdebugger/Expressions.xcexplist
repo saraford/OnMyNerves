@@ -33,6 +33,14 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "On_My_Nerves.ViewController.resetFabricDetails (On_My_Nerves.ViewController)() -&gt; ():ViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "elapsedTimePaused">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "On_My_Nerves.ViewController.startTimer (On_My_Nerves.ViewController)(Swift.Int) -&gt; ():ViewController.swift">
          <PersistentStrings>
             <PersistentString
@@ -91,11 +99,6 @@
       </ContextState>
       <ContextState
          contextName = "On_My_Nerves.ViewController.prevButton (On_My_Nerves.ViewController)(ObjectiveC.UIButton) -&gt; ():ViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "currentFabricIndex">
-            </PersistentString>
-         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "On_My_Nerves.ViewController.nextFabric (On_My_Nerves.ViewController)(ObjectiveC.UIButton) -&gt; ():ViewController.swift">

@@ -134,13 +134,23 @@ class ViewController: UIViewController {
         // verify just in case
         if (currentFabricIndex > 0) {
             
-            currentFabricIndex--
-            
-            resetFabricDetails()
-            
             // if we're currently running, keep going
             if (fabricTimer.valid) {
+                
+                stopTimer()
+                
+                currentFabricIndex--
+                
+                resetFabricDetails()
+                
                 startTimer()
+                
+            } else {
+                
+                currentFabricIndex--
+                
+                resetFabricDetails()
+                
             }
             
         }
@@ -227,6 +237,7 @@ class ViewController: UIViewController {
         timeElapsedLabel.text = "0:00"
         
         elapsedTimePaused = 0
+        timeElapsed = 0
         
         navBarTitle.title = "Fabric \(currentFabricIndex + 1) of \(fabrics.count)"
     }
