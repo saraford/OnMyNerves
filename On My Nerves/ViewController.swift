@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 var fabrics : [Fabric] = [Fabric]()
 var fabricNamesArray : [String] = [String]()
@@ -44,9 +45,16 @@ class ViewController: UIViewController {
     // for handling missed/ignored notifications
     private var foregroundNotification: NSObjectProtocol!
     
+    // we be rocking them beats
+    var alarmAudio:AVAudioPlayer!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        alarmAudio = AVAudioPlayer()
+        alarmAudio = self.setupAudioPlayerWithFile("IronBacon", type:"m4a")
+        alarmAudio.numberOfLoops = -1 // play until stop() is called
+        alarmAudio.prepareToPlay();
         
         // recreate the arrays saving the data
         if NSUserDefaults.standardUserDefaults().objectForKey("fabricNames") != nil {
@@ -416,6 +424,9 @@ class ViewController: UIViewController {
             // in case there was any paused time
             elapsedTimePaused = 0
             
+            // start blasting the alarm
+            alarmAudio.play()
+            
             // continue to next Fabric or end
             currentFabricIndex++
             if (currentFabricIndex < fabrics.count) {
@@ -447,12 +458,17 @@ class ViewController: UIViewController {
         alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {
             action in
             
-                // refreshing the UI here so it doesn't appear behind the alert. Feels odd
-                self.resetFabricDetails()
-
-                self.startTimer()
+            // refreshing the UI here so it doesn't appear behind the alert. Feels odd
+            self.resetFabricDetails()
+            
+            // stop the alarm
+            if (self.alarmAudio.playing) {
+                self.alarmAudio.stop()
+                self.alarmAudio.currentTime = 0.0
             }
-        ))
+
+            self.startTimer()
+        }))
         
         self.presentViewController(alertController, animated: true, completion: nil)
     }
@@ -466,10 +482,16 @@ class ViewController: UIViewController {
         alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {
             action in
             
-                // println("yo we've stopped the timer")
+            // println("yo we've stopped the timer")
+            
+            // stop the alarm
+            if (self.alarmAudio.playing) {
+                self.alarmAudio.stop()
+                self.alarmAudio.currentTime = 0.0
+            }
 
-                // we're all done
-                self.resetUI()
+            // we're all done
+            self.resetUI()
             
         }))
         
@@ -492,5 +514,19 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    // cut and pasted from SO
+    func setupAudioPlayerWithFile(file:NSString, type:NSString) -> AVAudioPlayer  {
+        var path = NSBundle.mainBundle().pathForResource(file as String, ofType: type as String)
+        var url = NSURL.fileURLWithPath(path!)
+        
+        var error: NSError?
+        
+        var audioPlayer:AVAudioPlayer?
+        audioPlayer = AVAudioPlayer(contentsOfURL: url, error: &error)
+        
+        return audioPlayer!
+    }
+
+    
 }
 

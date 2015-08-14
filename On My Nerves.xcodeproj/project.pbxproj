@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		46D1BBD31B6F123300F92D78 /* Fabric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D1BBD21B6F123300F92D78 /* Fabric.swift */; };
+		46ED16D11B7E343D003B026A /* IronBacon.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46ED16D01B7E3398003B026A /* IronBacon.m4a */; };
 		46F0D58E1B6C6F7300229D7D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F0D58D1B6C6F7300229D7D /* AppDelegate.swift */; };
 		46F0D5901B6C6F7300229D7D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F0D58F1B6C6F7300229D7D /* ViewController.swift */; };
 		46F0D5931B6C6F7300229D7D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46F0D5911B6C6F7300229D7D /* Main.storyboard */; };
@@ -31,6 +32,7 @@
 
 /* Begin PBXFileReference section */
 		46D1BBD21B6F123300F92D78 /* Fabric.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fabric.swift; sourceTree = "<group>"; };
+		46ED16D01B7E3398003B026A /* IronBacon.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = IronBacon.m4a; sourceTree = "<group>"; };
 		46F0D5881B6C6F7300229D7D /* On My Nerves.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "On My Nerves.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		46F0D58C1B6C6F7300229D7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		46F0D58D1B6C6F7300229D7D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 				46F0D58F1B6C6F7300229D7D /* ViewController.swift */,
 				46F0D5911B6C6F7300229D7D /* Main.storyboard */,
 				46F0D5941B6C6F7300229D7D /* Images.xcassets */,
+				46ED16D01B7E3398003B026A /* IronBacon.m4a */,
 				46F0D5961B6C6F7300229D7D /* LaunchScreen.xib */,
 				46F0D58B1B6C6F7300229D7D /* Supporting Files */,
 				46F0D63D1B6D178500229D7D /* AddEditFabricsViewController.swift */,
@@ -204,6 +207,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46ED16D11B7E343D003B026A /* IronBacon.m4a in Resources */,
 				46F0D5931B6C6F7300229D7D /* Main.storyboard in Resources */,
 				46F0D5981B6C6F7300229D7D /* LaunchScreen.xib in Resources */,
 				46F0D5951B6C6F7300229D7D /* Images.xcassets in Resources */,
