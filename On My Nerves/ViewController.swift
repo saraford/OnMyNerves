@@ -32,6 +32,7 @@ class ViewController: UIViewController {
     var myStopTime:NSDate!
     var timeRemaining:Int!
     
+    
     //STARTHERE: REMOVE THIS
     // if true, user opened app without tapping notification so we need to skip the real notification
     var skipBecauseUserDidNotTapNotification:Bool = false;
@@ -235,6 +236,11 @@ class ViewController: UIViewController {
             var myImage = UIImage(named: "pauseButton")
             startStopTimerButton.setImage(myImage, forState: UIControlState.Normal)
             
+            // no editing while running
+            // cannot set the individual button to disabled directly
+            self.navigationController!.navigationBar.userInteractionEnabled = false
+            self.navigationItem.rightBarButtonItem?.tintColor = UIColor.darkGrayColor()
+            
             
             if (isPaused) {
                 
@@ -262,13 +268,16 @@ class ViewController: UIViewController {
             // there is no pause on a NSTimer, so we kill timer and recreate
             isPaused = true
             
-//            startStopTimerButton.setTitle("Resume", forState: UIControlState.Normal)
-  
             var myImage = UIImage(named: "playButton")
             startStopTimerButton.setImage(myImage, forState: UIControlState.Normal)
             
             // stop Timer and cancel the notifications
             stopTimer()
+            
+            // okay it's fine now to edit
+            self.navigationController!.navigationBar.userInteractionEnabled = true
+            self.navigationItem.rightBarButtonItem?.tintColor = UIColor(red: 0, green: 0, blue: 255, alpha: 255)
+ 
         }
 
     }
@@ -359,6 +368,10 @@ class ViewController: UIViewController {
 
         var myImage = UIImage(named: "playButton")
         startStopTimerButton.setImage(myImage, forState: UIControlState.Normal)
+        
+        // and can edit by default
+        self.navigationController!.navigationBar.userInteractionEnabled = true
+        self.navigationItem.rightBarButtonItem?.tintColor = UIColor(red: 0, green: 0, blue: 255, alpha: 255)
 
     }
     

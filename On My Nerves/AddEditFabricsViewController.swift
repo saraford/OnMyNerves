@@ -86,6 +86,47 @@ class AddEditFabricsViewController: UIViewController, UITextFieldDelegate, UIIma
     }
     
     
+    @IBAction func choiceFabric(sender: UIButton) {
+
+        var color:UIColor!
+        
+        // tan is at 10
+        if (sender.tag == 10) {
+            
+            color = UIColor(red: 245/255, green: 128/255, blue: 2/255, alpha: 255)
+            
+        }
+        
+        setImageFromSelection(color)
+        
+    }
+    
+    func setImageFromSelection(color: UIColor) {
+        
+        fabricImage.image = createImageFromColor(color)
+        
+    }
+    
+    func createImageFromColor(color: UIColor) -> UIImage {
+
+        var size = CGSize(width: 100, height: 100)
+        
+        let rect = CGRectMake(0, 0, 100, 100)
+        
+        UIGraphicsBeginImageContextWithOptions(size, false, 0)
+        
+        color.setFill()
+
+        UIRectFill(rect)
+
+        let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()
+        
+        UIGraphicsEndImageContext()
+        
+        return image
+    }
+    
+    
     @IBAction func choosePhoto(sender: AnyObject) {
         // creates a view controller that goes out of the app to the photo library or camera
         
