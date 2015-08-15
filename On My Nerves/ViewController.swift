@@ -26,7 +26,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var navBarTitle: UINavigationItem!
     @IBOutlet weak var prevButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
-    @IBOutlet weak var restartButton: UIButton!
+    @IBOutlet weak var cancelButton: UIButton!
     
     var startTime:NSDate!
     var myStopTime:NSDate!
@@ -142,10 +142,14 @@ class ViewController: UIViewController {
     }// view did load
     
     
-    @IBAction func resetFabrics(sender: UIButton) {
+    @IBAction func cancelFabrics(sender: UIButton) {
     
         // we're not running and need to pause
-        startStopTimerButton.setTitle("Start", forState: UIControlState.Normal)
+//        startStopTimerButton.setTitle("Start", forState: UIControlState.Normal)
+  
+        //STARTHERE
+        var myImage = UIImage(named: "playButton")
+        startStopTimerButton.setImage(myImage, forState: UIControlState.Normal)
         
         stopTimer()
         
@@ -227,7 +231,10 @@ class ViewController: UIViewController {
         // we're not running and need to start
         if !(fabricTimer.valid) {
             
-            startStopTimerButton.setTitle("Pause", forState: UIControlState.Normal)
+           // startStopTimerButton.setTitle("Pause", forState: UIControlState.Normal)
+            var myImage = UIImage(named: "pauseButton")
+            startStopTimerButton.setImage(myImage, forState: UIControlState.Normal)
+            
             
             if (isPaused) {
                 
@@ -255,7 +262,10 @@ class ViewController: UIViewController {
             // there is no pause on a NSTimer, so we kill timer and recreate
             isPaused = true
             
-            startStopTimerButton.setTitle("Resume", forState: UIControlState.Normal)
+//            startStopTimerButton.setTitle("Resume", forState: UIControlState.Normal)
+  
+            var myImage = UIImage(named: "playButton")
+            startStopTimerButton.setImage(myImage, forState: UIControlState.Normal)
             
             // stop Timer and cancel the notifications
             stopTimer()
@@ -345,7 +355,11 @@ class ViewController: UIViewController {
         
         resetFabricDetails()
         
-        startStopTimerButton.setTitle("Start", forState: UIControlState.Normal)
+      //  startStopTimerButton.setTitle("Start", forState: UIControlState.Normal)
+
+        var myImage = UIImage(named: "playButton")
+        startStopTimerButton.setImage(myImage, forState: UIControlState.Normal)
+
     }
     
     // the actual NSTimer loop - this is only used to update the 9:59 text and nothing else
@@ -393,7 +407,7 @@ class ViewController: UIViewController {
             startStopTimerButton.enabled = true
             prevButton.enabled = true
             nextButton.enabled = true
-            restartButton.enabled = true
+            cancelButton.enabled = true
             
         } else {
             
@@ -401,7 +415,7 @@ class ViewController: UIViewController {
             startStopTimerButton.enabled = false
             prevButton.enabled = false
             nextButton.enabled = false
-            restartButton.enabled = false
+            cancelButton.enabled = false
         }
         
     }
@@ -445,7 +459,6 @@ class ViewController: UIViewController {
 
         }
     }
-    
     
 
     func showAlertAndContinue(title: String, message: String) {
