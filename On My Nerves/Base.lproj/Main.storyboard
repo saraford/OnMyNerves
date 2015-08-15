@@ -457,7 +457,7 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7hr-64-UA1">
-                                <rect key="frame" x="16" y="200" width="118" height="34"/>
+                                <rect key="frame" x="25" y="283" width="118" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Change Image">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -493,7 +493,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AXl-Ce-FXn">
-                                <rect key="frame" x="16" y="242" width="101" height="34"/>
+                                <rect key="frame" x="25" y="330" width="101" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Use Camera">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -502,14 +502,22 @@
                                     <action selector="choosePhoto:" destination="grX-CE-GSr" eventType="touchUpInside" id="abZ-mL-eSu"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change image" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i94-Pb-1ci">
+                                <rect key="frame" x="25" y="217" width="153" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="W5b-7U-ZTT" firstAttribute="leading" secondItem="pCd-HE-hIX" secondAttribute="trailing" constant="8" id="4wJ-CU-cDR"/>
+                            <constraint firstItem="i94-Pb-1ci" firstAttribute="top" secondItem="VBW-QB-Hpj" secondAttribute="bottom" constant="18" id="5a6-vR-NE5"/>
                             <constraint firstAttribute="trailingMargin" secondItem="yhm-4T-CYH" secondAttribute="trailing" id="7YY-dg-Ne1"/>
+                            <constraint firstItem="i94-Pb-1ci" firstAttribute="leading" secondItem="efm-pR-SRc" secondAttribute="leadingMargin" constant="9" id="82R-7l-XVs"/>
                             <constraint firstItem="VBW-QB-Hpj" firstAttribute="top" secondItem="lDi-iS-WEt" secondAttribute="bottom" constant="79" id="BqW-60-FrX"/>
                             <constraint firstItem="sz6-Gb-u5l" firstAttribute="top" secondItem="lDi-iS-WEt" secondAttribute="bottom" id="S4W-Dx-1e0"/>
-                            <constraint firstItem="7hr-64-UA1" firstAttribute="leading" secondItem="efm-pR-SRc" secondAttribute="leadingMargin" id="TVe-V8-Vjz"/>
+                            <constraint firstItem="7hr-64-UA1" firstAttribute="leading" secondItem="efm-pR-SRc" secondAttribute="leadingMargin" constant="9" id="TVe-V8-Vjz"/>
                             <constraint firstAttribute="centerX" secondItem="7xP-m5-i1G" secondAttribute="centerX" id="Xyc-g5-8rB"/>
                             <constraint firstItem="sz6-Gb-u5l" firstAttribute="leading" secondItem="efm-pR-SRc" secondAttribute="leadingMargin" constant="-16" id="aiu-GL-UF7"/>
                             <constraint firstItem="hu7-QX-ZqB" firstAttribute="top" secondItem="7xP-m5-i1G" secondAttribute="bottom" constant="67" id="fDr-0Y-gAo"/>
@@ -517,12 +525,12 @@
                             <constraint firstItem="VBW-QB-Hpj" firstAttribute="top" secondItem="yhm-4T-CYH" secondAttribute="top" constant="-16" id="i6s-kA-CfP"/>
                             <constraint firstItem="pCd-HE-hIX" firstAttribute="top" secondItem="yhm-4T-CYH" secondAttribute="bottom" constant="8" id="o6D-FU-2MU"/>
                             <constraint firstItem="pCd-HE-hIX" firstAttribute="leading" secondItem="VBW-QB-Hpj" secondAttribute="trailing" constant="8" id="rN3-vu-cp4"/>
-                            <constraint firstItem="7hr-64-UA1" firstAttribute="top" secondItem="VBW-QB-Hpj" secondAttribute="bottom" constant="1" id="rUB-3p-heu"/>
-                            <constraint firstItem="AXl-Ce-FXn" firstAttribute="leading" secondItem="efm-pR-SRc" secondAttribute="leadingMargin" id="rng-h6-IL5"/>
+                            <constraint firstItem="7hr-64-UA1" firstAttribute="top" secondItem="VBW-QB-Hpj" secondAttribute="bottom" constant="84" id="rUB-3p-heu"/>
+                            <constraint firstItem="AXl-Ce-FXn" firstAttribute="leading" secondItem="efm-pR-SRc" secondAttribute="leadingMargin" constant="9" id="rng-h6-IL5"/>
                             <constraint firstItem="VBW-QB-Hpj" firstAttribute="leading" secondItem="efm-pR-SRc" secondAttribute="leadingMargin" constant="9" id="tDn-CL-bVQ"/>
                             <constraint firstItem="yhm-4T-CYH" firstAttribute="leading" secondItem="VBW-QB-Hpj" secondAttribute="trailing" constant="8" id="vAS-WP-3QQ"/>
                             <constraint firstItem="W5b-7U-ZTT" firstAttribute="top" secondItem="yhm-4T-CYH" secondAttribute="bottom" constant="12" id="vVo-KU-K4B"/>
-                            <constraint firstItem="AXl-Ce-FXn" firstAttribute="top" secondItem="7hr-64-UA1" secondAttribute="bottom" constant="8" id="wCv-1C-wvZ"/>
+                            <constraint firstItem="AXl-Ce-FXn" firstAttribute="top" secondItem="7hr-64-UA1" secondAttribute="bottom" constant="13" id="wCv-1C-wvZ"/>
                         </constraints>
                     </view>
                     <connections>
@@ -530,6 +538,7 @@
                         <outlet property="fabricImage" destination="VBW-QB-Hpj" id="LWo-K6-YLB"/>
                         <outlet property="fabricName" destination="yhm-4T-CYH" id="EJa-K3-0Ft"/>
                         <outlet property="fabricTime" destination="pCd-HE-hIX" id="Myb-L8-ezj"/>
+                        <outlet property="navBar" destination="P8V-0c-dcN" id="bIN-9E-sFx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D9e-3c-cZs" userLabel="First Responder" sceneMemberID="firstResponder"/>

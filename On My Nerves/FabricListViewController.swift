@@ -57,18 +57,19 @@ class FabricListViewController: UIViewController, UITableViewDelegate {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 
         // keep getting an error when trying to have two segues
+        // so going to do this less elegant solution approach
         if (segue.identifier == "fabricSegue") {
 
             var viewController = segue.destinationViewController as! AddEditFabricsViewController
             
             if (fromTableView) {
                
-                println("you clicked a cell!")
+//                println("you clicked a cell!")
                 viewController.passedValue = valueToPass
                 
             } else {
 
-                println("you clicked the + button!")
+//                println("you clicked the + button!")
                 viewController.passedValue = nil
                 
             }

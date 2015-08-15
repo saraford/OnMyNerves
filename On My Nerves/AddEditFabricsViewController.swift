@@ -15,6 +15,9 @@ class AddEditFabricsViewController: UIViewController, UITextFieldDelegate, UIIma
     @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var fabricTime: UITextField!
 
+    @IBOutlet weak var navBar: UINavigationItem!
+    
+    
     var passedValue: Int!
     
     @IBAction func saveUpdate(sender: UIButton) {
@@ -40,6 +43,7 @@ class AddEditFabricsViewController: UIViewController, UITextFieldDelegate, UIIma
             fabricNamesArray.append(fabricName.text)
             fabricTimesArray.append(fabricTime.text.toInt()!)
             fabricImagenamesArray.append(newFabric.fabricImageName)
+            
             
         } else {
             
@@ -128,7 +132,22 @@ class AddEditFabricsViewController: UIViewController, UITextFieldDelegate, UIIma
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        println("viewDidLoad: the valuePassed is \(passedValue)")
+//        println("viewDidLoad: the valuePassed is \(passedValue)")
+  
+        if (passedValue == nil) {
+            
+            // set UI as new fabric
+            self.navBar.title = "Add new fabric"
+            doneButton.setTitle("Add", forState: UIControlState.Normal)
+            
+        } else {
+            
+            // Just making an edit
+            self.navBar.title = "Edit fabric info"
+            doneButton.setTitle("Save", forState: UIControlState.Normal)
+            
+        }
+        
         
         // set the UI 
         // if there's content, then it came from a tap
