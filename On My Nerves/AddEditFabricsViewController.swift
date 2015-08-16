@@ -16,10 +16,17 @@ extension AddEditFabricsViewController: ColorPickedDelegate {
         self.desiredColor = data
         
         fabricImage.image = CreateColors.createImageFromColor(desiredColor)
-        
     }
 }
 
+extension AddEditFabricsViewController: SecondsPickedDelegate {
+    func updateTime(data: String) {
+        
+        self.desiredTime = data
+
+        self.fabricTime.text = desiredTime
+    }
+}
 
 class AddEditFabricsViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -32,6 +39,7 @@ class AddEditFabricsViewController: UIViewController, UITextFieldDelegate, UIIma
     
     // we only persist the color while this VC is still open. I'm not saving this to disk. Blah.
     var desiredColor:String!
+    var desiredTime:String!
     
     var passedValue: Int!
     
@@ -101,6 +109,23 @@ class AddEditFabricsViewController: UIViewController, UITextFieldDelegate, UIIma
     }
 
     
+    @IBAction func showTimePicker(sender: AnyObject) {
+        
+        var timePickerVC = self.storyboard?.instantiateViewControllerWithIdentifier("myTimePicker") as! SecondsPickerViewController
+        
+        // all this stuff needed to get the lightbox control effect
+        timePickerVC.providesPresentationContextTransitionStyle = true
+        timePickerVC.definesPresentationContext = true
+        timePickerVC.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
+        
+        // tell the picker what the previously-selected value is, if any.
+        timePickerVC.delegate = self
+        timePickerVC.prevSelectedTime = "6"
+        
+        self.presentViewController(timePickerVC, animated: false, completion: nil)
+
+        
+    }
     
     @IBAction func choosePhoto(sender: AnyObject) {
         // creates a view controller that goes out of the app to the photo library or camera

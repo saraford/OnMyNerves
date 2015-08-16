@@ -138,5 +138,16 @@
             </PersistentString>
          </PersistentStrings>
       </ContextState>
+      <ContextState
+         contextName = "On_My_Nerves.SecondsPickerViewController.viewDidLoad (On_My_Nerves.SecondsPickerViewController)() -&gt; ():SecondsPickerViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "minutesToPickFrom">
+            </PersistentString>
+            <PersistentString
+               value = "prevSelectedTime">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
    </ContextStates>
 </VariablesViewState>

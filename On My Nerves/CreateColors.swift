@@ -40,8 +40,21 @@ class CreateColors {
 
         }
 
-        return color
+        else if (desiredColor == "Black") {
+            
+            color = UIColor(red: 0, green: 0, blue: 0, alpha: 255)
+            
+        }
         
+        else if (desiredColor == "White") {
+            
+            color = UIColor(red: 1, green: 1, blue: 0, alpha: 255)
+            
+        }
+        
+
+        return color
+
     }
     
         

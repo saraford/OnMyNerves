@@ -10,6 +10,7 @@
 		46D1BBD31B6F123300F92D78 /* Fabric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D1BBD21B6F123300F92D78 /* Fabric.swift */; };
 		46E91E7E1B81038B00803C7B /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E91E7D1B81038B00803C7B /* ColorPickerViewController.swift */; };
 		46E91E801B811E6600803C7B /* CreateColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E91E7F1B811E6600803C7B /* CreateColors.swift */; };
+		46E91E821B812E7000803C7B /* SecondsPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E91E811B812E7000803C7B /* SecondsPickerViewController.swift */; };
 		46ED16D11B7E343D003B026A /* IronBacon.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46ED16D01B7E3398003B026A /* IronBacon.m4a */; };
 		46ED16D31B7E3A22003B026A /* HelpAboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46ED16D21B7E3A22003B026A /* HelpAboutViewController.swift */; };
 		46F0D58E1B6C6F7300229D7D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F0D58D1B6C6F7300229D7D /* AppDelegate.swift */; };
@@ -37,6 +38,7 @@
 		46D1BBD21B6F123300F92D78 /* Fabric.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fabric.swift; sourceTree = "<group>"; };
 		46E91E7D1B81038B00803C7B /* ColorPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPickerViewController.swift; sourceTree = "<group>"; };
 		46E91E7F1B811E6600803C7B /* CreateColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateColors.swift; sourceTree = "<group>"; };
+		46E91E811B812E7000803C7B /* SecondsPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondsPickerViewController.swift; sourceTree = "<group>"; };
 		46ED16D01B7E3398003B026A /* IronBacon.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = IronBacon.m4a; sourceTree = "<group>"; };
 		46ED16D21B7E3A22003B026A /* HelpAboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpAboutViewController.swift; sourceTree = "<group>"; };
 		46F0D5881B6C6F7300229D7D /* On My Nerves.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "On My Nerves.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -107,6 +109,7 @@
 				46ED16D21B7E3A22003B026A /* HelpAboutViewController.swift */,
 				46E91E7D1B81038B00803C7B /* ColorPickerViewController.swift */,
 				46E91E7F1B811E6600803C7B /* CreateColors.swift */,
+				46E91E811B812E7000803C7B /* SecondsPickerViewController.swift */,
 			);
 			path = "On My Nerves";
 			sourceTree = "<group>";
@@ -245,6 +248,7 @@
 				46E91E7E1B81038B00803C7B /* ColorPickerViewController.swift in Sources */,
 				46D1BBD31B6F123300F92D78 /* Fabric.swift in Sources */,
 				46F0D6401B6D5CFA00229D7D /* FabricListViewController.swift in Sources */,
+				46E91E821B812E7000803C7B /* SecondsPickerViewController.swift in Sources */,
 				46ED16D31B7E3A22003B026A /* HelpAboutViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

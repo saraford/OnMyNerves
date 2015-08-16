@@ -482,13 +482,13 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="5" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pCd-HE-hIX">
-                                <rect key="frame" x="133" y="153" width="32" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="59" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pCd-HE-hIX">
+                                <rect key="frame" x="133" y="153" width="42" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="seconds" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W5b-7U-ZTT">
-                                <rect key="frame" x="173" y="157" width="69" height="22"/>
+                                <rect key="frame" x="183" y="157" width="69" height="22"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -512,16 +512,27 @@
                                     <action selector="showColorPicker:" destination="grX-CE-GSr" eventType="touchUpInside" id="E2W-4X-IA4"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tdk-Zj-UUF">
+                                <rect key="frame" x="265" y="157" width="46" height="30"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="showTimePicker:" destination="grX-CE-GSr" eventType="touchUpInside" id="vwK-fW-tIg"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="W5b-7U-ZTT" firstAttribute="leading" secondItem="pCd-HE-hIX" secondAttribute="trailing" constant="8" id="4wJ-CU-cDR"/>
+                            <constraint firstItem="Tdk-Zj-UUF" firstAttribute="leading" secondItem="W5b-7U-ZTT" secondAttribute="trailing" constant="13" id="54G-8y-ri7"/>
                             <constraint firstAttribute="trailingMargin" secondItem="yhm-4T-CYH" secondAttribute="trailing" id="7YY-dg-Ne1"/>
                             <constraint firstItem="VBW-QB-Hpj" firstAttribute="top" secondItem="lDi-iS-WEt" secondAttribute="bottom" constant="79" id="BqW-60-FrX"/>
                             <constraint firstItem="sz6-Gb-u5l" firstAttribute="top" secondItem="lDi-iS-WEt" secondAttribute="bottom" constant="-24" id="S4W-Dx-1e0"/>
                             <constraint firstItem="7hr-64-UA1" firstAttribute="leading" secondItem="efm-pR-SRc" secondAttribute="leadingMargin" constant="9" id="TVe-V8-Vjz"/>
                             <constraint firstAttribute="centerX" secondItem="7xP-m5-i1G" secondAttribute="centerX" id="Xyc-g5-8rB"/>
                             <constraint firstItem="sz6-Gb-u5l" firstAttribute="leading" secondItem="efm-pR-SRc" secondAttribute="leadingMargin" constant="-16" id="aiu-GL-UF7"/>
+                            <constraint firstItem="Tdk-Zj-UUF" firstAttribute="top" secondItem="yhm-4T-CYH" secondAttribute="bottom" constant="12" id="ccx-Ud-f2l"/>
                             <constraint firstItem="hu7-QX-ZqB" firstAttribute="top" secondItem="7xP-m5-i1G" secondAttribute="bottom" constant="20" id="fDr-0Y-gAo"/>
                             <constraint firstAttribute="trailingMargin" secondItem="sz6-Gb-u5l" secondAttribute="trailing" constant="-16" id="fvR-LD-N47"/>
                             <constraint firstItem="VBW-QB-Hpj" firstAttribute="top" secondItem="yhm-4T-CYH" secondAttribute="top" constant="-16" id="i6s-kA-CfP"/>
@@ -651,6 +662,69 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dh9-ze-35E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3071" y="431"/>
+        </scene>
+        <!--Seconds Picker View Controller-->
+        <scene sceneID="yy0-pM-1G4">
+            <objects>
+                <viewController storyboardIdentifier="myTimePicker" id="AhM-E4-wSq" customClass="SecondsPickerViewController" customModule="On_My_Nerves" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="YDF-4x-IHT"/>
+                        <viewControllerLayoutGuide type="bottom" id="6TJ-L9-VRy"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="O7q-68-PRv">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view alpha="0.34999999403953552" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GaA-s8-fCW">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xX9-CC-stw">
+                                <rect key="frame" x="200" y="163" width="200" height="275"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dva-bi-WNM">
+                                        <rect key="frame" x="85" y="227" width="30" height="30"/>
+                                        <state key="normal" title="OK">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="CloseWindow:" destination="AhM-E4-wSq" eventType="touchUpInside" id="aHm-XP-DBA"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="275" id="AD2-fv-vBF"/>
+                                    <constraint firstAttribute="width" constant="200" id="a07-IQ-hmd"/>
+                                    <constraint firstAttribute="bottom" secondItem="dva-bi-WNM" secondAttribute="bottom" constant="18" id="cZa-7c-kCB"/>
+                                    <constraint firstAttribute="centerX" secondItem="dva-bi-WNM" secondAttribute="centerX" id="mhu-rd-6Pg"/>
+                                </constraints>
+                            </view>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gWC-KV-weC">
+                                <rect key="frame" x="0.0" y="219" width="600" height="162"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="AhM-E4-wSq" id="dw8-QW-Nne"/>
+                                    <outlet property="delegate" destination="AhM-E4-wSq" id="qDn-HI-ZRQ"/>
+                                </connections>
+                            </pickerView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="xX9-CC-stw" secondAttribute="centerX" id="FAc-1e-YdC"/>
+                            <constraint firstItem="dva-bi-WNM" firstAttribute="top" secondItem="gWC-KV-weC" secondAttribute="bottom" constant="9" id="PYw-7o-GYZ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="gWC-KV-weC" secondAttribute="trailing" constant="-16" id="QzA-zf-IvL"/>
+                            <constraint firstAttribute="centerY" secondItem="xX9-CC-stw" secondAttribute="centerY" id="SQJ-FM-r1m"/>
+                            <constraint firstAttribute="centerX" secondItem="gWC-KV-weC" secondAttribute="centerX" id="cYJ-IJ-Gek"/>
+                            <constraint firstItem="gWC-KV-weC" firstAttribute="leading" secondItem="O7q-68-PRv" secondAttribute="leadingMargin" constant="-16" id="spk-iX-54t"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="lightboxView" destination="xX9-CC-stw" id="RwB-y7-W95"/>
+                        <outlet property="timePicker" destination="gWC-KV-weC" id="SmD-cJ-WsH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wHl-e5-F04" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3071" y="1118"/>
         </scene>
     </scenes>
     <resources>

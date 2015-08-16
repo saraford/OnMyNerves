@@ -23,7 +23,7 @@ class ColorPickerViewController: UIViewController, UITableViewDelegate {
     @IBOutlet weak var colorPickerTable: UITableView!
 
     let colorsToPickFrom = [
-       "Blue", "Green", "Red", "Sandpaper"
+       "Blue", "Green", "Red", "Sandpaper", "Black", "White"
     ]
     
     override func viewDidLoad() {
@@ -39,7 +39,7 @@ class ColorPickerViewController: UIViewController, UITableViewDelegate {
             var index = NSIndexPath(forRow: row, inSection: 0)
             
             colorPickerTable.selectRowAtIndexPath(index, animated: true, scrollPosition: UITableViewScrollPosition.Middle)
-                        
+            
         }
         
         
