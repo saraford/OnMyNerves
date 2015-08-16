@@ -8,6 +8,19 @@
 
 import UIKit
 
+// Needed for the ColorPicker Lightbox view controller to send
+// the color picked back to this main view controller
+extension AddEditFabricsViewController: ColorPickedDelegate {
+    func updateData(data: String) {
+        
+        self.desiredColor = data
+        
+        fabricImage.image = CreateColors.createImageFromColor(desiredColor)
+        
+    }
+}
+
+
 class AddEditFabricsViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var fabricName: UITextField!
@@ -17,6 +30,8 @@ class AddEditFabricsViewController: UIViewController, UITextFieldDelegate, UIIma
 
     @IBOutlet weak var navBar: UINavigationItem!
     
+    // we only persist the color while this VC is still open. I'm not saving this to disk. Blah.
+    var desiredColor:String!
     
     var passedValue: Int!
     
@@ -84,47 +99,7 @@ class AddEditFabricsViewController: UIViewController, UITextFieldDelegate, UIIma
         self.dismissViewControllerAnimated(true, completion: nil)
     
     }
-    
-    
-    @IBAction func choiceFabric(sender: UIButton) {
 
-        var color:UIColor!
-        
-        // tan is at 10
-        if (sender.tag == 10) {
-            
-            color = UIColor(red: 245/255, green: 128/255, blue: 2/255, alpha: 255)
-            
-        }
-        
-        setImageFromSelection(color)
-        
-    }
-    
-    func setImageFromSelection(color: UIColor) {
-        
-        fabricImage.image = createImageFromColor(color)
-        
-    }
-    
-    func createImageFromColor(color: UIColor) -> UIImage {
-
-        var size = CGSize(width: 100, height: 100)
-        
-        let rect = CGRectMake(0, 0, 100, 100)
-        
-        UIGraphicsBeginImageContextWithOptions(size, false, 0)
-        
-        color.setFill()
-
-        UIRectFill(rect)
-
-        let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()
-        
-        UIGraphicsEndImageContext()
-        
-        return image
-    }
     
     
     @IBAction func choosePhoto(sender: AnyObject) {
@@ -169,6 +144,26 @@ class AddEditFabricsViewController: UIViewController, UITextFieldDelegate, UIIma
         println("viewWillAppear")
         
     }
+    
+    
+
+    @IBAction func showColorPicker(sender: AnyObject) {
+        
+        var colorPickerVC = self.storyboard?.instantiateViewControllerWithIdentifier("myColorPicker") as! ColorPickerViewController
+        
+        // all this stuff needed to get the lightbox control effect
+        colorPickerVC.providesPresentationContextTransitionStyle = true
+        colorPickerVC.definesPresentationContext = true
+        colorPickerVC.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
+        
+        // tell the picker what the previously-selected value is, if any.
+        colorPickerVC.delegate = self
+        colorPickerVC.prevSelectedColor = desiredColor
+        
+        self.presentViewController(colorPickerVC, animated: false, completion: nil)
+
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()

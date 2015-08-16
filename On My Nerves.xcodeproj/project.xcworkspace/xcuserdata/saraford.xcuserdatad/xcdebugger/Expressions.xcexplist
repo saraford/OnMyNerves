@@ -52,6 +52,14 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "On_My_Nerves.ColorPickerViewController.viewDidLoad (On_My_Nerves.ColorPickerViewController)() -&gt; ():ColorPickerViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "prevSelectedColor">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "static On_My_Nerves.ImageStore.saveImage (On_My_Nerves.ImageStore.Type)(ObjectiveC.UIImage, name : Swift.String) -&gt; ():ImageStore.swift">
          <PersistentStrings>
             <PersistentString
@@ -83,6 +91,14 @@
          <PersistentStrings>
             <PersistentString
                value = "timeElapsed">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "On_My_Nerves.ColorPickerViewController.CloseWindow (On_My_Nerves.ColorPickerViewController)(ObjectiveC.UIButton) -&gt; ():ColorPickerViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "colorSelected">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
