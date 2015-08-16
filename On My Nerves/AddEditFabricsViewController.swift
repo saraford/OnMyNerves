@@ -24,7 +24,7 @@ extension AddEditFabricsViewController: SecondsPickedDelegate {
         
         self.desiredTime = data
 
-        self.fabricTime.text = desiredTime
+        self.fabricTime.setTitle(desiredTime, forState: UIControlState.Normal)
     }
 }
 
@@ -33,8 +33,7 @@ class AddEditFabricsViewController: UIViewController, UITextFieldDelegate, UIIma
     @IBOutlet weak var fabricName: UITextField!
     @IBOutlet weak var fabricImage: UIImageView!
     @IBOutlet weak var doneButton: UIButton!
-    @IBOutlet weak var fabricTime: UITextField!
-
+    @IBOutlet weak var fabricTime: UIButton!
     @IBOutlet weak var navBar: UINavigationItem!
     
     // we only persist the color while this VC is still open. I'm not saving this to disk. Blah.
@@ -57,14 +56,14 @@ class AddEditFabricsViewController: UIViewController, UITextFieldDelegate, UIIma
             var newFabric = Fabric()
             
             newFabric.fabricName = fabricName.text
-            newFabric.fabricTime = fabricTime.text.toInt()!
+            newFabric.fabricTime = fabricTime.titleLabel!.text!.toInt()!
             newFabric.saveImage(fabricImage.image!)
             
             fabrics.append(newFabric)
             
             // add data to the arrays to save to disk
             fabricNamesArray.append(fabricName.text)
-            fabricTimesArray.append(fabricTime.text.toInt()!)
+            fabricTimesArray.append(fabricTime.titleLabel!.text!.toInt()!)
             fabricImagenamesArray.append(newFabric.fabricImageName)
             
             
@@ -72,12 +71,12 @@ class AddEditFabricsViewController: UIViewController, UITextFieldDelegate, UIIma
             
             // save the info the user entered into the fields
             fabrics[passedValue].fabricName = fabricName.text
-            fabrics[passedValue].fabricTime = fabricTime.text.toInt()!
+            fabrics[passedValue].fabricTime = fabricTime.titleLabel!.text!.toInt()!
             fabrics[passedValue].saveImage(fabricImage.image!)
 
             // update data to the arrays to save to disk
             fabricNamesArray[passedValue] = fabricName.text
-            fabricTimesArray[passedValue] = fabricTime.text.toInt()!
+            fabricTimesArray[passedValue] = fabricTime.titleLabel!.text!.toInt()!
             fabricImagenamesArray[passedValue] = fabrics[passedValue].fabricImageName
             
             passedValue = nil
@@ -120,7 +119,7 @@ class AddEditFabricsViewController: UIViewController, UITextFieldDelegate, UIIma
         
         // tell the picker what the previously-selected value is, if any.
         timePickerVC.delegate = self
-        timePickerVC.prevSelectedTime = "6"
+        timePickerVC.prevSelectedTime = fabricTime.titleLabel!.text!
         
         self.presentViewController(timePickerVC, animated: false, completion: nil)
 
@@ -157,7 +156,7 @@ class AddEditFabricsViewController: UIViewController, UITextFieldDelegate, UIIma
     
         // populate it with the current Fabric
         fabricName.text = "Drew"
-        fabricTime.text = "5"
+        fabricTime.setTitle("5", forState: .Normal)
         fabricImage.image = UIImage(named: "DrewBrees.png")
 
     }
@@ -216,7 +215,7 @@ class AddEditFabricsViewController: UIViewController, UITextFieldDelegate, UIIma
             
             // populate it with the current Fabric
             fabricName.text = fabrics[passedValue].fabricName
-            fabricTime.text = "\(fabrics[passedValue].fabricTime)"
+            fabricTime.setTitle("\(fabrics[passedValue].fabricTime)", forState: .Normal)
             fabricImage.image = fabrics[passedValue].retrieveImage()
 
         } else {
@@ -226,7 +225,7 @@ class AddEditFabricsViewController: UIViewController, UITextFieldDelegate, UIIma
         
         // needed for the keyboard
         self.fabricName.delegate = self
-        self.fabricTime.delegate = self
+//        self.fabricTime.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -248,21 +247,21 @@ class AddEditFabricsViewController: UIViewController, UITextFieldDelegate, UIIma
         self.view.endEditing(true)
     }
     
-    // only allow numbers
-    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-        
-        // the seconds tag == 2
-        if (textField.tag != 2) {
-            return true
-        }
-        
-        let invalidCharacters = NSCharacterSet(charactersInString: "0123456789").invertedSet
-        if let range = string.rangeOfCharacterFromSet(invalidCharacters, options: nil, range:Range<String.Index>(start: string.startIndex, end: string.endIndex)) {
-            return false
-        }
-        
-        return true
-    }
+//    // only allow numbers
+//    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+//        
+//        // the seconds tag == 2
+//        if (textField.tag != 2) {
+//            return true
+//        }
+//        
+//        let invalidCharacters = NSCharacterSet(charactersInString: "0123456789").invertedSet
+//        if let range = string.rangeOfCharacterFromSet(invalidCharacters, options: nil, range:Range<String.Index>(start: string.startIndex, end: string.endIndex)) {
+//            return false
+//        }
+//        
+//        return true
+//    }
     
     /*
     // MARK: - Navigation

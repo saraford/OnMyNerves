@@ -21,14 +21,15 @@ class SecondsPickerViewController: UIViewController, UIPickerViewDelegate {
     @IBOutlet weak var timePicker: UIPickerView!
     
     // must always be an even number to start in hot and end in cold - must *always* end in cold
-    let minutesToPickFrom = [
-        "2", "4", "6", "8", "10", "12", "14", "16", "18", "20", "22", "24", "26", "28", "30"
-    ]
-    
+    var secondsToPickFrom = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        // initialize the seconds
+        if (secondsToPickFrom.count == 0) {
+            createSecondsArray()
+        }
         
         lightboxView.layer.cornerRadius = 10.0
         lightboxView.layer.masksToBounds = true
@@ -36,9 +37,18 @@ class SecondsPickerViewController: UIViewController, UIPickerViewDelegate {
         // already select based on previous, if one exists
         if (prevSelectedTime != nil) {
 
-            var index = find(minutesToPickFrom, prevSelectedTime)!
+            var index = find(secondsToPickFrom, prevSelectedTime)!
             timePicker.selectRow(index, inComponent: 0, animated: true)
             
+        }
+        
+    }
+    
+    func createSecondsArray() {
+        
+        for (var i = 0; i<59; i++) {
+            
+            secondsToPickFrom.append("\(i+1)")
         }
         
     }
@@ -61,17 +71,17 @@ class SecondsPickerViewController: UIViewController, UIPickerViewDelegate {
     
     // returns the # of rows in each component
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return minutesToPickFrom.count
+        return secondsToPickFrom.count
     }
     
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
         
-        return minutesToPickFrom[row]
+        return secondsToPickFrom[row]
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
-        var timeSelected = minutesToPickFrom[row]
+        var timeSelected = secondsToPickFrom[row]
         self.delegate?.updateTime(timeSelected)
         
     }
