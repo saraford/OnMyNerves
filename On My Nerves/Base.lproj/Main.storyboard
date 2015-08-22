@@ -492,7 +492,7 @@
                                     <action selector="choosePhoto:" destination="grX-CE-GSr" eventType="touchUpInside" id="abZ-mL-eSu"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VA3-ZV-MKs">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VA3-ZV-MKs">
                                 <rect key="frame" x="25" y="320" width="105" height="30"/>
                                 <state key="normal" title="Choose a color">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -517,21 +517,34 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qkB-01-nIw">
+                                <rect key="frame" x="25" y="364" width="85" height="30"/>
+                                <state key="normal" title="Add a photo">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="showImageTypePicker:" destination="grX-CE-GSr" eventType="touchUpInside" id="pSi-pJ-wtU"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Tdk-Zj-UUF" firstAttribute="top" secondItem="yhm-4T-CYH" secondAttribute="bottom" constant="6" id="0kh-rY-F9F"/>
                             <constraint firstAttribute="trailingMargin" secondItem="yhm-4T-CYH" secondAttribute="trailing" id="7YY-dg-Ne1"/>
+                            <constraint firstItem="qkB-01-nIw" firstAttribute="top" secondItem="VA3-ZV-MKs" secondAttribute="bottom" constant="14" id="8iZ-L7-Ada"/>
                             <constraint firstItem="VBW-QB-Hpj" firstAttribute="top" secondItem="lDi-iS-WEt" secondAttribute="bottom" constant="79" id="BqW-60-FrX"/>
+                            <constraint firstItem="hu7-QX-ZqB" firstAttribute="top" secondItem="qkB-01-nIw" secondAttribute="bottom" constant="206" id="DM3-NG-9vv"/>
                             <constraint firstItem="W5b-7U-ZTT" firstAttribute="leading" secondItem="Tdk-Zj-UUF" secondAttribute="trailing" constant="8" id="Heg-1K-a3W"/>
                             <constraint firstItem="sz6-Gb-u5l" firstAttribute="top" secondItem="lDi-iS-WEt" secondAttribute="bottom" constant="-24" id="S4W-Dx-1e0"/>
                             <constraint firstItem="7hr-64-UA1" firstAttribute="leading" secondItem="efm-pR-SRc" secondAttribute="leadingMargin" constant="9" id="TVe-V8-Vjz"/>
                             <constraint firstAttribute="centerX" secondItem="7xP-m5-i1G" secondAttribute="centerX" id="Xyc-g5-8rB"/>
                             <constraint firstItem="sz6-Gb-u5l" firstAttribute="leading" secondItem="efm-pR-SRc" secondAttribute="leadingMargin" constant="-16" id="aiu-GL-UF7"/>
                             <constraint firstItem="Tdk-Zj-UUF" firstAttribute="leading" secondItem="VBW-QB-Hpj" secondAttribute="trailing" constant="8" id="auQ-DC-t1a"/>
+                            <constraint firstItem="qkB-01-nIw" firstAttribute="leading" secondItem="efm-pR-SRc" secondAttribute="leadingMargin" constant="9" id="cjM-0n-y63"/>
                             <constraint firstItem="hu7-QX-ZqB" firstAttribute="top" secondItem="7xP-m5-i1G" secondAttribute="bottom" constant="20" id="fDr-0Y-gAo"/>
                             <constraint firstAttribute="trailingMargin" secondItem="sz6-Gb-u5l" secondAttribute="trailing" constant="-16" id="fvR-LD-N47"/>
                             <constraint firstItem="VBW-QB-Hpj" firstAttribute="top" secondItem="yhm-4T-CYH" secondAttribute="top" constant="-16" id="i6s-kA-CfP"/>
+                            <constraint firstItem="qkB-01-nIw" firstAttribute="leading" secondItem="VA3-ZV-MKs" secondAttribute="leading" id="jOp-aD-TGM"/>
                             <constraint firstItem="7hr-64-UA1" firstAttribute="top" secondItem="VBW-QB-Hpj" secondAttribute="bottom" constant="21" id="rUB-3p-heu"/>
                             <constraint firstItem="AXl-Ce-FXn" firstAttribute="leading" secondItem="efm-pR-SRc" secondAttribute="leadingMargin" constant="9" id="rng-h6-IL5"/>
                             <constraint firstItem="VBW-QB-Hpj" firstAttribute="leading" secondItem="efm-pR-SRc" secondAttribute="leadingMargin" constant="9" id="tDn-CL-bVQ"/>
@@ -719,6 +732,112 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wHl-e5-F04" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3071" y="1118"/>
+        </scene>
+        <!--Pick Image Type View Controller-->
+        <scene sceneID="wfp-x1-Gqe">
+            <objects>
+                <viewController storyboardIdentifier="myImageTypePicker" id="lPr-hl-ok7" customClass="PickImageTypeViewController" customModule="On_My_Nerves" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ggv-kr-ujz"/>
+                        <viewControllerLayoutGuide type="bottom" id="I7y-Ta-yQ1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6eA-xZ-Cfw">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view alpha="0.34999999403953552" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0DB-pt-KVD">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UWs-k1-Hkd">
+                                <rect key="frame" x="200" y="163" width="200" height="275"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fBL-OV-hvJ">
+                                        <rect key="frame" x="0.0" y="172" width="200" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <state key="normal" title="Use photo">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="usePhoto:" destination="lPr-hl-ok7" eventType="touchUpInside" id="iry-yJ-ODC"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MLN-1V-uz8">
+                                        <rect key="frame" x="0.0" y="134" width="200" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <state key="normal" title="Take photo">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="takePhoto:" destination="lPr-hl-ok7" eventType="touchUpInside" id="8aQ-b6-MiT"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BNV-b4-0Up">
+                                        <rect key="frame" x="0.0" y="96" width="200" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <state key="normal" title="Use color">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="useColor:" destination="lPr-hl-ok7" eventType="touchUpInside" id="9lY-lr-Fdx"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4hE-in-Ltg">
+                                        <rect key="frame" x="0.0" y="58" width="200" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <state key="normal" title="Pick image">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="pickImage:" destination="lPr-hl-ok7" eventType="touchUpInside" id="GZQ-8L-iab"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pgy-Kp-bCO">
+                                        <rect key="frame" x="85" y="237" width="30" height="30"/>
+                                        <state key="normal" title="OK">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="CloseWindow:" destination="lPr-hl-ok7" eventType="touchUpInside" id="vMJ-ef-lee"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="MLN-1V-uz8" firstAttribute="leading" secondItem="UWs-k1-Hkd" secondAttribute="leading" id="0th-VY-TLh"/>
+                                    <constraint firstAttribute="trailing" secondItem="4hE-in-Ltg" secondAttribute="trailing" id="7B1-SM-al2"/>
+                                    <constraint firstAttribute="width" constant="200" id="DuY-nF-f9o"/>
+                                    <constraint firstItem="BNV-b4-0Up" firstAttribute="leading" secondItem="UWs-k1-Hkd" secondAttribute="leading" id="Fh0-GU-eUZ"/>
+                                    <constraint firstItem="fBL-OV-hvJ" firstAttribute="leading" secondItem="UWs-k1-Hkd" secondAttribute="leading" id="LPi-d3-KuY"/>
+                                    <constraint firstAttribute="trailing" secondItem="fBL-OV-hvJ" secondAttribute="trailing" id="M8G-dn-mm3"/>
+                                    <constraint firstItem="4hE-in-Ltg" firstAttribute="top" secondItem="UWs-k1-Hkd" secondAttribute="top" constant="58" id="Rus-sh-7Hu"/>
+                                    <constraint firstItem="4hE-in-Ltg" firstAttribute="leading" secondItem="UWs-k1-Hkd" secondAttribute="leading" id="hkd-r0-SfO"/>
+                                    <constraint firstItem="BNV-b4-0Up" firstAttribute="top" secondItem="4hE-in-Ltg" secondAttribute="bottom" constant="4" id="iVY-C8-Z9L"/>
+                                    <constraint firstItem="fBL-OV-hvJ" firstAttribute="top" secondItem="MLN-1V-uz8" secondAttribute="bottom" constant="4" id="nSN-H5-zR4"/>
+                                    <constraint firstAttribute="trailing" secondItem="BNV-b4-0Up" secondAttribute="trailing" id="rZG-ip-tcj"/>
+                                    <constraint firstAttribute="height" constant="275" id="vOk-Ie-Op7"/>
+                                    <constraint firstItem="MLN-1V-uz8" firstAttribute="top" secondItem="BNV-b4-0Up" secondAttribute="bottom" constant="4" id="vYL-J0-TNu"/>
+                                    <constraint firstAttribute="trailing" secondItem="MLN-1V-uz8" secondAttribute="trailing" id="w2v-yI-ZAQ"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="0DB-pt-KVD" firstAttribute="top" secondItem="6eA-xZ-Cfw" secondAttribute="topMargin" id="2AN-MZ-rbP"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="0DB-pt-KVD" secondAttribute="trailing" constant="-16" id="Kts-HN-gdP"/>
+                            <constraint firstAttribute="centerY" secondItem="UWs-k1-Hkd" secondAttribute="centerY" id="MTh-za-HNl"/>
+                            <constraint firstItem="I7y-Ta-yQ1" firstAttribute="top" secondItem="0DB-pt-KVD" secondAttribute="bottom" id="SIK-rR-4t5"/>
+                            <constraint firstAttribute="centerX" secondItem="UWs-k1-Hkd" secondAttribute="centerX" id="VEE-9f-0ag"/>
+                            <constraint firstItem="0DB-pt-KVD" firstAttribute="leading" secondItem="6eA-xZ-Cfw" secondAttribute="leadingMargin" constant="-16" id="qlD-OO-mr7"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="lightboxView" destination="UWs-k1-Hkd" id="ym8-sL-Twg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WV0-aL-DfP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3076" y="1897"/>
         </scene>
     </scenes>
     <resources>

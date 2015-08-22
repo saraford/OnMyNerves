@@ -319,7 +319,7 @@ class ViewController: UIViewController {
         elapsedTimePaused = 0
         timeElapsed = 0
         
-        navBarTitle.title = "Fabric \(currentFabricIndex + 1) of \(fabrics.count)"
+        navBarTitle.title = "On My Nerves"
     }
     
     // Oh boy oh boy! here we go!!!

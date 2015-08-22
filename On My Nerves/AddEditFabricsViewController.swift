@@ -169,6 +169,23 @@ class AddEditFabricsViewController: UIViewController, UITextFieldDelegate, UIIma
         
     }
     
+    @IBAction func showImageTypePicker(sender: AnyObject) {
+        
+        var imageTypePickerVC = self.storyboard?.instantiateViewControllerWithIdentifier("myImageTypePicker") as! PickImageTypeViewController
+        
+        // all this stuff needed to get the lightbox control effect
+        imageTypePickerVC.providesPresentationContextTransitionStyle = true
+        imageTypePickerVC.definesPresentationContext = true
+        imageTypePickerVC.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
+        
+//        // tell the picker what the previously-selected value is, if any.
+//        imageTypePickerVC.delegate = self
+//        imageTypePickerVC.prevSelectedColor = desiredColor
+        
+        self.presentViewController(imageTypePickerVC, animated: false, completion: nil)
+
+    
+    }
     
 
     @IBAction func showColorPicker(sender: AnyObject) {

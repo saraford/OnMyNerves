@@ -46,7 +46,7 @@ class SecondsPickerViewController: UIViewController, UIPickerViewDelegate {
     
     func createSecondsArray() {
         
-        for (var i = 0; i<59; i++) {
+        for (var i = 4; i<59; i++) {
             
             secondsToPickFrom.append("\(i+1)")
         }

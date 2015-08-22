@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4621D78F1B876C6C0089D8CF /* PickImageTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4621D78E1B876C6C0089D8CF /* PickImageTypeViewController.swift */; };
 		46D1BBD31B6F123300F92D78 /* Fabric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D1BBD21B6F123300F92D78 /* Fabric.swift */; };
 		46E91E7E1B81038B00803C7B /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E91E7D1B81038B00803C7B /* ColorPickerViewController.swift */; };
 		46E91E801B811E6600803C7B /* CreateColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E91E7F1B811E6600803C7B /* CreateColors.swift */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4621D78E1B876C6C0089D8CF /* PickImageTypeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickImageTypeViewController.swift; sourceTree = "<group>"; };
 		46D1BBD21B6F123300F92D78 /* Fabric.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fabric.swift; sourceTree = "<group>"; };
 		46E91E7D1B81038B00803C7B /* ColorPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPickerViewController.swift; sourceTree = "<group>"; };
 		46E91E7F1B811E6600803C7B /* CreateColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateColors.swift; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 				46E91E7D1B81038B00803C7B /* ColorPickerViewController.swift */,
 				46E91E7F1B811E6600803C7B /* CreateColors.swift */,
 				46E91E811B812E7000803C7B /* SecondsPickerViewController.swift */,
+				4621D78E1B876C6C0089D8CF /* PickImageTypeViewController.swift */,
 			);
 			path = "On My Nerves";
 			sourceTree = "<group>";
@@ -244,6 +247,7 @@
 				46F0D5901B6C6F7300229D7D /* ViewController.swift in Sources */,
 				46F0D58E1B6C6F7300229D7D /* AppDelegate.swift in Sources */,
 				46F0D63E1B6D178500229D7D /* AddEditFabricsViewController.swift in Sources */,
+				4621D78F1B876C6C0089D8CF /* PickImageTypeViewController.swift in Sources */,
 				46E91E801B811E6600803C7B /* CreateColors.swift in Sources */,
 				46E91E7E1B81038B00803C7B /* ColorPickerViewController.swift in Sources */,
 				46D1BBD31B6F123300F92D78 /* Fabric.swift in Sources */,

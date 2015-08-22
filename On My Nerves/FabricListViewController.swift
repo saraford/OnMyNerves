@@ -31,6 +31,8 @@ class FabricListViewController: UIViewController, UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.title = "Fabric list"
+        
     }
     
     
