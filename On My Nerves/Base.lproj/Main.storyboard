@@ -151,13 +151,6 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UoF-7y-9nV">
-                                <rect key="frame" x="0.0" y="64" width="600" height="20"/>
-                                <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="KrA-Tn-2bs"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -175,16 +168,13 @@
                             <constraint firstItem="MxV-Di-hoR" firstAttribute="centerX" secondItem="FGh-Ed-IBr" secondAttribute="centerX" constant="0.5" id="NyC-fd-e0h"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Cws-gE-jJK" secondAttribute="bottom" constant="23" id="QHb-Sk-c1k"/>
                             <constraint firstItem="gwb-fe-dlI" firstAttribute="centerX" secondItem="IY2-xA-5A0" secondAttribute="centerX" constant="-0.5" id="Ql8-ty-3E6"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="UoF-7y-9nV" secondAttribute="trailing" constant="-16" id="QuM-pH-Yxq"/>
                             <constraint firstItem="xUc-9n-qje" firstAttribute="top" secondItem="dbe-dX-8np" secondAttribute="bottom" constant="-4" id="VXO-S4-GfT"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="FGh-Ed-IBr" secondAttribute="bottom" constant="37" id="Wt7-zX-S8h"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="bT0-ol-e49" secondAttribute="bottom" constant="33" id="X2r-OU-WtL"/>
                             <constraint firstAttribute="centerY" secondItem="wsg-PN-Cl8" secondAttribute="centerY" id="XU3-od-WJP"/>
                             <constraint firstItem="Pc9-SB-m7c" firstAttribute="centerX" secondItem="bT0-ol-e49" secondAttribute="centerX" constant="0.5" id="jgI-ad-dTm"/>
                             <constraint firstItem="dbe-dX-8np" firstAttribute="centerX" secondItem="xUc-9n-qje" secondAttribute="centerX" id="o0m-uc-keo"/>
-                            <constraint firstItem="UoF-7y-9nV" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="qRo-nC-JW5"/>
                             <constraint firstItem="ujz-uj-7DT" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="28" id="tmI-a0-Y4L"/>
-                            <constraint firstItem="UoF-7y-9nV" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="uu5-58-WPR"/>
                             <constraint firstItem="STb-K9-JWT" firstAttribute="top" secondItem="Cws-gE-jJK" secondAttribute="bottom" constant="-14" id="vWL-uL-wSv"/>
                             <constraint firstItem="FGh-Ed-IBr" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="vc0-Hq-WjA"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="dbe-dX-8np" secondAttribute="bottom" constant="33" id="wuG-P6-A0G"/>
@@ -201,7 +191,7 @@
                     <connections>
                         <outlet property="cancelButton" destination="gwb-fe-dlI" id="lQN-vD-R9T"/>
                         <outlet property="circleCounter" destination="wsg-PN-Cl8" id="iQl-EI-Ukj"/>
-                        <outlet property="currentFabricColor" destination="UoF-7y-9nV" id="52B-bz-AoJ"/>
+                        <outlet property="currentFabricColor" destination="8bC-Xf-vdC" id="J42-bK-k5A"/>
                         <outlet property="currentFabricName" destination="ujz-uj-7DT" id="inx-G3-oRW"/>
                         <outlet property="displayTimeLabel" destination="gza-1l-BxS" id="7Aa-NU-MhE"/>
                         <outlet property="navBarTitle" destination="nIV-sP-dNc" id="DYp-Pc-wLD"/>
