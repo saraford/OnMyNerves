@@ -116,10 +116,10 @@ class FabricListViewController: UIViewController, UITableViewDelegate {
 
         let cell = fabricsTable.dequeueReusableCellWithIdentifier("fabricCell") as! UITableViewCell
         
-//        var imageFilename = fabrics[indexPath.row].fabricImageName
-//        var image = fabrics[indexPath.row].retrieveImage()
+
+        var image:UIImage = CreateColors.createImageFromColor(fabrics[indexPath.row].fabricColor)
         
-//        (cell.contentView.viewWithTag(1) as! UIImageView).image = image
+        (cell.contentView.viewWithTag(1) as! UIImageView).image = image
         (cell.contentView.viewWithTag(2) as! UILabel).text = fabrics[indexPath.row].fabricName
         (cell.contentView.viewWithTag(3) as! UILabel).text = "\(fabrics[indexPath.row].fabricTime)"
         

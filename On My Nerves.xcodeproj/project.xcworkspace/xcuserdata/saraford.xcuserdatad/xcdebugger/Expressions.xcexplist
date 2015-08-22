@@ -63,6 +63,9 @@
             <PersistentString
                value = "elapsedTimePaused">
             </PersistentString>
+            <PersistentString
+               value = "currentFabricColor">
+            </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
@@ -93,10 +96,10 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "On_My_Nerves.ColorPickerViewController.CloseWindow (On_My_Nerves.ColorPickerViewController)(ObjectiveC.UIButton) -&gt; ():ColorPickerViewController.swift">
+         contextName = "On_My_Nerves.ViewController.startTimer (On_My_Nerves.ViewController)() -&gt; ():ViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "colorSelected">
+               value = "timeRemaining">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -109,10 +112,10 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "On_My_Nerves.ViewController.startTimer (On_My_Nerves.ViewController)() -&gt; ():ViewController.swift">
+         contextName = "On_My_Nerves.ColorPickerViewController.CloseWindow (On_My_Nerves.ColorPickerViewController)(ObjectiveC.UIButton) -&gt; ():ColorPickerViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "timeRemaining">
+               value = "colorSelected">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

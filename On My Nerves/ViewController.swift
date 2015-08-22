@@ -21,12 +21,11 @@ class ViewController: UIViewController {
     @IBOutlet weak var startStopTimerButton: UIButton!
     @IBOutlet weak var currentFabricColor: UIView!
     @IBOutlet weak var currentFabricName: UILabel!
-    @IBOutlet weak var progressBar: UIProgressView!
-    @IBOutlet weak var timeElapsedLabel: UILabel!
     @IBOutlet weak var navBarTitle: UINavigationItem!
     @IBOutlet weak var prevButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var circleCounter: CircleCounterView!
     
     var startTime:NSDate!
     var myStopTime:NSDate!
@@ -106,9 +105,6 @@ class ViewController: UIViewController {
                     // if Now > myStopTime, either user tapped or opened app after missing notification. either way we need to stop and clear the notifications
                     if (NSDate().compare(self.myStopTime) == NSComparisonResult.OrderedDescending) {
                         
-                        // need to fake the UI that the updateFabricTimer() actually stopped without going over
-                        // otherwise, we'll have a negative timeRemaining and way too much timeElapsed
-                        self.displayTime(self.timeElapsedLabel, time: fabrics[self.currentFabricIndex].fabricTime)
                         self.displayTimeLabel.text = "0:00"
                         
                         // pretend the user hit the notification
@@ -130,8 +126,7 @@ class ViewController: UIViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "doSomethingForNow", name: "FabricSwitch", object: nil)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "resetToDefaults", name: "Terminating", object: nil)
-
-        // end notification closure
+        
         
     }// view did load
     
@@ -246,7 +241,6 @@ class ViewController: UIViewController {
             
                 // show countdown
                 displayTimeLabel.text = "\(fabrics[fabricCounter].fabricTime)"
-                timeElapsedLabel.text = "0:00"
                 
                 // show the UI
                 resetFabricDetails()
@@ -299,15 +293,14 @@ class ViewController: UIViewController {
         var currentFabric = fabrics[currentFabricIndex]
   
         timeRemaining = currentFabric.fabricTime
-        displayTime(displayTimeLabel, time: timeRemaining)
+        displayTimeLabel.text = "\(timeRemaining)"
         
         currentFabricColor.backgroundColor = CreateColors.createColor(currentFabric.fabricColor)
         
         currentFabricName.text = currentFabric.fabricName
         
-        progressBar.progress = 0.0
-        
-        timeElapsedLabel.text = "0:00"
+        circleCounter.counter = 0
+        circleCounter.NumOfSeconds = 0
         
         elapsedTimePaused = 0
         timeElapsed = 0
@@ -365,7 +358,7 @@ class ViewController: UIViewController {
 
     }
     
-    // the actual NSTimer loop - this is only used to update the 9:59 text and nothing else
+    // the actual NSTimer loop - this is only used to update the 0:59 text and nothing else
     var timeElapsed:Int = 0
     func updateFabricTime() {
         
@@ -376,13 +369,11 @@ class ViewController: UIViewController {
         // current display time
         timeRemaining = timeRemaining - 1
 
-        // update progress bar
-        progressBar.progress =  Float(timeElapsed) / Float(fabrics[currentFabricIndex].fabricTime)
+        // update circle timer
+        circleCounter.counter = timeElapsed
+        circleCounter.NumOfSeconds = fabrics[currentFabricIndex].fabricTime
         
-        displayTime(displayTimeLabel, time: timeRemaining)
-        
-        var timeElapsedToDisplay = timeElapsed
-        displayTime(timeElapsedLabel, time: timeElapsedToDisplay)
+        displayTimeLabel.text = "\(timeRemaining)"
         
     }
     

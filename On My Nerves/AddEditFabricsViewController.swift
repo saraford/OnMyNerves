@@ -72,7 +72,7 @@ class AddEditFabricsViewController: UIViewController, UITextFieldDelegate, UIIma
             // save the info the user entered into the fields
             fabrics[passedValue].fabricName = fabricName.text
             fabrics[passedValue].fabricTime = fabricTime.titleLabel!.text!.toInt()!
-            fabrics[passedValue].fabricColor = desiredColor
+            fabrics[passedValue].fabricColor = CreateColors.getColorName(fabricColor.backgroundColor!)
 
             // update data to the arrays to save to disk
             fabricNamesArray[passedValue] = fabricName.text

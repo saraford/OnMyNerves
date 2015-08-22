@@ -78,5 +78,45 @@ class CreateColors {
         
     }
     
+    static func getColorName(color: UIColor) -> String {
+        
+        let myCIColor = CIColor(color: color)!
+        
+        let red = myCIColor.red()
+        let green = myCIColor.green()
+        let blue = myCIColor.blue()
+        
+        if (red == 1 && green == 0 && blue == 0) {
+            
+            return "Red"
+        
+        } else if (red == 245/255 && green == 128/255 && blue == 2/255) {
+    
+            return "Sandpaper"
+        
+        } else if (red == 0 && green == 1 && blue == 0) {
+            
+            return "Green"
+            
+        } else if (red == 0 && green == 0 && blue == 1) {
+            
+            return "Blue"
+        }
+            
+        else if (red == 0 && green == 0 && blue == 0) {
+            
+            return "Black"
+        }
+            
+        else if (red == 1 && green == 1 && blue == 0) {
+            
+            return "White"
+        }
+        
+        // meh
+        return "Red"
+        
+    }
+    
     
 }
