@@ -12,14 +12,14 @@ import AVFoundation
 var fabrics : [Fabric] = [Fabric]()
 var fabricNamesArray : [String] = [String]()
 var fabricTimesArray : [Int] = [Int]()
-var fabricImagenamesArray : [String] = [String]()
+var fabricColorsArray : [String] = [String]()
 
 
 class ViewController: UIViewController {
 
     @IBOutlet weak var displayTimeLabel: UILabel!
     @IBOutlet weak var startStopTimerButton: UIButton!
-    @IBOutlet weak var currentFabricImage: UIImageView!
+    @IBOutlet weak var currentFabricColor: UIView!
     @IBOutlet weak var currentFabricName: UILabel!
     @IBOutlet weak var progressBar: UIProgressView!
     @IBOutlet weak var timeElapsedLabel: UILabel!
@@ -31,11 +31,6 @@ class ViewController: UIViewController {
     var startTime:NSDate!
     var myStopTime:NSDate!
     var timeRemaining:Int!
-    
-    
-    //STARTHERE: REMOVE THIS
-    // if true, user opened app without tapping notification so we need to skip the real notification
-    var skipBecauseUserDidNotTapNotification:Bool = false;
     
     // for updating the countdown timer in the UI
     var fabricTimer = NSTimer()
@@ -68,7 +63,7 @@ class ViewController: UIViewController {
             if (fabricNamesArray.count > 0) {
                 
                 fabricTimesArray = NSUserDefaults.standardUserDefaults().objectForKey("fabricTimes") as! [Int]
-                fabricImagenamesArray = NSUserDefaults.standardUserDefaults().objectForKey("fabricImagenames") as! [String]
+                fabricColorsArray = NSUserDefaults.standardUserDefaults().objectForKey("fabricColors") as! [String]
                 
                 // create the Fabric class and fill it in
                 for var index = 0; index < fabricNamesArray.count; index++ {
@@ -79,7 +74,7 @@ class ViewController: UIViewController {
                     
                     newFabric.fabricTime = fabricTimesArray[index]
                     
-                    newFabric.fabricImageName = fabricImagenamesArray[index]
+                    newFabric.fabricColor = fabricColorsArray[index]
                     
                     fabrics.append(newFabric)
                 }
@@ -119,8 +114,6 @@ class ViewController: UIViewController {
                         // pretend the user hit the notification
                         self.doSomethingForNow()
                         
-                        // user did not tap - I think i can remove this
-                        self.skipBecauseUserDidNotTapNotification = true
                     }
                     
                 }
@@ -287,7 +280,7 @@ class ViewController: UIViewController {
         for fabric in fabrics {
             println(fabric.fabricName)
             println(fabric.fabricTime)
-            println(fabric.fabricImageName)
+            println(fabric.fabricColor)
             println()
         }
         
@@ -308,7 +301,7 @@ class ViewController: UIViewController {
         timeRemaining = currentFabric.fabricTime
         displayTime(displayTimeLabel, time: timeRemaining)
         
-        currentFabricImage.image = currentFabric.retrieveImage()
+        currentFabricColor.backgroundColor = CreateColors.createColor(currentFabric.fabricColor)
         
         currentFabricName.text = currentFabric.fabricName
         
@@ -338,9 +331,6 @@ class ViewController: UIViewController {
         // so each second it will go from 9:59, 9:58, blah blah blah
         // the notification below is what stops this timer
         fabricTimer = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: Selector("updateFabricTime"), userInfo: nil, repeats: true)
-        
-        // reset the skip
-        skipBecauseUserDidNotTapNotification = false
         
         // schedule local notification
         var notification = UILocalNotification()
@@ -437,9 +427,6 @@ class ViewController: UIViewController {
     // this is fired regardless user taps notification or it comes while app is running
     func doSomethingForNow() {
         
-        // skip only if we're being called from viewDidLoad to skip the call from the notification
-        if !(skipBecauseUserDidNotTapNotification) {
-
             //  NSLog("I'm stopping the timer")
             var trueStopTime = NSDate()
             
@@ -469,8 +456,6 @@ class ViewController: UIViewController {
             
             // clear the notification
             UIApplication.sharedApplication().cancelAllLocalNotifications()
-
-        }
     }
     
 

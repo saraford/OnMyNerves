@@ -15,7 +15,7 @@ extension AddEditFabricsViewController: ColorPickedDelegate {
         
         self.desiredColor = data
         
-        fabricImage.image = CreateColors.createImageFromColor(desiredColor)
+        fabricColor.backgroundColor = CreateColors.createColor(desiredColor)
     }
 }
 
@@ -31,13 +31,13 @@ extension AddEditFabricsViewController: SecondsPickedDelegate {
 class AddEditFabricsViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var fabricName: UITextField!
-    @IBOutlet weak var fabricImage: UIImageView!
+    @IBOutlet weak var fabricColor: UIView!
     @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var fabricTime: UIButton!
     @IBOutlet weak var navBar: UINavigationItem!
     
     // we only persist the color while this VC is still open. I'm not saving this to disk. Blah.
-    var desiredColor:String!
+    var desiredColor:String = "Red"
     var desiredTime:String!
     
     var passedValue: Int!
@@ -57,14 +57,14 @@ class AddEditFabricsViewController: UIViewController, UITextFieldDelegate, UIIma
             
             newFabric.fabricName = fabricName.text
             newFabric.fabricTime = fabricTime.titleLabel!.text!.toInt()!
-            newFabric.saveImage(fabricImage.image!)
+            newFabric.fabricColor = desiredColor
             
             fabrics.append(newFabric)
             
             // add data to the arrays to save to disk
             fabricNamesArray.append(fabricName.text)
             fabricTimesArray.append(fabricTime.titleLabel!.text!.toInt()!)
-            fabricImagenamesArray.append(newFabric.fabricImageName)
+            fabricColorsArray.append(newFabric.fabricColor)
             
             
         } else {
@@ -72,12 +72,12 @@ class AddEditFabricsViewController: UIViewController, UITextFieldDelegate, UIIma
             // save the info the user entered into the fields
             fabrics[passedValue].fabricName = fabricName.text
             fabrics[passedValue].fabricTime = fabricTime.titleLabel!.text!.toInt()!
-            fabrics[passedValue].saveImage(fabricImage.image!)
+            fabrics[passedValue].fabricColor = desiredColor
 
             // update data to the arrays to save to disk
             fabricNamesArray[passedValue] = fabricName.text
             fabricTimesArray[passedValue] = fabricTime.titleLabel!.text!.toInt()!
-            fabricImagenamesArray[passedValue] = fabrics[passedValue].fabricImageName
+            fabricColorsArray[passedValue] = fabrics[passedValue].fabricColor
             
             passedValue = nil
         }
@@ -85,7 +85,7 @@ class AddEditFabricsViewController: UIViewController, UITextFieldDelegate, UIIma
         // and now update
         NSUserDefaults.standardUserDefaults().setObject(fabricNamesArray, forKey: "fabricNames")
         NSUserDefaults.standardUserDefaults().setObject(fabricTimesArray, forKey: "fabricTimes")
-        NSUserDefaults.standardUserDefaults().setObject(fabricImagenamesArray, forKey: "fabricImagenames")
+        NSUserDefaults.standardUserDefaults().setObject(fabricColorsArray, forKey: "fabricColors")
         
         self.dismissViewControllerAnimated(true, completion: nil)
     }
@@ -143,21 +143,12 @@ class AddEditFabricsViewController: UIViewController, UITextFieldDelegate, UIIma
         self.presentViewController(image, animated: true, completion: nil)
     }
     
-    // once an image has been chosen, this is called
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
-
-        fabricImage.image = image;
-        println(image)
-        self.dismissViewControllerAnimated(true, completion: nil)
-        
-    }
-
     func resetUI() {
     
         // populate it with the current Fabric
         fabricName.text = "Drew"
         fabricTime.setTitle("5", forState: .Normal)
-        fabricImage.image = UIImage(named: "DrewBrees.png")
+        fabricColor.backgroundColor = CreateColors.createColor("Red")
 
     }
     
@@ -167,24 +158,6 @@ class AddEditFabricsViewController: UIViewController, UITextFieldDelegate, UIIma
         // am I being called?
         println("viewWillAppear")
         
-    }
-    
-    @IBAction func showImageTypePicker(sender: AnyObject) {
-        
-        var imageTypePickerVC = self.storyboard?.instantiateViewControllerWithIdentifier("myImageTypePicker") as! PickImageTypeViewController
-        
-        // all this stuff needed to get the lightbox control effect
-        imageTypePickerVC.providesPresentationContextTransitionStyle = true
-        imageTypePickerVC.definesPresentationContext = true
-        imageTypePickerVC.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
-        
-//        // tell the picker what the previously-selected value is, if any.
-//        imageTypePickerVC.delegate = self
-//        imageTypePickerVC.prevSelectedColor = desiredColor
-        
-        self.presentViewController(imageTypePickerVC, animated: false, completion: nil)
-
-    
     }
     
 
@@ -233,7 +206,7 @@ class AddEditFabricsViewController: UIViewController, UITextFieldDelegate, UIIma
             // populate it with the current Fabric
             fabricName.text = fabrics[passedValue].fabricName
             fabricTime.setTitle("\(fabrics[passedValue].fabricTime)", forState: .Normal)
-            fabricImage.image = fabrics[passedValue].retrieveImage()
+            fabricColor.backgroundColor = CreateColors.createColor(fabrics[passedValue].fabricColor)
 
         } else {
             

@@ -6,7 +6,13 @@
          contextName = "On_My_Nerves.AddEditFabricsViewController.saveUpdate (On_My_Nerves.AddEditFabricsViewController)(ObjectiveC.UIButton) -&gt; ():AddEditFabricsViewController.swift">
          <PersistentStrings>
             <PersistentString
+               value = "fabricColorsArray">
+            </PersistentString>
+            <PersistentString
                value = "fabricNamesArray">
+            </PersistentString>
+            <PersistentString
+               value = "desiredColor">
             </PersistentString>
             <PersistentString
                value = "passedValue">
@@ -25,18 +31,18 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "On_My_Nerves.AddEditFabricsViewController.viewDidLoad (On_My_Nerves.AddEditFabricsViewController)() -&gt; ():AddEditFabricsViewController.swift">
+         contextName = "On_My_Nerves.ColorPickerViewController.viewDidLoad (On_My_Nerves.ColorPickerViewController)() -&gt; ():ColorPickerViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "passedValue">
+               value = "prevSelectedColor">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "On_My_Nerves.ViewController.resetFabricDetails (On_My_Nerves.ViewController)() -&gt; ():ViewController.swift">
+         contextName = "On_My_Nerves.AddEditFabricsViewController.viewDidLoad (On_My_Nerves.AddEditFabricsViewController)() -&gt; ():AddEditFabricsViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "elapsedTimePaused">
+               value = "passedValue">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -52,10 +58,10 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "On_My_Nerves.ColorPickerViewController.viewDidLoad (On_My_Nerves.ColorPickerViewController)() -&gt; ():ColorPickerViewController.swift">
+         contextName = "On_My_Nerves.ViewController.resetFabricDetails (On_My_Nerves.ViewController)() -&gt; ():ViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "prevSelectedColor">
+               value = "elapsedTimePaused">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -87,10 +93,10 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "On_My_Nerves.ViewController.startTimer (On_My_Nerves.ViewController)() -&gt; ():ViewController.swift">
+         contextName = "On_My_Nerves.ColorPickerViewController.CloseWindow (On_My_Nerves.ColorPickerViewController)(ObjectiveC.UIButton) -&gt; ():ColorPickerViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "timeRemaining">
+               value = "colorSelected">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -103,10 +109,10 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "On_My_Nerves.ColorPickerViewController.CloseWindow (On_My_Nerves.ColorPickerViewController)(ObjectiveC.UIButton) -&gt; ():ColorPickerViewController.swift">
+         contextName = "On_My_Nerves.ViewController.startTimer (On_My_Nerves.ViewController)() -&gt; ():ViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "colorSelected">
+               value = "timeRemaining">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -136,10 +142,13 @@
          contextName = "On_My_Nerves.ViewController.viewDidLoad (On_My_Nerves.ViewController)() -&gt; ():ViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "fabricNamesArray">
+               value = "fabrics">
             </PersistentString>
             <PersistentString
-               value = "fabrics">
+               value = "fabricColorsArray">
+            </PersistentString>
+            <PersistentString
+               value = "fabricNamesArray">
             </PersistentString>
             <PersistentString
                value = "NSUserDefaults.standardUserDefaults().objectForKey(&quot;fabricNames&quot;)">

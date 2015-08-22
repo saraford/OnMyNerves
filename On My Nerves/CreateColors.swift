@@ -18,7 +18,7 @@ class CreateColors {
         return createImage(color)
     }
     
-    static private func createColor(desiredColor:String) -> UIColor {
+    static func createColor(desiredColor:String) -> UIColor {
         
         var color:UIColor!
         

@@ -98,14 +98,14 @@ class FabricListViewController: UIViewController, UITableViewDelegate {
         fabricTimesArray.removeAtIndex(fromIndexPath.row)
         fabricTimesArray.insert(timeToMove, atIndex: toIndexPath.row)
 
-        var imageToMove = fabricImagenamesArray[fromIndexPath.row]
-        fabricImagenamesArray.removeAtIndex(fromIndexPath.row)
-        fabricImagenamesArray.insert(imageToMove, atIndex: toIndexPath.row)
+        var imageToMove = fabricColorsArray[fromIndexPath.row]
+        fabricColorsArray.removeAtIndex(fromIndexPath.row)
+        fabricColorsArray.insert(imageToMove, atIndex: toIndexPath.row)
         
         // resave everything
         NSUserDefaults.standardUserDefaults().setObject(fabricNamesArray, forKey: "fabricNames")
         NSUserDefaults.standardUserDefaults().setObject(fabricTimesArray, forKey: "fabricTimes")
-        NSUserDefaults.standardUserDefaults().setObject(fabricImagenamesArray, forKey: "fabricImagenames")
+        NSUserDefaults.standardUserDefaults().setObject(fabricColorsArray, forKey: "fabricColors")
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -116,10 +116,10 @@ class FabricListViewController: UIViewController, UITableViewDelegate {
 
         let cell = fabricsTable.dequeueReusableCellWithIdentifier("fabricCell") as! UITableViewCell
         
-        var imageFilename = fabrics[indexPath.row].fabricImageName
-        var image = fabrics[indexPath.row].retrieveImage()
+//        var imageFilename = fabrics[indexPath.row].fabricImageName
+//        var image = fabrics[indexPath.row].retrieveImage()
         
-        (cell.contentView.viewWithTag(1) as! UIImageView).image = image
+//        (cell.contentView.viewWithTag(1) as! UIImageView).image = image
         (cell.contentView.viewWithTag(2) as! UILabel).text = fabrics[indexPath.row].fabricName
         (cell.contentView.viewWithTag(3) as! UILabel).text = "\(fabrics[indexPath.row].fabricTime)"
         
@@ -148,9 +148,6 @@ class FabricListViewController: UIViewController, UITableViewDelegate {
         if (editingStyle == UITableViewCellEditingStyle.Delete) {
 
             var index = indexPath.row
-
-            // delete the image
-            fabrics[index].deleteImage()
             
             // delete the object
             fabrics.removeAtIndex(index)
@@ -158,12 +155,12 @@ class FabricListViewController: UIViewController, UITableViewDelegate {
             // delete stuff on the array to be saved to disk
             fabricNamesArray.removeAtIndex(index)
             fabricTimesArray.removeAtIndex(index)
-            fabricImagenamesArray.removeAtIndex(index)
+            fabricColorsArray.removeAtIndex(index)
 
             // resave everything
             NSUserDefaults.standardUserDefaults().setObject(fabricNamesArray, forKey: "fabricNames")
             NSUserDefaults.standardUserDefaults().setObject(fabricTimesArray, forKey: "fabricTimes")
-            NSUserDefaults.standardUserDefaults().setObject(fabricImagenamesArray, forKey: "fabricImagenames")
+            NSUserDefaults.standardUserDefaults().setObject(fabricColorsArray, forKey: "fabricColors")
             
             fabricsTable.reloadData()
         }
