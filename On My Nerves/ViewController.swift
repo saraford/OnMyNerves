@@ -364,6 +364,10 @@ class ViewController: UIViewController {
         circleCounter.counter = timeElapsed
         circleCounter.NumOfSeconds = fabrics[currentFabricIndex].fabricTime
         
+//        println("timeElapsed: \(timeElapsed)")
+//        println("NumOfSeconds: \(fabrics[currentFabricIndex].fabricTime)")
+//        println()
+        
         displayTimeLabel.text = "\(timeRemaining)"
         
     }

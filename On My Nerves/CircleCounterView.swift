@@ -12,17 +12,19 @@ import UIKit
 
 let π:CGFloat = CGFloat(M_PI)
 
-@IBDesignable class CircleCounterView: UIView {
+//@IBDesignable class CircleCounterView: UIView {
+  class CircleCounterView: UIView {
 
     // some random default
    @IBInspectable var NumOfSeconds:Int = 5
     
     @IBInspectable var counter: Int = 1 {
         didSet {
-            if counter <=  NumOfSeconds {
+            
+//            println("yo setNeedsDisplay()")
                 //the view needs to be refreshed
                 setNeedsDisplay()
-            }
+            
         }
     }
     

@@ -15,7 +15,7 @@ class AddEditFabricsViewController: UIViewController, UITextFieldDelegate,  UINa
     @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var fabricTime: UITextField!
     @IBOutlet weak var navBar: UINavigationItem!
-    
+    @IBOutlet weak var errorMessage: UILabel!
     
     var passedValue: Int!
     
@@ -63,14 +63,14 @@ class AddEditFabricsViewController: UIViewController, UITextFieldDelegate,  UINa
     }
     
     @IBAction func textChange(sender: AnyObject) {
-        if (fabricName.text == "") {
-            
-            doneButton.enabled = false
-            
-        } else {
-            
-            doneButton.enabled = true
-        }
+//        if (fabricName.text == "") {
+//            
+//            doneButton.enabled = false
+//            
+//        } else {
+//            
+//            doneButton.enabled = true
+//        }
     }
     
     @IBAction func cancelUpdate(sender: AnyObject) {
@@ -142,6 +142,8 @@ class AddEditFabricsViewController: UIViewController, UITextFieldDelegate,  UINa
     // requires UITextFieldDelegate
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         
+        checkErrorMessage()
+        
         textField.resignFirstResponder()
         return true;
     }
@@ -149,23 +151,61 @@ class AddEditFabricsViewController: UIViewController, UITextFieldDelegate,  UINa
     // if the user taps outside the keyboard to add the item
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         self.view.endEditing(true)
+        
+        checkErrorMessage()
     }
     
     // only allow numbers
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         
+        errorMessage.hidden = true
+        
         // the seconds tag == 2
         if (textField.tag != 2) {
             return true
         }
-        
+       
         let newLength = count(textField.text.utf16) + count(string.utf16) - range.length
+        
         return newLength <= 3
         
-//        let invalidCharacters = NSCharacterSet(charactersInString: "0123456789").invertedSet
-//        if let range = string.rangeOfCharacterFromSet(invalidCharacters, options: nil, range:Range<String.Index>(start: string.startIndex, end: string.endIndex)) {
-//            return false
-//        }
+    }
+    
+    func checkErrorMessage() {
+        
+        var errors = false
+        
+        if fabricName.text.isEmpty {
+            
+            errors = true
+            errorMessage.hidden = false
+            errorMessage.text = "Sorry, fabric name is required"
+            
+        } else if fabricTime.text.isEmpty {
+            
+            errors = true
+            errorMessage.hidden = false
+            errorMessage.text = "Sorry, number of seconds is required"
+            
+        } else if fabricTime.text == "0" {
+            
+            errors = true
+            errorMessage.hidden = false
+            errorMessage.text = "Please use seconds in the set of counting numbers :) "
+            
+        }
+        else {
+         
+            errors = false
+            errorMessage.hidden = true
+            
+        }
+        
+        if (errors) {
+            doneButton.enabled = false
+        } else {
+            doneButton.enabled = true
+        }
         
     }
     

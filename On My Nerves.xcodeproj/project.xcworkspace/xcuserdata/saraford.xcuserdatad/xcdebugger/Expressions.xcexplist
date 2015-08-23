@@ -23,6 +23,9 @@
          contextName = "On_My_Nerves.ViewController.updateFabricTime (On_My_Nerves.ViewController)() -&gt; ():ViewController.swift">
          <PersistentStrings>
             <PersistentString
+               value = "timeElapsed">
+            </PersistentString>
+            <PersistentString
                value = "elapsedTimePaused">
             </PersistentString>
             <PersistentString
