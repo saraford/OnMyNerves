@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		467AC2D31B8A2E2D004A2517 /* OverallProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467AC2D21B8A2E2D004A2517 /* OverallProgressView.swift */; };
 		46D1BBD31B6F123300F92D78 /* Fabric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D1BBD21B6F123300F92D78 /* Fabric.swift */; };
 		46E91E821B812E7000803C7B /* SecondsPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E91E811B812E7000803C7B /* SecondsPickerViewController.swift */; };
 		46E966E11B89216B00973280 /* CircleCounterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E966E01B89216B00973280 /* CircleCounterView.swift */; };
@@ -33,6 +34,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		467AC2D21B8A2E2D004A2517 /* OverallProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverallProgressView.swift; sourceTree = "<group>"; };
 		46D1BBD21B6F123300F92D78 /* Fabric.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fabric.swift; sourceTree = "<group>"; };
 		46E91E811B812E7000803C7B /* SecondsPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondsPickerViewController.swift; sourceTree = "<group>"; };
 		46E966E01B89216B00973280 /* CircleCounterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleCounterView.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 				46ED16D21B7E3A22003B026A /* HelpAboutViewController.swift */,
 				46E91E811B812E7000803C7B /* SecondsPickerViewController.swift */,
 				46E966E01B89216B00973280 /* CircleCounterView.swift */,
+				467AC2D21B8A2E2D004A2517 /* OverallProgressView.swift */,
 			);
 			path = "On My Nerves";
 			sourceTree = "<group>";
@@ -234,6 +237,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				467AC2D31B8A2E2D004A2517 /* OverallProgressView.swift in Sources */,
 				46F0D5901B6C6F7300229D7D /* ViewController.swift in Sources */,
 				46F0D58E1B6C6F7300229D7D /* AppDelegate.swift in Sources */,
 				46F0D63E1B6D178500229D7D /* AddEditFabricsViewController.swift in Sources */,

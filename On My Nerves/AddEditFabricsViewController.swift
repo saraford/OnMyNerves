@@ -62,16 +62,6 @@ class AddEditFabricsViewController: UIViewController, UITextFieldDelegate,  UINa
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    @IBAction func textChange(sender: AnyObject) {
-//        if (fabricName.text == "") {
-//            
-//            doneButton.enabled = false
-//            
-//        } else {
-//            
-//            doneButton.enabled = true
-//        }
-    }
     
     @IBAction func cancelUpdate(sender: AnyObject) {
     

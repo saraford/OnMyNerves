@@ -23,6 +23,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var circleCounter: CircleCounterView!
+    @IBOutlet weak var progressView: OverallProgressView!
     
     var startTime:NSDate!
     var myStopTime:NSDate!
@@ -78,8 +79,12 @@ class ViewController: UIViewController {
             } // end if there is valid saved data
             
         } // end if the key exists on disk, implying there is saved data
-
-        
+//        else {
+//            
+//            // no saved data
+//            progressView.numOfCompletedLines = 0
+//            
+//        }
         
         // first check if the user missed a notification
         foregroundNotification = NSNotificationCenter.defaultCenter().addObserverForName(UIApplicationWillEnterForegroundNotification, object: nil, queue: NSOperationQueue.mainQueue()) {
@@ -130,16 +135,13 @@ class ViewController: UIViewController {
         // we're not running and need to pause
 //        startStopTimerButton.setTitle("Start", forState: UIControlState.Normal)
   
-        //STARTHERE
         var myImage = UIImage(named: "playButton")
         startStopTimerButton.setImage(myImage, forState: UIControlState.Normal)
         
         stopTimer()
         
         // refresh the UI
-        currentFabricIndex = 0
-        resetFabricDetails()
-        
+        resetUI()
     }
     
     
@@ -154,6 +156,7 @@ class ViewController: UIViewController {
                 stopTimer()
                 
                 currentFabricIndex++
+                progressView.numOfCompletedLines = currentFabricIndex + 1
                 
                 resetFabricDetails()
                 
@@ -162,6 +165,7 @@ class ViewController: UIViewController {
             } else {
                 
                 currentFabricIndex++
+                progressView.numOfCompletedLines = currentFabricIndex + 1
                 
                 resetFabricDetails()
                 
@@ -184,6 +188,7 @@ class ViewController: UIViewController {
                 stopTimer()
                 
                 currentFabricIndex--
+                progressView.numOfCompletedLines = currentFabricIndex + 1
                 
                 resetFabricDetails()
                 
@@ -192,6 +197,7 @@ class ViewController: UIViewController {
             } else {
                 
                 currentFabricIndex--
+                progressView.numOfCompletedLines = currentFabricIndex + 1
                 
                 resetFabricDetails()
                 
@@ -335,6 +341,10 @@ class ViewController: UIViewController {
     func resetUI() {
         
         currentFabricIndex = 0
+        progressView.numOfLines = fabrics.count
+        
+        progressView.numOfCompletedLines = currentFabricIndex + 1
+
         
         resetFabricDetails()
         
@@ -388,19 +398,21 @@ class ViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated);
-
+        
         if (fabrics.count > 0) {
+
             resetFabricDetails()
             
-            // disable all play controls
             startStopTimerButton.enabled = true
             prevButton.enabled = true
             nextButton.enabled = true
             cancelButton.enabled = true
             
+            progressView.numOfLines = fabrics.count
+            progressView.numOfCompletedLines = currentFabricIndex + 1
+            
         } else {
             
-            // disable all play controls
             startStopTimerButton.enabled = false
             prevButton.enabled = false
             nextButton.enabled = false
@@ -429,6 +441,8 @@ class ViewController: UIViewController {
             
             // continue to next Fabric or end
             currentFabricIndex++
+            progressView.numOfCompletedLines = currentFabricIndex + 1
+        
             if (currentFabricIndex < fabrics.count) {
                 
                 // rock on

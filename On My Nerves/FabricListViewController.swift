@@ -110,7 +110,8 @@ class FabricListViewController: UIViewController, UITableViewDelegate {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 
         let cell = fabricsTable.dequeueReusableCellWithIdentifier("fabricCell") as! UITableViewCell
-                
+        
+        (cell.contentView.viewWithTag(1) as! UIImageView).image = createDarkBlueImage()
         (cell.contentView.viewWithTag(2) as! UILabel).text = fabrics[indexPath.row].fabricName
         (cell.contentView.viewWithTag(3) as! UILabel).text = "\(fabrics[indexPath.row].fabricTime)"
         
@@ -154,6 +155,27 @@ class FabricListViewController: UIViewController, UITableViewDelegate {
             fabricsTable.reloadData()
         }
     }
+    
+    func createDarkBlueImage() -> UIImage {
+        
+        var size = CGSize(width: 100, height: 100)
+        
+        let rect = CGRectMake(0, 0, 100, 100)
+        
+        UIGraphicsBeginImageContextWithOptions(size, false, 0)
+
+        UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1.0).setFill()
+        
+        UIRectFill(rect)
+        
+        let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()
+        
+        UIGraphicsEndImageContext()
+        
+        return image
+        
+    }
+    
     
     /*
     // MARK: - Navigation

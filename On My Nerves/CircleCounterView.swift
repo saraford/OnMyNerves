@@ -13,7 +13,7 @@ import UIKit
 let π:CGFloat = CGFloat(M_PI)
 
 //@IBDesignable class CircleCounterView: UIView {
-  class CircleCounterView: UIView {
+  @IBDesignable class CircleCounterView: UIView {
 
     // some random default
    @IBInspectable var NumOfSeconds:Int = 5
