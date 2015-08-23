@@ -159,12 +159,14 @@ class AddEditFabricsViewController: UIViewController, UITextFieldDelegate,  UINa
             return true
         }
         
-        let invalidCharacters = NSCharacterSet(charactersInString: "0123456789").invertedSet
-        if let range = string.rangeOfCharacterFromSet(invalidCharacters, options: nil, range:Range<String.Index>(start: string.startIndex, end: string.endIndex)) {
-            return false
-        }
+        let newLength = count(textField.text.utf16) + count(string.utf16) - range.length
+        return newLength <= 3
         
-        return true
+//        let invalidCharacters = NSCharacterSet(charactersInString: "0123456789").invertedSet
+//        if let range = string.rangeOfCharacterFromSet(invalidCharacters, options: nil, range:Range<String.Index>(start: string.startIndex, end: string.endIndex)) {
+//            return false
+//        }
+        
     }
     
 }
