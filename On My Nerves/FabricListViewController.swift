@@ -98,14 +98,9 @@ class FabricListViewController: UIViewController, UITableViewDelegate {
         fabricTimesArray.removeAtIndex(fromIndexPath.row)
         fabricTimesArray.insert(timeToMove, atIndex: toIndexPath.row)
 
-        var imageToMove = fabricColorsArray[fromIndexPath.row]
-        fabricColorsArray.removeAtIndex(fromIndexPath.row)
-        fabricColorsArray.insert(imageToMove, atIndex: toIndexPath.row)
-        
         // resave everything
         NSUserDefaults.standardUserDefaults().setObject(fabricNamesArray, forKey: "fabricNames")
         NSUserDefaults.standardUserDefaults().setObject(fabricTimesArray, forKey: "fabricTimes")
-        NSUserDefaults.standardUserDefaults().setObject(fabricColorsArray, forKey: "fabricColors")
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -115,11 +110,7 @@ class FabricListViewController: UIViewController, UITableViewDelegate {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 
         let cell = fabricsTable.dequeueReusableCellWithIdentifier("fabricCell") as! UITableViewCell
-        
-
-        var image:UIImage = CreateColors.createImageFromColor(fabrics[indexPath.row].fabricColor)
-        
-        (cell.contentView.viewWithTag(1) as! UIImageView).image = image
+                
         (cell.contentView.viewWithTag(2) as! UILabel).text = fabrics[indexPath.row].fabricName
         (cell.contentView.viewWithTag(3) as! UILabel).text = "\(fabrics[indexPath.row].fabricTime)"
         
@@ -155,12 +146,10 @@ class FabricListViewController: UIViewController, UITableViewDelegate {
             // delete stuff on the array to be saved to disk
             fabricNamesArray.removeAtIndex(index)
             fabricTimesArray.removeAtIndex(index)
-            fabricColorsArray.removeAtIndex(index)
 
             // resave everything
             NSUserDefaults.standardUserDefaults().setObject(fabricNamesArray, forKey: "fabricNames")
             NSUserDefaults.standardUserDefaults().setObject(fabricTimesArray, forKey: "fabricTimes")
-            NSUserDefaults.standardUserDefaults().setObject(fabricColorsArray, forKey: "fabricColors")
             
             fabricsTable.reloadData()
         }

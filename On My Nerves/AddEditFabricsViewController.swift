@@ -8,37 +8,14 @@
 
 import UIKit
 
-// Needed for the ColorPicker Lightbox view controller to send
-// the color picked back to this main view controller
-extension AddEditFabricsViewController: ColorPickedDelegate {
-    func updateData(data: String) {
-        
-        self.desiredColor = data
-        
-        fabricColor.backgroundColor = CreateColors.createColor(desiredColor)
-    }
-}
 
-extension AddEditFabricsViewController: SecondsPickedDelegate {
-    func updateTime(data: String) {
-        
-        self.desiredTime = data
-
-        self.fabricTime.setTitle(desiredTime, forState: UIControlState.Normal)
-    }
-}
-
-class AddEditFabricsViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class AddEditFabricsViewController: UIViewController, UITextFieldDelegate,  UINavigationControllerDelegate {
 
     @IBOutlet weak var fabricName: UITextField!
-    @IBOutlet weak var fabricColor: UIView!
     @IBOutlet weak var doneButton: UIButton!
-    @IBOutlet weak var fabricTime: UIButton!
+    @IBOutlet weak var fabricTime: UITextField!
     @IBOutlet weak var navBar: UINavigationItem!
     
-    // we only persist the color while this VC is still open. I'm not saving this to disk. Blah.
-    var desiredColor:String = "Red"
-    var desiredTime:String!
     
     var passedValue: Int!
     
@@ -56,28 +33,24 @@ class AddEditFabricsViewController: UIViewController, UITextFieldDelegate, UIIma
             var newFabric = Fabric()
             
             newFabric.fabricName = fabricName.text
-            newFabric.fabricTime = fabricTime.titleLabel!.text!.toInt()!
-            newFabric.fabricColor = desiredColor
+            newFabric.fabricTime = fabricTime.text.toInt()!
             
             fabrics.append(newFabric)
             
             // add data to the arrays to save to disk
             fabricNamesArray.append(fabricName.text)
-            fabricTimesArray.append(fabricTime.titleLabel!.text!.toInt()!)
-            fabricColorsArray.append(newFabric.fabricColor)
+            fabricTimesArray.append(fabricTime.text.toInt()!)
             
             
         } else {
             
             // save the info the user entered into the fields
             fabrics[passedValue].fabricName = fabricName.text
-            fabrics[passedValue].fabricTime = fabricTime.titleLabel!.text!.toInt()!
-            fabrics[passedValue].fabricColor = CreateColors.getColorName(fabricColor.backgroundColor!)
+            fabrics[passedValue].fabricTime = fabricTime.text.toInt()!
 
             // update data to the arrays to save to disk
             fabricNamesArray[passedValue] = fabricName.text
-            fabricTimesArray[passedValue] = fabricTime.titleLabel!.text!.toInt()!
-            fabricColorsArray[passedValue] = fabrics[passedValue].fabricColor
+            fabricTimesArray[passedValue] = fabricTime.text.toInt()!
             
             passedValue = nil
         }
@@ -85,7 +58,6 @@ class AddEditFabricsViewController: UIViewController, UITextFieldDelegate, UIIma
         // and now update
         NSUserDefaults.standardUserDefaults().setObject(fabricNamesArray, forKey: "fabricNames")
         NSUserDefaults.standardUserDefaults().setObject(fabricTimesArray, forKey: "fabricTimes")
-        NSUserDefaults.standardUserDefaults().setObject(fabricColorsArray, forKey: "fabricColors")
         
         self.dismissViewControllerAnimated(true, completion: nil)
     }
@@ -106,50 +78,12 @@ class AddEditFabricsViewController: UIViewController, UITextFieldDelegate, UIIma
         self.dismissViewControllerAnimated(true, completion: nil)
     
     }
-
-    
-    @IBAction func showTimePicker(sender: AnyObject) {
-        
-        var timePickerVC = self.storyboard?.instantiateViewControllerWithIdentifier("myTimePicker") as! SecondsPickerViewController
-        
-        // all this stuff needed to get the lightbox control effect
-        timePickerVC.providesPresentationContextTransitionStyle = true
-        timePickerVC.definesPresentationContext = true
-        timePickerVC.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
-        
-        // tell the picker what the previously-selected value is, if any.
-        timePickerVC.delegate = self
-        timePickerVC.prevSelectedTime = fabricTime.titleLabel!.text!
-        
-        self.presentViewController(timePickerVC, animated: false, completion: nil)
-
-        
-    }
-    
-    @IBAction func choosePhoto(sender: AnyObject) {
-        // creates a view controller that goes out of the app to the photo library or camera
-        
-        var image = UIImagePickerController()
-        image.delegate = self
-        
-        if (sender.tag == 5) {
-            image.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
-        } else {
-            image.sourceType = UIImagePickerControllerSourceType.Camera
-        }
-        image.allowsEditing = false
-        
-        // shows this view controller
-        self.presentViewController(image, animated: true, completion: nil)
-    }
     
     func resetUI() {
     
         // populate it with the current Fabric
         fabricName.text = "Drew"
-        fabricTime.setTitle("5", forState: .Normal)
-        fabricColor.backgroundColor = CreateColors.createColor("Red")
-
+        fabricTime.text = "5"
     }
     
     // this isn't called from the add (+), only from the edit
@@ -158,24 +92,6 @@ class AddEditFabricsViewController: UIViewController, UITextFieldDelegate, UIIma
         // am I being called?
         println("viewWillAppear")
         
-    }
-    
-
-    @IBAction func showColorPicker(sender: AnyObject) {
-        
-        var colorPickerVC = self.storyboard?.instantiateViewControllerWithIdentifier("myColorPicker") as! ColorPickerViewController
-        
-        // all this stuff needed to get the lightbox control effect
-        colorPickerVC.providesPresentationContextTransitionStyle = true
-        colorPickerVC.definesPresentationContext = true
-        colorPickerVC.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
-        
-        // tell the picker what the previously-selected value is, if any.
-        colorPickerVC.delegate = self
-        colorPickerVC.prevSelectedColor = desiredColor
-        
-        self.presentViewController(colorPickerVC, animated: false, completion: nil)
-
     }
     
     
@@ -198,15 +114,13 @@ class AddEditFabricsViewController: UIViewController, UITextFieldDelegate, UIIma
             
         }
         
-        
         // set the UI 
         // if there's content, then it came from a tap
         if (passedValue != nil) {
             
             // populate it with the current Fabric
             fabricName.text = fabrics[passedValue].fabricName
-            fabricTime.setTitle("\(fabrics[passedValue].fabricTime)", forState: .Normal)
-            fabricColor.backgroundColor = CreateColors.createColor(fabrics[passedValue].fabricColor)
+            fabricTime.text = "\(fabrics[passedValue].fabricTime)"
 
         } else {
             
@@ -215,7 +129,7 @@ class AddEditFabricsViewController: UIViewController, UITextFieldDelegate, UIIma
         
         // needed for the keyboard
         self.fabricName.delegate = self
-//        self.fabricTime.delegate = self
+        self.fabricTime.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -237,30 +151,20 @@ class AddEditFabricsViewController: UIViewController, UITextFieldDelegate, UIIma
         self.view.endEditing(true)
     }
     
-//    // only allow numbers
-//    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-//        
-//        // the seconds tag == 2
-//        if (textField.tag != 2) {
-//            return true
-//        }
-//        
-//        let invalidCharacters = NSCharacterSet(charactersInString: "0123456789").invertedSet
-//        if let range = string.rangeOfCharacterFromSet(invalidCharacters, options: nil, range:Range<String.Index>(start: string.startIndex, end: string.endIndex)) {
-//            return false
-//        }
-//        
-//        return true
-//    }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // only allow numbers
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        
+        // the seconds tag == 2
+        if (textField.tag != 2) {
+            return true
+        }
+        
+        let invalidCharacters = NSCharacterSet(charactersInString: "0123456789").invertedSet
+        if let range = string.rangeOfCharacterFromSet(invalidCharacters, options: nil, range:Range<String.Index>(start: string.startIndex, end: string.endIndex)) {
+            return false
+        }
+        
+        return true
     }
-    */
-
+    
 }

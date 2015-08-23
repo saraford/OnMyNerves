@@ -12,14 +12,11 @@ import AVFoundation
 var fabrics : [Fabric] = [Fabric]()
 var fabricNamesArray : [String] = [String]()
 var fabricTimesArray : [Int] = [Int]()
-var fabricColorsArray : [String] = [String]()
-
 
 class ViewController: UIViewController {
 
     @IBOutlet weak var displayTimeLabel: UILabel!
     @IBOutlet weak var startStopTimerButton: UIButton!
-    @IBOutlet weak var currentFabricColor: UIView!
     @IBOutlet weak var currentFabricName: UILabel!
     @IBOutlet weak var navBarTitle: UINavigationItem!
     @IBOutlet weak var prevButton: UIButton!
@@ -62,7 +59,6 @@ class ViewController: UIViewController {
             if (fabricNamesArray.count > 0) {
                 
                 fabricTimesArray = NSUserDefaults.standardUserDefaults().objectForKey("fabricTimes") as! [Int]
-                fabricColorsArray = NSUserDefaults.standardUserDefaults().objectForKey("fabricColors") as! [String]
                 
                 // create the Fabric class and fill it in
                 for var index = 0; index < fabricNamesArray.count; index++ {
@@ -72,8 +68,6 @@ class ViewController: UIViewController {
                     newFabric.fabricName = fabricNamesArray[index]
                     
                     newFabric.fabricTime = fabricTimesArray[index]
-                    
-                    newFabric.fabricColor = fabricColorsArray[index]
                     
                     fabrics.append(newFabric)
                 }
@@ -274,7 +268,6 @@ class ViewController: UIViewController {
         for fabric in fabrics {
             println(fabric.fabricName)
             println(fabric.fabricTime)
-            println(fabric.fabricColor)
             println()
         }
         
@@ -294,9 +287,7 @@ class ViewController: UIViewController {
   
         timeRemaining = currentFabric.fabricTime
         displayTimeLabel.text = "\(timeRemaining)"
-        
-        currentFabricColor.backgroundColor = CreateColors.createColor(currentFabric.fabricColor)
-        
+                
         currentFabricName.text = currentFabric.fabricName
         
         circleCounter.counter = 0
