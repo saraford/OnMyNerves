@@ -428,7 +428,7 @@ class ViewController: UIViewController {
             if (currentFabricIndex < fabrics.count) {
                 
                 // rock on
-                showAlertAndContinue("Fabric Done!", message: "Move to next fabric")
+                showAlertAndWaitForUser("Fabric Done!", message: "Press OK to continue")
                 
             } else {
                 
@@ -441,7 +441,23 @@ class ViewController: UIViewController {
     }
     
 
-    func showAlertAndContinue(title: String, message: String) {
+    func showAlertForNextFabric() {
+        
+        let alertController = UIAlertController(title: "Next Fabric", message:
+            "Press OK to start next Fabric", preferredStyle: UIAlertControllerStyle.Alert)
+        
+        
+        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {
+            action in
+            
+            self.startTimer()
+        }))
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
+
+    
+    func showAlertAndWaitForUser(title: String, message: String) {
         
         let alertController = UIAlertController(title: title, message:
             message, preferredStyle: UIAlertControllerStyle.Alert)
@@ -450,7 +466,7 @@ class ViewController: UIViewController {
         // after the user dismisses the alert we can start the next 1 minute run
         alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {
             action in
-            
+     
             // refreshing the UI here so it doesn't appear behind the alert. Feels odd
             self.resetFabricDetails()
             
@@ -459,8 +475,9 @@ class ViewController: UIViewController {
                 self.alarmAudio.stop()
                 self.alarmAudio.currentTime = 0.0
             }
-
-            self.startTimer()
+            
+            self.showAlertForNextFabric()
+     
         }))
         
         self.presentViewController(alertController, animated: true, completion: nil)
