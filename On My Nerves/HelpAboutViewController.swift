@@ -16,10 +16,11 @@ class HelpAboutViewController: UIViewController {
         super.viewDidLoad()
 
         HelpAboutText.text =
-            "Yep\n\n" +
+            "Something about fabric desen here\n\n" +
             "Alarm music is a trimmed 8 second version of Iron Bacon by Kevin MacLeod (incompetech.com)\n" +
             "Licensed under Creative Commons: By Attribution 3.0\n" +
             "http://creativecommons.org/licenses/by/3.0/\n\n" +
+        "Use at own risk\n\n" +
         "Copyright (c) 2015 Sara Ford. All rights reserved."
         
         

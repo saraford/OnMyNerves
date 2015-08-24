@@ -24,6 +24,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var circleCounter: CircleCounterView!
     @IBOutlet weak var progressView: OverallProgressView!
+    @IBOutlet weak var startLabel: UILabel!
     
     var startTime:NSDate!
     var myStopTime:NSDate!
@@ -74,17 +75,12 @@ class ViewController: UIViewController {
                 }
                 
                 // show the initial UI
-                self.resetFabricDetails()
+                //self.resetFabricDetails()
+                self.resetUI()
                 
             } // end if there is valid saved data
             
         } // end if the key exists on disk, implying there is saved data
-//        else {
-//            
-//            // no saved data
-//            progressView.numOfCompletedLines = 0
-//            
-//        }
         
         // first check if the user missed a notification
         foregroundNotification = NSNotificationCenter.defaultCenter().addObserverForName(UIApplicationWillEnterForegroundNotification, object: nil, queue: NSOperationQueue.mainQueue()) {
@@ -104,7 +100,7 @@ class ViewController: UIViewController {
                     // if Now > myStopTime, either user tapped or opened app after missing notification. either way we need to stop and clear the notifications
                     if (NSDate().compare(self.myStopTime) == NSComparisonResult.OrderedDescending) {
                         
-                        self.displayTimeLabel.text = "0:00"
+                        self.displayTimeLabel.text = "0"
                         
                         // pretend the user hit the notification
                         self.doSomethingForNow()
@@ -124,7 +120,7 @@ class ViewController: UIViewController {
         // this is the event that is fired after each scheduled Fabric Time, regardless user taps or app is active
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "doSomethingForNow", name: "FabricSwitch", object: nil)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "resetToDefaults", name: "Terminating", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "resetUI", name: "Terminating", object: nil)
         
         
     }// view did load
@@ -133,10 +129,10 @@ class ViewController: UIViewController {
     @IBAction func cancelFabrics(sender: UIButton) {
     
         // we're not running and need to pause
-//        startStopTimerButton.setTitle("Start", forState: UIControlState.Normal)
   
         var myImage = UIImage(named: "playButton")
         startStopTimerButton.setImage(myImage, forState: UIControlState.Normal)
+        startLabel.text = "Start"
         
         stopTimer()
         
@@ -147,6 +143,8 @@ class ViewController: UIViewController {
     
     @IBAction func nextFabric(sender: UIButton) {
 
+        prevButton.enabled = true
+        
         // verify just in case
         if (currentFabricIndex < fabrics.count - 1) {
             
@@ -170,6 +168,13 @@ class ViewController: UIViewController {
                 resetFabricDetails()
                 
             }
+            
+            if (currentFabricIndex == fabrics.count - 1) {
+                
+                // can't go no farther
+                nextButton.enabled = false
+                
+            }
         
         }
         
@@ -179,6 +184,8 @@ class ViewController: UIViewController {
     
     @IBAction func prevButton(sender: UIButton) {
 
+        nextButton.enabled = true
+        
         // verify just in case
         if (currentFabricIndex > 0) {
             
@@ -202,6 +209,13 @@ class ViewController: UIViewController {
                 resetFabricDetails()
                 
             }
+          
+            if (currentFabricIndex == 0) {
+                
+                // can't go no farther
+                prevButton.enabled = false
+                
+            }
             
         }
         
@@ -213,16 +227,21 @@ class ViewController: UIViewController {
     var countdownTime: Int!
     var isPaused:Bool = false
     var elapsedTimePaused: Int!
-    @IBAction func startPauseTimer(sender: UIButton) {
+    @IBAction func startPauseTimerAction(sender: UIButton) {
+
+        startPauseTimer()
         
+    }
+    
+    func startPauseTimer() {
 //        printFabrics()
         
         // we're not running and need to start
         if !(fabricTimer.valid) {
             
-           // startStopTimerButton.setTitle("Pause", forState: UIControlState.Normal)
             var myImage = UIImage(named: "pauseButton")
             startStopTimerButton.setImage(myImage, forState: UIControlState.Normal)
+            startLabel.text = "Pause"
             
             // no editing while running
             // cannot set the individual button to disabled directly
@@ -257,6 +276,7 @@ class ViewController: UIViewController {
             
             var myImage = UIImage(named: "playButton")
             startStopTimerButton.setImage(myImage, forState: UIControlState.Normal)
+            startLabel.text = "Start"
             
             // stop Timer and cancel the notifications
             stopTimer()
@@ -279,13 +299,6 @@ class ViewController: UIViewController {
         
         println("-----------------")
     }
-    
-    func resetToDefaults() {
-        
-        currentFabricIndex = 0
-        resetFabricDetails()
-    }
-    
 
     func resetFabricDetails() {
 
@@ -293,7 +306,7 @@ class ViewController: UIViewController {
   
         timeRemaining = currentFabric.fabricTime
         displayTimeLabel.text = "\(timeRemaining)"
-                
+        
         currentFabricName.text = currentFabric.fabricName
         
         circleCounter.counter = 0
@@ -342,16 +355,16 @@ class ViewController: UIViewController {
         
         currentFabricIndex = 0
         progressView.numOfLines = fabrics.count
-        
         progressView.numOfCompletedLines = currentFabricIndex + 1
-
+        
+        prevButton.enabled = false
+        nextButton.enabled = true
         
         resetFabricDetails()
         
-      //  startStopTimerButton.setTitle("Start", forState: UIControlState.Normal)
-
         var myImage = UIImage(named: "playButton")
         startStopTimerButton.setImage(myImage, forState: UIControlState.Normal)
+        startLabel.text = "Start"
         
         // and can edit by default
         self.navigationController!.navigationBar.userInteractionEnabled = true
@@ -442,6 +455,12 @@ class ViewController: UIViewController {
             // continue to next Fabric or end
             currentFabricIndex++
             progressView.numOfCompletedLines = currentFabricIndex + 1
+        
+            prevButton.enabled = true
+        if (currentFabricIndex == fabrics.count - 1) {
+            nextButton.enabled = false
+        }
+        
         
             if (currentFabricIndex < fabrics.count) {
                 
@@ -555,6 +574,14 @@ class ViewController: UIViewController {
         return audioPlayer!
     }
 
+    
+    @IBAction func handleTimerTap(sender: UITapGestureRecognizer) {
+       
+        startPauseTimer()
+        
+        circleCounter.resetColors()
+    }
+    
     
 }
 

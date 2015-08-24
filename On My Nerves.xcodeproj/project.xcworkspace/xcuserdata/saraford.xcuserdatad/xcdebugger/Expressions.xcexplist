@@ -20,16 +20,38 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "On_My_Nerves.CircleCounterView.touchesBegan (On_My_Nerves.CircleCounterView)(Swift.Set&lt;ObjectiveC.NSObject&gt;, withEvent : ObjectiveC.UIEvent) -&gt; ():CircleCounterView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "prevOutlineColor">
+            </PersistentString>
+            <PersistentString
+               value = "prevCounterColor">
+            </PersistentString>
+            <PersistentString
+               value = "UIColor.orangeColor()">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "On_My_Nerves.CircleCounterView.resetColors (On_My_Nerves.CircleCounterView)() -&gt; ():CircleCounterView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "prevCounterColor">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "On_My_Nerves.ViewController.updateFabricTime (On_My_Nerves.ViewController)() -&gt; ():ViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "timeElapsed">
+               value = "Float(fabrics[currentFabricIndex].fabricTime)">
             </PersistentString>
             <PersistentString
                value = "elapsedTimePaused">
             </PersistentString>
             <PersistentString
-               value = "Float(fabrics[currentFabricIndex].fabricTime)">
+               value = "timeElapsed">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -99,10 +121,10 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "On_My_Nerves.ViewController.startTimer (On_My_Nerves.ViewController)() -&gt; ():ViewController.swift">
+         contextName = "On_My_Nerves.ColorPickerViewController.CloseWindow (On_My_Nerves.ColorPickerViewController)(ObjectiveC.UIButton) -&gt; ():ColorPickerViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "timeRemaining">
+               value = "colorSelected">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -115,10 +137,10 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "On_My_Nerves.ColorPickerViewController.CloseWindow (On_My_Nerves.ColorPickerViewController)(ObjectiveC.UIButton) -&gt; ():ColorPickerViewController.swift">
+         contextName = "On_My_Nerves.ViewController.startTimer (On_My_Nerves.ViewController)() -&gt; ():ViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "colorSelected">
+               value = "timeRemaining">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

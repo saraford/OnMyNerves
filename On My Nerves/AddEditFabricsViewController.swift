@@ -181,7 +181,7 @@ class AddEditFabricsViewController: UIViewController, UITextFieldDelegate,  UINa
             
             errors = true
             errorMessage.hidden = false
-            errorMessage.text = "Please use seconds in the set of counting numbers :) "
+            errorMessage.text = "Please specify seconds in the set of counting numbers :) "
             
         }
         else {

@@ -31,6 +31,9 @@ let π:CGFloat = CGFloat(M_PI)
     @IBInspectable var outlineColor: UIColor = UIColor.blueColor()
     @IBInspectable var counterColor: UIColor = UIColor.orangeColor()
     
+    var prevOutlineColor: UIColor!
+    var prevCounterColor: UIColor!
+    
     override func drawRect(rect: CGRect) {
         
         let center = CGPoint(x:bounds.width/2, y: bounds.height/2)
@@ -67,6 +70,27 @@ let π:CGFloat = CGFloat(M_PI)
          pathTimer.lineWidth = arcWidth
          outlineColor.setStroke()
          pathTimer.stroke()
+        
+    }
+    
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+
+        prevCounterColor = counterColor
+        prevOutlineColor = outlineColor
+        
+        counterColor = UIColor.orangeColor()
+        outlineColor = UIColor.orangeColor()
+        
+        setNeedsDisplay()
+        
+    }
+
+    func resetColors() {
+    
+        counterColor = prevCounterColor
+        outlineColor = prevOutlineColor
+        
+        setNeedsDisplay()
         
     }
 }
