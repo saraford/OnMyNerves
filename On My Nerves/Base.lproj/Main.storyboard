@@ -235,6 +235,7 @@
                         <outlet property="circleCounter" destination="wsg-PN-Cl8" id="iQl-EI-Ukj"/>
                         <outlet property="currentFabricName" destination="ujz-uj-7DT" id="inx-G3-oRW"/>
                         <outlet property="displayTimeLabel" destination="gza-1l-BxS" id="7Aa-NU-MhE"/>
+                        <outlet property="helpAboutButton" destination="FGh-Ed-IBr" id="ILc-qf-pzb"/>
                         <outlet property="navBarTitle" destination="nIV-sP-dNc" id="DYp-Pc-wLD"/>
                         <outlet property="nextButton" destination="dbe-dX-8np" id="WWZ-DO-DfE"/>
                         <outlet property="prevButton" destination="bT0-ol-e49" id="8e8-qE-exx"/>

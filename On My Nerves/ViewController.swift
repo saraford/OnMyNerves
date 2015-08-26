@@ -24,7 +24,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var circleCounter: CircleCounterView!
     @IBOutlet weak var progressView: OverallProgressView!
-    @IBOutlet weak var startLabel: UILabel!
+    @IBOutlet weak var startLabel: UILabel!    
+    @IBOutlet weak var helpAboutButton: UIButton!
     
     var startTime:NSDate!
     var myStopTime:NSDate!
@@ -147,6 +148,8 @@ class ViewController: UIViewController {
         startStopTimerButton.setImage(myImage, forState: UIControlState.Normal)
         startLabel.text = "Start"
         
+        helpAboutButton.enabled = true
+        
         stopTimer()
         
         // refresh the UI
@@ -256,11 +259,12 @@ class ViewController: UIViewController {
             startStopTimerButton.setImage(myImage, forState: UIControlState.Normal)
             startLabel.text = "Pause"
             
-            // no editing while running
-            // cannot set the individual button to disabled directly
+            // no editing while running - can only do it from ResetUI (startover or finish fabric cycle)
             self.navigationController!.navigationBar.userInteractionEnabled = false
             self.navigationItem.rightBarButtonItem?.tintColor = UIColor.darkGrayColor()
             
+            // no getting info b/c alerts will show below the info screen
+            helpAboutButton.enabled = false
             
             if (isPaused) {
                 
@@ -281,6 +285,7 @@ class ViewController: UIViewController {
             }
             
             startTimer()
+
         }
         else {
 
@@ -291,13 +296,11 @@ class ViewController: UIViewController {
             startStopTimerButton.setImage(myImage, forState: UIControlState.Normal)
             startLabel.text = "Start"
             
+            helpAboutButton.enabled = true
+            
             // stop Timer and cancel the notifications
             stopTimer()
-            
-            // okay it's fine now to edit
-            self.navigationController!.navigationBar.userInteractionEnabled = true
-            self.navigationItem.rightBarButtonItem?.tintColor = UIColor(red: 0, green: 0, blue: 255, alpha: 255)
- 
+        
         }
 
     }
@@ -408,6 +411,8 @@ class ViewController: UIViewController {
         var myImage = UIImage(named: "playButton")
         startStopTimerButton.setImage(myImage, forState: UIControlState.Normal)
         startLabel.text = "Start"
+        
+        helpAboutButton.enabled = true
         
         // and can edit by default
         self.navigationController!.navigationBar.userInteractionEnabled = true
