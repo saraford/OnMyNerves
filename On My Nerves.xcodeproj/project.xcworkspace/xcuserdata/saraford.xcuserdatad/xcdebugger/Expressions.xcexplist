@@ -3,41 +3,73 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "On_My_Nerves.AddEditFabricsViewController.saveUpdate (On_My_Nerves.AddEditFabricsViewController)(ObjectiveC.UIButton) -&gt; ():AddEditFabricsViewController.swift">
+         contextName = "On_My_Nerves.ViewController.resetUI (On_My_Nerves.ViewController)() -&gt; ():ViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "fabricColorsArray">
+               value = "displayTimeLabel.text">
             </PersistentString>
-            <PersistentString
-               value = "fabricNamesArray">
-            </PersistentString>
-            <PersistentString
-               value = "desiredColor">
-            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "On_My_Nerves.AddEditFabricsViewController.viewDidLoad (On_My_Nerves.AddEditFabricsViewController)() -&gt; ():AddEditFabricsViewController.swift">
+         <PersistentStrings>
             <PersistentString
                value = "passedValue">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "On_My_Nerves.CircleCounterView.touchesBegan (On_My_Nerves.CircleCounterView)(Swift.Set&lt;ObjectiveC.NSObject&gt;, withEvent : ObjectiveC.UIEvent) -&gt; ():CircleCounterView.swift">
+         contextName = "On_My_Nerves.ViewController.prevButton (On_My_Nerves.ViewController)(ObjectiveC.UIButton) -&gt; ():ViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "On_My_Nerves.ViewController.resetFabricDetails (On_My_Nerves.ViewController)() -&gt; ():ViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "prevOutlineColor">
+               value = "currentFabricIndex">
             </PersistentString>
             <PersistentString
-               value = "prevCounterColor">
+               value = "elapsedTimePaused">
             </PersistentString>
             <PersistentString
-               value = "UIColor.orangeColor()">
+               value = "currentFabricColor">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "On_My_Nerves.CircleCounterView.resetColors (On_My_Nerves.CircleCounterView)() -&gt; ():CircleCounterView.swift">
+         contextName = "On_My_Nerves.ViewController.doSomethingForNow (On_My_Nerves.ViewController)() -&gt; ():ViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "prevCounterColor">
+               value = "fabrics.count">
+            </PersistentString>
+            <PersistentString
+               value = "currentFabricIndex">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "On_My_Nerves.ColorPickerViewController.CloseWindow (On_My_Nerves.ColorPickerViewController)(ObjectiveC.UIButton) -&gt; ():ColorPickerViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "colorSelected">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "On_My_Nerves.ViewController.startTimer (On_My_Nerves.ViewController)() -&gt; ():ViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "timeRemaining">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "On_My_Nerves.FabricListViewController.tableView (On_My_Nerves.FabricListViewController)(ObjectiveC.UITableView, cellForRowAtIndexPath : ObjectiveC.NSIndexPath) -&gt; ObjectiveC.UITableViewCell:FabricListViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "fabrics">
+            </PersistentString>
+            <PersistentString
+               value = "indexPath.row">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -56,18 +88,24 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "On_My_Nerves.ColorPickerViewController.viewDidLoad (On_My_Nerves.ColorPickerViewController)() -&gt; ():ColorPickerViewController.swift">
+         contextName = "On_My_Nerves.CircleCounterView.touchesBegan (On_My_Nerves.CircleCounterView)(Swift.Set&lt;ObjectiveC.NSObject&gt;, withEvent : ObjectiveC.UIEvent) -&gt; ():CircleCounterView.swift">
          <PersistentStrings>
             <PersistentString
-               value = "prevSelectedColor">
+               value = "prevCounterColor">
+            </PersistentString>
+            <PersistentString
+               value = "prevOutlineColor">
+            </PersistentString>
+            <PersistentString
+               value = "UIColor.orangeColor()">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "On_My_Nerves.AddEditFabricsViewController.viewDidLoad (On_My_Nerves.AddEditFabricsViewController)() -&gt; ():AddEditFabricsViewController.swift">
+         contextName = "On_My_Nerves.SecondsPickerViewController.createSecondsArray (On_My_Nerves.SecondsPickerViewController)() -&gt; ():SecondsPickerViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "passedValue">
+               value = "secondsToPickFrom">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -83,48 +121,36 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "On_My_Nerves.ViewController.resetFabricDetails (On_My_Nerves.ViewController)() -&gt; ():ViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "elapsedTimePaused">
-            </PersistentString>
-            <PersistentString
-               value = "currentFabricColor">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "static On_My_Nerves.ImageStore.saveImage (On_My_Nerves.ImageStore.Type)(ObjectiveC.UIImage, name : Swift.String) -&gt; ():ImageStore.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "savePath">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "On_My_Nerves.SecondsPickerViewController.createSecondsArray (On_My_Nerves.SecondsPickerViewController)() -&gt; ():SecondsPickerViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "secondsToPickFrom">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "On_My_Nerves.FabricListViewController.tableView (On_My_Nerves.FabricListViewController)(ObjectiveC.UITableView, cellForRowAtIndexPath : ObjectiveC.NSIndexPath) -&gt; ObjectiveC.UITableViewCell:FabricListViewController.swift">
+         contextName = "On_My_Nerves.ViewController.viewDidLoad (On_My_Nerves.ViewController)() -&gt; ():ViewController.swift">
          <PersistentStrings>
             <PersistentString
                value = "fabrics">
             </PersistentString>
             <PersistentString
-               value = "indexPath.row">
+               value = "fabricNamesArray">
+            </PersistentString>
+            <PersistentString
+               value = "NSUserDefaults.standardUserDefaults().objectForKey(&quot;fabricNames&quot;)">
+            </PersistentString>
+            <PersistentString
+               value = "displayTimeLabel.text">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "On_My_Nerves.ColorPickerViewController.CloseWindow (On_My_Nerves.ColorPickerViewController)(ObjectiveC.UIButton) -&gt; ():ColorPickerViewController.swift">
+         contextName = "On_My_Nerves.AddEditFabricsViewController.saveUpdate (On_My_Nerves.AddEditFabricsViewController)(ObjectiveC.UIButton) -&gt; ():AddEditFabricsViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "colorSelected">
+               value = "fabricColorsArray">
+            </PersistentString>
+            <PersistentString
+               value = "fabricNamesArray">
+            </PersistentString>
+            <PersistentString
+               value = "desiredColor">
+            </PersistentString>
+            <PersistentString
+               value = "passedValue">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -137,49 +163,10 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "On_My_Nerves.ViewController.startTimer (On_My_Nerves.ViewController)() -&gt; ():ViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "timeRemaining">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "On_My_Nerves.ViewController.doSomethingForNow (On_My_Nerves.ViewController)() -&gt; ():ViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "fabrics.count">
-            </PersistentString>
-            <PersistentString
-               value = "currentFabricIndex">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "On_My_Nerves.ViewController.prevButton (On_My_Nerves.ViewController)(ObjectiveC.UIButton) -&gt; ():ViewController.swift">
-      </ContextState>
-      <ContextState
          contextName = "On_My_Nerves.ViewController.nextFabric (On_My_Nerves.ViewController)(ObjectiveC.UIButton) -&gt; ():ViewController.swift">
          <PersistentStrings>
             <PersistentString
                value = "currentFabricIndex">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "On_My_Nerves.ViewController.viewDidLoad (On_My_Nerves.ViewController)() -&gt; ():ViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "fabrics">
-            </PersistentString>
-            <PersistentString
-               value = "fabricColorsArray">
-            </PersistentString>
-            <PersistentString
-               value = "fabricNamesArray">
-            </PersistentString>
-            <PersistentString
-               value = "NSUserDefaults.standardUserDefaults().objectForKey(&quot;fabricNames&quot;)">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -191,6 +178,38 @@
             </PersistentString>
             <PersistentString
                value = "prevSelectedTime">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "On_My_Nerves.CircleCounterView.resetColors (On_My_Nerves.CircleCounterView)() -&gt; ():CircleCounterView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "prevCounterColor">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "On_My_Nerves.ColorPickerViewController.viewDidLoad (On_My_Nerves.ColorPickerViewController)() -&gt; ():ColorPickerViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "prevSelectedColor">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "static On_My_Nerves.ImageStore.saveImage (On_My_Nerves.ImageStore.Type)(ObjectiveC.UIImage, name : Swift.String) -&gt; ():ImageStore.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "savePath">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "On_My_Nerves.ViewController.(viewDidLoad (On_My_Nerves.ViewController) -&gt; () -&gt; ()).(closure #1):ViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "currentFabricIndex">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

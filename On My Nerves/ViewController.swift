@@ -39,12 +39,15 @@ class ViewController: UIViewController {
     // for handling missed/ignored notifications
     private var foregroundNotification: NSObjectProtocol!
     
+    // if true, user opened app without tapping notification so we need to skip the real notification
+    var skipBecauseUserDidNotTapNotification:Bool = false;
+    
     // we be rocking them beats
     var alarmAudio:AVAudioPlayer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
         alarmAudio = AVAudioPlayer()
         alarmAudio = self.setupAudioPlayerWithFile("IronBacon", type:"m4a")
         alarmAudio.numberOfLoops = -1 // play until stop() is called
@@ -53,7 +56,7 @@ class ViewController: UIViewController {
         // recreate the arrays saving the data
         if NSUserDefaults.standardUserDefaults().objectForKey("fabricNames") != nil {
             
-            println("loading the data")
+         //   println("loading the data")
             
             fabricNamesArray = NSUserDefaults.standardUserDefaults().objectForKey("fabricNames") as! [String]
             
@@ -81,6 +84,15 @@ class ViewController: UIViewController {
             } // end if there is valid saved data
             
         } // end if the key exists on disk, implying there is saved data
+        else {
+            
+            // there is no data, so no buttons are enabled
+            prevButton.enabled = false
+            nextButton.enabled = false
+            cancelButton.enabled = false
+            startStopTimerButton.enabled = false
+            
+        }
         
         // first check if the user missed a notification
         foregroundNotification = NSNotificationCenter.defaultCenter().addObserverForName(UIApplicationWillEnterForegroundNotification, object: nil, queue: NSOperationQueue.mainQueue()) {
@@ -88,8 +100,6 @@ class ViewController: UIViewController {
             
             // next, if we're running...
             if (self.fabricTimer.valid) {
-                
-                println("must have missed a notification")
                 
                 // from docs: current scheduled local notifications - a notification is only current if it has *not* gone off yet. otherwise this list will be 0.
                 var notifications = UIApplication.sharedApplication().scheduledLocalNotifications as! [UILocalNotification]
@@ -105,6 +115,9 @@ class ViewController: UIViewController {
                         // pretend the user hit the notification
                         self.doSomethingForNow()
                         
+                        // user did not tap
+                        self.skipBecauseUserDidNotTapNotification = true
+
                     }
                     
                 }
@@ -335,13 +348,18 @@ class ViewController: UIViewController {
         // the notification below is what stops this timer
         fabricTimer = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: Selector("updateFabricTime"), userInfo: nil, repeats: true)
         
+        // reset the skip
+        skipBecauseUserDidNotTapNotification = false
+        
         // schedule local notification
         var notification = UILocalNotification()
-        notification.alertBody = "Hello World"
+        notification.alertBody = "Time to switch fabrics!"
         notification.alertAction = "Next Fabric"
         notification.soundName = UILocalNotificationDefaultSoundName
         notification.fireDate = NSDate(timeIntervalSinceNow: NSTimeInterval(timeRemaining))
         UIApplication.sharedApplication().scheduleLocalNotification(notification)
+        
+        cancelButton.enabled = true
         
     }
     
@@ -353,12 +371,35 @@ class ViewController: UIViewController {
     
     func resetUI() {
         
+        println("resetUI called")
+        
         currentFabricIndex = 0
         progressView.numOfLines = fabrics.count
         progressView.numOfCompletedLines = currentFabricIndex + 1
         
-        prevButton.enabled = false
-        nextButton.enabled = true
+        if (fabrics.count == 0) {
+        
+            prevButton.enabled = false
+            nextButton.enabled = false
+            cancelButton.enabled = false
+            startStopTimerButton.enabled = false
+            
+        } else if (fabrics.count == 1) {
+          
+            prevButton.enabled = false
+            nextButton.enabled = false
+            cancelButton.enabled = false
+            startStopTimerButton.enabled = true
+            
+            
+        } else {
+            
+            prevButton.enabled = false
+            nextButton.enabled = true
+            cancelButton.enabled = false
+
+        }
+        
         
         resetFabricDetails()
         
@@ -369,7 +410,7 @@ class ViewController: UIViewController {
         // and can edit by default
         self.navigationController!.navigationBar.userInteractionEnabled = true
         self.navigationItem.rightBarButtonItem?.tintColor = UIColor(red: 0, green: 0, blue: 255, alpha: 255)
-
+        
     }
     
     // the actual NSTimer loop - this is only used to update the 0:59 text and nothing else
@@ -408,7 +449,8 @@ class ViewController: UIViewController {
         }
         
     }
-    
+
+    // for updating the overall progress view
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated);
         
@@ -417,20 +459,45 @@ class ViewController: UIViewController {
             resetFabricDetails()
             
             startStopTimerButton.enabled = true
-            prevButton.enabled = true
-            nextButton.enabled = true
-            cancelButton.enabled = true
-            
+        
             progressView.numOfLines = fabrics.count
             progressView.numOfCompletedLines = currentFabricIndex + 1
+
+            if (fabrics.count == 1) {
+
+                prevButton.enabled = false
+                nextButton.enabled = false
+                
+            } else if (currentFabricIndex == 0) {
+                
+                prevButton.enabled = false
+                nextButton.enabled = true
+            
+            } else if (currentFabricIndex == fabrics.count - 2) {
+                
+                prevButton.enabled = true
+                nextButton.enabled = false
+                
+            } else {
+                
+                prevButton.enabled = true
+                nextButton.enabled = true
+
+            }
             
         } else {
             
             startStopTimerButton.enabled = false
             prevButton.enabled = false
             nextButton.enabled = false
+        }
+
+        if (fabricTimer.valid) {
+            cancelButton.enabled = true
+        } else {
             cancelButton.enabled = false
         }
+        
         
     }
     
@@ -438,7 +505,9 @@ class ViewController: UIViewController {
     // this is fired regardless user taps notification or it comes while app is running
     func doSomethingForNow() {
         
-            //  NSLog("I'm stopping the timer")
+        if !(skipBecauseUserDidNotTapNotification) {
+        
+            NSLog("I'm stopping the timer")
             var trueStopTime = NSDate()
             
             //   NSLog("Stop Time:")
@@ -457,11 +526,11 @@ class ViewController: UIViewController {
             progressView.numOfCompletedLines = currentFabricIndex + 1
         
             prevButton.enabled = true
-        if (currentFabricIndex == fabrics.count - 1) {
-            nextButton.enabled = false
-        }
         
-        
+            if (currentFabricIndex == fabrics.count - 1) {
+                nextButton.enabled = false
+            }
+            
             if (currentFabricIndex < fabrics.count) {
                 
                 // rock on
@@ -469,20 +538,22 @@ class ViewController: UIViewController {
                 
             } else {
                 
-                showAlertToEnd("We're all done!", message: "Kick ass!")
+                showAlertToEnd("We're all done!", message: "Have a good one!")
             }
 
             
             // clear the notification
             UIApplication.sharedApplication().cancelAllLocalNotifications()
+        }
     }
     
 
     func showAlertForNextFabric() {
         
-        let alertController = UIAlertController(title: "Next Fabric", message:
+        let alertController = UIAlertController(title: "\(fabrics[currentFabricIndex].fabricName) is up next", message:
             "Press OK to start next Fabric", preferredStyle: UIAlertControllerStyle.Alert)
         
+        println("I'm the show alert for next fabric")
         
         alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {
             action in
@@ -499,6 +570,7 @@ class ViewController: UIViewController {
         let alertController = UIAlertController(title: title, message:
             message, preferredStyle: UIAlertControllerStyle.Alert)
         
+                println("I'm the wait for user")
         
         // after the user dismisses the alert we can start the next 1 minute run
         alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {
@@ -552,7 +624,7 @@ class ViewController: UIViewController {
         formatter.dateFormat = "HH:mm:ss";
         let defaultTimeZoneStr = formatter.stringFromDate(date);
         
-        NSLog(defaultTimeZoneStr);
+       // NSLog(defaultTimeZoneStr);
     }
 
 
@@ -574,14 +646,5 @@ class ViewController: UIViewController {
         return audioPlayer!
     }
 
-    
-    @IBAction func handleTimerTap(sender: UITapGestureRecognizer) {
-       
-        startPauseTimer()
-        
-        circleCounter.resetColors()
-    }
-    
-    
 }
 

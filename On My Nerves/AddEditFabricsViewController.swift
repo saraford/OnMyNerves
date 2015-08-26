@@ -72,15 +72,15 @@ class AddEditFabricsViewController: UIViewController, UITextFieldDelegate,  UINa
     func resetUI() {
     
         // populate it with the current Fabric
-        fabricName.text = "Drew"
-        fabricTime.text = "5"
+        fabricName.text = ""
+        fabricTime.text = "59"
     }
     
     // this isn't called from the add (+), only from the edit
     override func viewWillAppear(animated: Bool) {
 
         // am I being called?
-        println("viewWillAppear")
+      // println("viewWillAppear")
         
     }
     
@@ -96,12 +96,15 @@ class AddEditFabricsViewController: UIViewController, UITextFieldDelegate,  UINa
             self.navBar.title = "Add new fabric"
             doneButton.setTitle("Add", forState: UIControlState.Normal)
             
+            doneButton.enabled = false
+            
         } else {
             
             // Just making an edit
             self.navBar.title = "Edit fabric info"
             doneButton.setTitle("Save", forState: UIControlState.Normal)
             
+            doneButton.enabled = false
         }
         
         // set the UI 
@@ -195,6 +198,10 @@ class AddEditFabricsViewController: UIViewController, UITextFieldDelegate,  UINa
             doneButton.enabled = false
         } else {
             doneButton.enabled = true
+        }
+        
+        if fabricTime.text.isEmpty && fabricName.text.isEmpty {
+            doneButton.enabled = false
         }
         
     }
