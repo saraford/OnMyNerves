@@ -25,13 +25,13 @@
          contextName = "On_My_Nerves.ViewController.resetFabricDetails (On_My_Nerves.ViewController)() -&gt; ():ViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "currentFabricIndex">
+               value = "currentFabricColor">
             </PersistentString>
             <PersistentString
                value = "elapsedTimePaused">
             </PersistentString>
             <PersistentString
-               value = "currentFabricColor">
+               value = "currentFabricIndex">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -77,13 +77,24 @@
          contextName = "On_My_Nerves.ViewController.updateFabricTime (On_My_Nerves.ViewController)() -&gt; ():ViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "Float(fabrics[currentFabricIndex].fabricTime)">
+               value = "timeElapsed">
             </PersistentString>
             <PersistentString
                value = "elapsedTimePaused">
             </PersistentString>
             <PersistentString
-               value = "timeElapsed">
+               value = "Float(fabrics[currentFabricIndex].fabricTime)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "On_My_Nerves.ViewController.viewWillAppear (On_My_Nerves.ViewController)(Swift.Bool) -&gt; ():ViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "progressView.numOfLines">
+            </PersistentString>
+            <PersistentString
+               value = "progressView.numOfCompletedLines">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -91,13 +102,13 @@
          contextName = "On_My_Nerves.CircleCounterView.touchesBegan (On_My_Nerves.CircleCounterView)(Swift.Set&lt;ObjectiveC.NSObject&gt;, withEvent : ObjectiveC.UIEvent) -&gt; ():CircleCounterView.swift">
          <PersistentStrings>
             <PersistentString
+               value = "UIColor.orangeColor()">
+            </PersistentString>
+            <PersistentString
                value = "prevCounterColor">
             </PersistentString>
             <PersistentString
                value = "prevOutlineColor">
-            </PersistentString>
-            <PersistentString
-               value = "UIColor.orangeColor()">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

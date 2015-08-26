@@ -361,6 +361,10 @@ class ViewController: UIViewController {
         
         cancelButton.enabled = true
         
+        // no more edits allowed
+        self.navigationController!.navigationBar.userInteractionEnabled = false
+//        self.navigationItem.rightBarButtonItem?.tintColor = UIColor(red: 0, green: 0, blue: 255, alpha: 255)
+        
     }
     
     func stopTimer() {
@@ -370,8 +374,6 @@ class ViewController: UIViewController {
     }
     
     func resetUI() {
-        
-        println("resetUI called")
         
         currentFabricIndex = 0
         progressView.numOfLines = fabrics.count
@@ -450,9 +452,12 @@ class ViewController: UIViewController {
         
     }
 
-    // for updating the overall progress view
+    // for updating the overall progress view and button enablement
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated);
+        
+        progressView.numOfLines = fabrics.count
+        progressView.numOfCompletedLines = currentFabricIndex + 1
         
         if (fabrics.count > 0) {
 
@@ -460,9 +465,6 @@ class ViewController: UIViewController {
             
             startStopTimerButton.enabled = true
         
-            progressView.numOfLines = fabrics.count
-            progressView.numOfCompletedLines = currentFabricIndex + 1
-
             if (fabrics.count == 1) {
 
                 prevButton.enabled = false
@@ -553,8 +555,6 @@ class ViewController: UIViewController {
         let alertController = UIAlertController(title: "\(fabrics[currentFabricIndex].fabricName) is up next", message:
             "Press OK to start next Fabric", preferredStyle: UIAlertControllerStyle.Alert)
         
-        println("I'm the show alert for next fabric")
-        
         alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {
             action in
             
@@ -569,8 +569,6 @@ class ViewController: UIViewController {
         
         let alertController = UIAlertController(title: title, message:
             message, preferredStyle: UIAlertControllerStyle.Alert)
-        
-                println("I'm the wait for user")
         
         // after the user dismisses the alert we can start the next 1 minute run
         alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {
