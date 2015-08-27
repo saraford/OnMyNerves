@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="64" width="589" height="445"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="fabric" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ujz-uj-7DT">
-                                        <rect key="frame" x="265" y="55" width="59" height="29"/>
+                                        <rect key="frame" x="265" y="60" width="59" height="29"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -58,12 +58,16 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="weq-ZI-Xvm">
+                                        <rect key="frame" x="482" y="31" width="78" height="141"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="centerX" secondItem="wsg-PN-Cl8" secondAttribute="centerX" id="9hG-2U-fzs"/>
                                     <constraint firstAttribute="centerY" secondItem="wsg-PN-Cl8" secondAttribute="centerY" constant="-7" id="Hfc-eB-1Eo"/>
-                                    <constraint firstItem="wsg-PN-Cl8" firstAttribute="top" secondItem="ujz-uj-7DT" secondAttribute="bottom" constant="33" id="kTg-1P-XUw"/>
+                                    <constraint firstItem="wsg-PN-Cl8" firstAttribute="top" secondItem="ujz-uj-7DT" secondAttribute="bottom" constant="28" id="kTg-1P-XUw"/>
                                     <constraint firstAttribute="centerX" secondItem="ujz-uj-7DT" secondAttribute="centerX" id="rGb-Sa-pCP"/>
                                 </constraints>
                             </view>
