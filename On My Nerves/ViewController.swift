@@ -541,7 +541,7 @@ class ViewController: UIViewController {
             if (currentFabricIndex < fabrics.count) {
                 
                 // rock on
-                showAlertAndWaitForUser("Fabric Done!", message: "Press OK to continue")
+                showAlertAndWaitForUser("\(fabrics[currentFabricIndex - 1].fabricName) Done!", message: "Press OK to continue")
                 
             } else {
                 
