@@ -5,6 +5,54 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
+        <!--Stats View Controller-->
+        <scene sceneID="DkE-mV-17p">
+            <objects>
+                <viewController id="d96-X3-OY1" customClass="StatsViewController" customModule="On_My_Nerves" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Lct-o1-di4"/>
+                        <viewControllerLayoutGuide type="bottom" id="FXg-hI-2ZM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="IFz-7D-CAV">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m18-rD-6SF">
+                                <rect key="frame" x="285" y="550" width="30" height="30"/>
+                                <state key="normal" title="OK">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="CloseWindow:" destination="d96-X3-OY1" eventType="touchUpInside" id="VtZ-7r-nrK"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="This is where data will be shown.........." translatesAutoresizingMaskIntoConstraints="NO" id="I6e-c9-E1f">
+                                <rect key="frame" x="0.0" y="20" width="600" height="396"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="396" id="JDZ-ep-xz7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="I6e-c9-E1f" secondAttribute="trailing" constant="-16" id="ABB-Bv-gVv"/>
+                            <constraint firstAttribute="centerX" secondItem="m18-rD-6SF" secondAttribute="centerX" id="DZv-cq-FCs"/>
+                            <constraint firstItem="FXg-hI-2ZM" firstAttribute="top" secondItem="m18-rD-6SF" secondAttribute="bottom" constant="20" id="b8R-gi-nHO"/>
+                            <constraint firstItem="I6e-c9-E1f" firstAttribute="leading" secondItem="IFz-7D-CAV" secondAttribute="leadingMargin" constant="-16" id="pJU-Fm-49h"/>
+                            <constraint firstItem="I6e-c9-E1f" firstAttribute="top" secondItem="Lct-o1-di4" secondAttribute="bottom" id="vxB-R1-N6q"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="statsTextField" destination="I6e-c9-E1f" id="4i9-r3-wC5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="raJ-kN-PA3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="854" y="-240"/>
+        </scene>
         <!--Fabrics-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -227,6 +275,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Fabrics" id="nIV-sP-dNc">
+                        <barButtonItem key="leftBarButtonItem" title="Stats" id="oWZ-T7-cgJ">
+                            <connections>
+                                <segue destination="d96-X3-OY1" kind="presentation" id="SfK-8j-grS"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="iGG-pM-OsH">
                             <color key="tintColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>

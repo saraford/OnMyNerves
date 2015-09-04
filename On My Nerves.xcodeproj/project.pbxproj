@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		467AC2D31B8A2E2D004A2517 /* OverallProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467AC2D21B8A2E2D004A2517 /* OverallProgressView.swift */; };
 		46D1BBD31B6F123300F92D78 /* Fabric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D1BBD21B6F123300F92D78 /* Fabric.swift */; };
+		46E26D441B99E9B800095119 /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E26D431B99E9B800095119 /* StatsViewController.swift */; };
 		46E91E821B812E7000803C7B /* SecondsPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E91E811B812E7000803C7B /* SecondsPickerViewController.swift */; };
 		46E966E11B89216B00973280 /* CircleCounterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E966E01B89216B00973280 /* CircleCounterView.swift */; };
 		46ED16D11B7E343D003B026A /* IronBacon.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46ED16D01B7E3398003B026A /* IronBacon.m4a */; };
@@ -36,6 +37,7 @@
 /* Begin PBXFileReference section */
 		467AC2D21B8A2E2D004A2517 /* OverallProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverallProgressView.swift; sourceTree = "<group>"; };
 		46D1BBD21B6F123300F92D78 /* Fabric.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fabric.swift; sourceTree = "<group>"; };
+		46E26D431B99E9B800095119 /* StatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
 		46E91E811B812E7000803C7B /* SecondsPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondsPickerViewController.swift; sourceTree = "<group>"; };
 		46E966E01B89216B00973280 /* CircleCounterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleCounterView.swift; sourceTree = "<group>"; };
 		46ED16D01B7E3398003B026A /* IronBacon.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = IronBacon.m4a; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 				46E91E811B812E7000803C7B /* SecondsPickerViewController.swift */,
 				46E966E01B89216B00973280 /* CircleCounterView.swift */,
 				467AC2D21B8A2E2D004A2517 /* OverallProgressView.swift */,
+				46E26D431B99E9B800095119 /* StatsViewController.swift */,
 			);
 			path = "On My Nerves";
 			sourceTree = "<group>";
@@ -245,6 +248,7 @@
 				46D1BBD31B6F123300F92D78 /* Fabric.swift in Sources */,
 				46F0D6401B6D5CFA00229D7D /* FabricListViewController.swift in Sources */,
 				46E91E821B812E7000803C7B /* SecondsPickerViewController.swift in Sources */,
+				46E26D441B99E9B800095119 /* StatsViewController.swift in Sources */,
 				46ED16D31B7E3A22003B026A /* HelpAboutViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

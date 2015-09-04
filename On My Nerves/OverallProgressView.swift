@@ -7,8 +7,8 @@
 //
 
 import UIKit
-
-@IBDesignable class OverallProgressView: UIView {
+//@IBDesignable
+class OverallProgressView: UIView {
     
     @IBInspectable var numOfLines:Int = 4 {
         didSet {

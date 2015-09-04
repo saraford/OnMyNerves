@@ -12,6 +12,7 @@ import AVFoundation
 var fabrics : [Fabric] = [Fabric]()
 var fabricNamesArray : [String] = [String]()
 var fabricTimesArray : [Int] = [Int]()
+var fabricCompletedArray : [String] = [String]()
 
 class ViewController: UIViewController {
 
@@ -137,7 +138,26 @@ class ViewController: UIViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "resetUI", name: "Terminating", object: nil)
         
         
+        // load any previously saved completions, in case user finishes and we need to tack on
+        if NSUserDefaults.standardUserDefaults().objectForKey("fabricCompleted") != nil {
+            
+            fabricCompletedArray = NSUserDefaults.standardUserDefaults().objectForKey("fabricCompleted") as! [String]
+            
+        }
+                
+        
     }// view did load
+    
+    
+    func createDummyData() {
+    
+        fabricCompletedArray = NSUserDefaults.standardUserDefaults().objectForKey("fabricCompleted") as! [String]
+        fabricCompletedArray.append("09/03/2015")
+        fabricCompletedArray.append("09/01/2015")
+        fabricCompletedArray.append("08/30/2015")
+        NSUserDefaults.standardUserDefaults().setObject(fabricCompletedArray, forKey: "fabricCompleted")
+    
+    }
     
     
     @IBAction func cancelFabrics(sender: UIButton) {
@@ -611,7 +631,22 @@ class ViewController: UIViewController {
                 self.alarmAudio.stop()
                 self.alarmAudio.currentTime = 0.0
             }
-
+            
+            // record that user has completed the fabric end-to-end
+            var date = NSDate()
+            let formatter = NSDateFormatter()
+            formatter.dateFormat = "MM/dd/yyyy"
+            let saveDate = formatter.stringFromDate(date)
+            
+            // right now only save once a day
+            if !contains(fabricCompletedArray, saveDate) {
+                
+                fabricCompletedArray.append(saveDate)
+                NSUserDefaults.standardUserDefaults().setObject(fabricCompletedArray, forKey: "fabricCompleted")
+                
+            }
+            
+            
             // we're all done
             self.resetUI()
             
