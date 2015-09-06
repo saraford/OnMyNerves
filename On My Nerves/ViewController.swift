@@ -144,7 +144,9 @@ class ViewController: UIViewController {
             fabricCompletedArray = NSUserDefaults.standardUserDefaults().objectForKey("fabricCompleted") as! [String]
             
         }
-                
+        
+        
+//        createDummyData()
         
     }// view did load
     
@@ -155,6 +157,16 @@ class ViewController: UIViewController {
         fabricCompletedArray.append("09/03/2015")
         fabricCompletedArray.append("09/01/2015")
         fabricCompletedArray.append("08/30/2015")
+        fabricCompletedArray.append("08/13/2015")
+        fabricCompletedArray.append("08/11/2015")
+        fabricCompletedArray.append("08/10/2015")
+        fabricCompletedArray.append("08/03/2015")
+        fabricCompletedArray.append("07/21/2015")
+        fabricCompletedArray.append("07/20/2015")
+        fabricCompletedArray.append("07/14/2015")
+        fabricCompletedArray.append("07/01/2015")
+        fabricCompletedArray.append("06/30/2015")
+        
         NSUserDefaults.standardUserDefaults().setObject(fabricCompletedArray, forKey: "fabricCompleted")
     
     }

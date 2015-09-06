@@ -22,10 +22,12 @@ class StatsViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         self.monthPicker.delegate = self
         self.monthPicker.dataSource = self
         
-        loadStatsFromDisk()
-        
-        monthPicker.selectRow(0, inComponent: 0, animated: false)
-        updatePieChart(0)
+        var dataExists = loadStatsFromDisk()
+
+        if (dataExists) {
+            monthPicker.selectRow(0, inComponent: 0, animated: false)
+            updatePieChart(0)
+        }
         
     }
     
@@ -94,7 +96,7 @@ class StatsViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         
     }
     
-    func loadStatsFromDisk() {
+    func loadStatsFromDisk() -> Bool {
         
         // load data
         if NSUserDefaults.standardUserDefaults().objectForKey("fabricCompleted") != nil {
@@ -125,12 +127,14 @@ class StatsViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
                 
             }
         
+            return true
             
         }
         else {
             
-           // statsTextField.text = "Sorry, nothing to display"
+            statsLabel.text = "Sorry, nothing to display"
             
+            return false
         }
 
     }
