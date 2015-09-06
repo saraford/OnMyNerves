@@ -11,6 +11,17 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "On_My_Nerves.MonthYear.daysInMonth.getter : Swift.Int:MonthYear.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "day.day">
+            </PersistentString>
+            <PersistentString
+               value = "month.month">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "On_My_Nerves.ViewController.(showAlertToEnd (On_My_Nerves.ViewController) -&gt; (Swift.String, message : Swift.String) -&gt; ()).(closure #1):ViewController.swift">
          <PersistentStrings>
             <PersistentString
@@ -40,6 +51,33 @@
             </PersistentString>
             <PersistentString
                value = "currentFabricColor">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "On_My_Nerves.StatsViewController.pickerView (On_My_Nerves.StatsViewController)(ObjectiveC.UIPickerView, didSelectRow : Swift.Int, inComponent : Swift.Int) -&gt; ():StatsViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "percentageCompleted">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "On_My_Nerves.StatsViewController.viewDidLoad (On_My_Nerves.StatsViewController)() -&gt; ():StatsViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "day.day">
+            </PersistentString>
+            <PersistentString
+               value = "totalPossibleDaysInMonthThusFar">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "On_My_Nerves.MonthYear.monthName.getter : Swift.String:MonthYear.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "month">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -78,6 +116,17 @@
             </PersistentString>
             <PersistentString
                value = "indexPath.row">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "On_My_Nerves.StatsViewController.displayStats (On_My_Nerves.StatsViewController)() -&gt; ():StatsViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "data">
+            </PersistentString>
+            <PersistentString
+               value = "fabricCompletedArray">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -197,6 +246,14 @@
             </PersistentString>
             <PersistentString
                value = "prevSelectedTime">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "On_My_Nerves.StatsViewController.updatePieChart (On_My_Nerves.StatsViewController)(Swift.Int) -&gt; ():StatsViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "key.month">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

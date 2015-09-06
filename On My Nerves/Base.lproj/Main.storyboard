@@ -26,27 +26,51 @@
                                     <action selector="CloseWindow:" destination="d96-X3-OY1" eventType="touchUpInside" id="VtZ-7r-nrK"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="This is where data will be shown.........." translatesAutoresizingMaskIntoConstraints="NO" id="I6e-c9-E1f">
-                                <rect key="frame" x="0.0" y="20" width="600" height="396"/>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vh7-cV-TTe">
+                                <rect key="frame" x="0.0" y="-22" width="600" height="162"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="eSG-cI-b9b"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="d96-X3-OY1" id="mhQ-1u-eM3"/>
+                                    <outlet property="delegate" destination="d96-X3-OY1" id="3nf-8P-0CP"/>
+                                </connections>
+                            </pickerView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P7a-33-6Eb" customClass="PieChartView" customModule="On_My_Nerves" customModuleProvider="target">
+                                <rect key="frame" x="150" y="193" width="300" height="300"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="396" id="JDZ-ep-xz7"/>
+                                    <constraint firstAttribute="width" constant="300" id="FQt-ms-j02"/>
+                                    <constraint firstAttribute="height" constant="300" id="Vxi-Lm-tcg"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Days completed: " lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NMe-6a-DTn">
+                                <rect key="frame" x="16" y="142" width="568" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="I6e-c9-E1f" secondAttribute="trailing" constant="-16" id="ABB-Bv-gVv"/>
-                            <constraint firstAttribute="centerX" secondItem="m18-rD-6SF" secondAttribute="centerX" id="DZv-cq-FCs"/>
-                            <constraint firstItem="FXg-hI-2ZM" firstAttribute="top" secondItem="m18-rD-6SF" secondAttribute="bottom" constant="20" id="b8R-gi-nHO"/>
-                            <constraint firstItem="I6e-c9-E1f" firstAttribute="leading" secondItem="IFz-7D-CAV" secondAttribute="leadingMargin" constant="-16" id="pJU-Fm-49h"/>
-                            <constraint firstItem="I6e-c9-E1f" firstAttribute="top" secondItem="Lct-o1-di4" secondAttribute="bottom" id="vxB-R1-N6q"/>
+                            <constraint firstItem="NMe-6a-DTn" firstAttribute="top" secondItem="Vh7-cV-TTe" secondAttribute="bottom" constant="8" id="0bt-uo-5E3"/>
+                            <constraint firstItem="FXg-hI-2ZM" firstAttribute="top" secondItem="P7a-33-6Eb" secondAttribute="bottom" constant="107" id="7Pr-aH-70z"/>
+                            <constraint firstItem="Vh7-cV-TTe" firstAttribute="leading" secondItem="IFz-7D-CAV" secondAttribute="leadingMargin" constant="-16" id="A5I-No-XvS"/>
+                            <constraint firstItem="FXg-hI-2ZM" firstAttribute="top" secondItem="m18-rD-6SF" secondAttribute="bottom" constant="20" id="J7I-sE-0jm"/>
+                            <constraint firstItem="NMe-6a-DTn" firstAttribute="trailing" secondItem="IFz-7D-CAV" secondAttribute="trailingMargin" id="JpB-m2-2oS"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Vh7-cV-TTe" secondAttribute="trailing" constant="-16" id="R59-gq-Zgd"/>
+                            <constraint firstAttribute="centerX" secondItem="P7a-33-6Eb" secondAttribute="centerX" id="S9b-u3-arl"/>
+                            <constraint firstAttribute="centerX" secondItem="NMe-6a-DTn" secondAttribute="centerX" id="VC5-Ba-fwo"/>
+                            <constraint firstAttribute="centerX" secondItem="m18-rD-6SF" secondAttribute="centerX" id="bOm-QI-VDs"/>
+                            <constraint firstItem="Vh7-cV-TTe" firstAttribute="top" secondItem="IFz-7D-CAV" secondAttribute="topMargin" constant="-16" id="eFV-yg-mzl"/>
+                            <constraint firstItem="NMe-6a-DTn" firstAttribute="leading" secondItem="IFz-7D-CAV" secondAttribute="leadingMargin" id="eLb-kC-W1h"/>
+                            <constraint firstAttribute="centerX" secondItem="Vh7-cV-TTe" secondAttribute="centerX" id="kYb-x5-qQa"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="statsTextField" destination="I6e-c9-E1f" id="4i9-r3-wC5"/>
+                        <outlet property="monthPicker" destination="Vh7-cV-TTe" id="mZb-PU-4M0"/>
+                        <outlet property="pieChart" destination="P7a-33-6Eb" id="0lh-jk-sHn"/>
+                        <outlet property="statsLabel" destination="NMe-6a-DTn" id="Mts-eg-sbR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="raJ-kN-PA3" userLabel="First Responder" sceneMemberID="firstResponder"/>
