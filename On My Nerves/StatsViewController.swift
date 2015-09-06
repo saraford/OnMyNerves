@@ -43,8 +43,18 @@ class StatsViewController: UIViewController {
             var key = (Array(data.keys)[lastSelectedMonthIndex])
             
             self.monthButton.setTitle("\(key.monthName) \(key.year)", forState: UIControlState.Normal)
+            self.monthButton.enabled = true
 
             updatePieChart(lastSelectedMonthIndex)
+
+        } else {
+        
+            // there's no data. first run state
+            self.monthButton.setTitle("No Usage Found", forState: UIControlState.Normal)
+            self.monthButton.enabled = false
+
+            statsLabel.text = "Usage is recorded after finishing the last fabric in queue."
+
         }
         
     }
@@ -88,7 +98,7 @@ class StatsViewController: UIViewController {
             // subtracting because the current day shouldn't count
             var today = getTodaysDay() - 1
             
-            statsLabel.text = "So far in \(key.monthName), you have completed \(Int(days)) days out of \(today) days for a grade of \(ceil(percentageCompleted * 100))%"
+            statsLabel.text = "So far in \(key.monthName), you have completed \(Int(days)) days out of \(today) days for a score of \(ceil(percentageCompleted * 100))%"
             
         } else {
             
@@ -144,8 +154,6 @@ class StatsViewController: UIViewController {
             
         }
         else {
-            
-            statsLabel.text = "Sorry, nothing to display"
             
             return false
         }
