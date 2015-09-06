@@ -42,7 +42,10 @@ class StatsViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     // The data to return for the row and component (column) that's being passed in
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         
-        return "\(Array(data.keys)[row])"
+        var monthYear = Array(data.keys)[row]
+        var displayString = "\(monthYear.monthName) \(monthYear.year)"
+        
+        return "\(displayString)"
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
