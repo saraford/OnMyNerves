@@ -8,54 +8,67 @@
 
 import UIKit
 
-class StatsViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+
+// Needed for the MonthPicker Lightbox view controller to send
+// the selected Month picked back to this Stats view controller
+extension StatsViewController: MonthPickedDelegate {
+    func changeMonth(row: Int) {
+        // NSLog("getting data from TimePickerDelegate")
+        
+        self.lastSelectedMonthIndex = row
+        
+        var key = (Array(data.keys)[row])
+        self.monthButton.setTitle("\(key.monthName) \(key.year)", forState: UIControlState.Normal)
+        
+        updatePieChart(row)
+    }
+}
+
+class StatsViewController: UIViewController {
     
     @IBOutlet weak var statsLabel: UILabel!
-    @IBOutlet weak var monthPicker: UIPickerView!
     @IBOutlet weak var pieChart: PieChartView!
+    @IBOutlet weak var monthButton: UIButton!
     
+    var lastSelectedMonthIndex:Int = 0
     var data = Dictionary<MonthYear, Int>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.monthPicker.delegate = self
-        self.monthPicker.dataSource = self
         
         var dataExists = loadStatsFromDisk()
 
         if (dataExists) {
-            monthPicker.selectRow(0, inComponent: 0, animated: false)
-            updatePieChart(0)
+
+            var key = (Array(data.keys)[lastSelectedMonthIndex])
+            
+            self.monthButton.setTitle("\(key.monthName) \(key.year)", forState: UIControlState.Normal)
+
+            updatePieChart(lastSelectedMonthIndex)
         }
         
     }
     
-    // The number of columns of data
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    // The number of rows of data
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return data.count
-    }
-    
-    // The data to return for the row and component (column) that's being passed in
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    @IBAction func showMonthPicker(sender: AnyObject) {
         
-        var monthYear = Array(data.keys)[row]
-        var displayString = "\(monthYear.monthName) \(monthYear.year)"
+        var monthPickerVC = self.storyboard?.instantiateViewControllerWithIdentifier("myMonthPicker") as! MonthPickerViewController
         
-        return "\(displayString)"
-    }
-    
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        // all this stuff needed to get the lightbox control effect
+        monthPickerVC.providesPresentationContextTransitionStyle = true
+        monthPickerVC.definesPresentationContext = true
+        monthPickerVC.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
+        
+        // tell the picker what the previously-selected value is, if any.
+        monthPickerVC.delegate = self
+        monthPickerVC.prevSelectedMonthIndex = lastSelectedMonthIndex
+        
+        // give the data to the monthPicker
+        monthPickerVC.data = data
+        
+        self.presentViewController(monthPickerVC, animated: false, completion: nil)
 
-        updatePieChart(row)
-        
     }
-
+    
     func updatePieChart(row: Int) {
 
         var key = (Array(data.keys)[row])
