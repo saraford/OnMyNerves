@@ -9,7 +9,8 @@
 import Foundation
 import UIKit
 
-@IBDesignable class PieChartView: UIView {
+//@IBDesignable 
+class PieChartView: UIView {
     
     let fullCircle: CGFloat = 2 * π
     

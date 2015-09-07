@@ -11,21 +11,18 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "On_My_Nerves.MonthYear.daysInMonth.getter : Swift.Int:MonthYear.swift">
+         contextName = "static On_My_Nerves.ImageStore.saveImage (On_My_Nerves.ImageStore.Type)(ObjectiveC.UIImage, name : Swift.String) -&gt; ():ImageStore.swift">
          <PersistentStrings>
             <PersistentString
-               value = "day.day">
-            </PersistentString>
-            <PersistentString
-               value = "month.month">
+               value = "savePath">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "On_My_Nerves.StatsViewController.showMonthPicker (On_My_Nerves.StatsViewController)(Swift.AnyObject) -&gt; ():StatsViewController.swift">
+         contextName = "On_My_Nerves.ViewController.(viewDidLoad (On_My_Nerves.ViewController) -&gt; () -&gt; ()).(closure #1):ViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "desiredMonthIndex">
+               value = "currentFabricIndex">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -38,27 +35,18 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "On_My_Nerves.AddEditFabricsViewController.viewDidLoad (On_My_Nerves.AddEditFabricsViewController)() -&gt; ():AddEditFabricsViewController.swift">
+         contextName = "On_My_Nerves.MonthPickerViewController.closeWindow (On_My_Nerves.MonthPickerViewController)(Swift.AnyObject) -&gt; ():MonthPickerViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "passedValue">
+               value = "currentSelectedMonthIndex">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "On_My_Nerves.ViewController.prevButton (On_My_Nerves.ViewController)(ObjectiveC.UIButton) -&gt; ():ViewController.swift">
-      </ContextState>
-      <ContextState
-         contextName = "On_My_Nerves.ViewController.resetFabricDetails (On_My_Nerves.ViewController)() -&gt; ():ViewController.swift">
+         contextName = "On_My_Nerves.AddEditFabricsViewController.viewDidLoad (On_My_Nerves.AddEditFabricsViewController)() -&gt; ():AddEditFabricsViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "currentFabricIndex">
-            </PersistentString>
-            <PersistentString
-               value = "elapsedTimePaused">
-            </PersistentString>
-            <PersistentString
-               value = "currentFabricColor">
+               value = "passedValue">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -69,6 +57,23 @@
                value = "percentageCompleted">
             </PersistentString>
          </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "On_My_Nerves.ViewController.resetFabricDetails (On_My_Nerves.ViewController)() -&gt; ():ViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "currentFabricColor">
+            </PersistentString>
+            <PersistentString
+               value = "elapsedTimePaused">
+            </PersistentString>
+            <PersistentString
+               value = "currentFabricIndex">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "On_My_Nerves.ViewController.prevButton (On_My_Nerves.ViewController)(ObjectiveC.UIButton) -&gt; ():ViewController.swift">
       </ContextState>
       <ContextState
          contextName = "On_My_Nerves.StatsViewController.viewDidLoad (On_My_Nerves.StatsViewController)() -&gt; ():StatsViewController.swift">
@@ -142,13 +147,13 @@
          contextName = "On_My_Nerves.ViewController.updateFabricTime (On_My_Nerves.ViewController)() -&gt; ():ViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "Float(fabrics[currentFabricIndex].fabricTime)">
+               value = "timeElapsed">
             </PersistentString>
             <PersistentString
                value = "elapsedTimePaused">
             </PersistentString>
             <PersistentString
-               value = "timeElapsed">
+               value = "Float(fabrics[currentFabricIndex].fabricTime)">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -167,13 +172,13 @@
          contextName = "On_My_Nerves.CircleCounterView.touchesBegan (On_My_Nerves.CircleCounterView)(Swift.Set&lt;ObjectiveC.NSObject&gt;, withEvent : ObjectiveC.UIEvent) -&gt; ():CircleCounterView.swift">
          <PersistentStrings>
             <PersistentString
+               value = "UIColor.orangeColor()">
+            </PersistentString>
+            <PersistentString
                value = "prevOutlineColor">
             </PersistentString>
             <PersistentString
                value = "prevCounterColor">
-            </PersistentString>
-            <PersistentString
-               value = "UIColor.orangeColor()">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -282,18 +287,21 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "static On_My_Nerves.ImageStore.saveImage (On_My_Nerves.ImageStore.Type)(ObjectiveC.UIImage, name : Swift.String) -&gt; ():ImageStore.swift">
+         contextName = "On_My_Nerves.MonthYear.daysInMonth.getter : Swift.Int:MonthYear.swift">
          <PersistentStrings>
             <PersistentString
-               value = "savePath">
+               value = "day.day">
+            </PersistentString>
+            <PersistentString
+               value = "month.month">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "On_My_Nerves.ViewController.(viewDidLoad (On_My_Nerves.ViewController) -&gt; () -&gt; ()).(closure #1):ViewController.swift">
+         contextName = "On_My_Nerves.StatsViewController.showMonthPicker (On_My_Nerves.StatsViewController)(Swift.AnyObject) -&gt; ():StatsViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "currentFabricIndex">
+               value = "desiredMonthIndex">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

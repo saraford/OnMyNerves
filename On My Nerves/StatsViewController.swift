@@ -32,6 +32,7 @@ class StatsViewController: UIViewController {
     
     var lastSelectedMonthIndex:Int = 0
     var data = Dictionary<MonthYear, Int>()
+    var defaultBlue = UIColor(red: 0, green: 122/255, blue: 255/255, alpha: 1.0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +44,7 @@ class StatsViewController: UIViewController {
             var key = (Array(data.keys)[lastSelectedMonthIndex])
             
             self.monthButton.setTitle("\(key.monthName) \(key.year)", forState: UIControlState.Normal)
+            self.monthButton.setTitleColor(defaultBlue, forState: .Normal)
             self.monthButton.enabled = true
 
             updatePieChart(lastSelectedMonthIndex)
@@ -51,6 +53,7 @@ class StatsViewController: UIViewController {
         
             // there's no data. first run state
             self.monthButton.setTitle("No Usage Found", forState: UIControlState.Normal)
+            self.monthButton.setTitleColor(UIColor.darkGrayColor(), forState: .Normal)
             self.monthButton.enabled = false
 
             statsLabel.text = "Usage is recorded after finishing the last fabric in queue."

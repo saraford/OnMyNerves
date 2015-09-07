@@ -15,12 +15,13 @@ protocol MonthPickedDelegate {
 class MonthPickerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
     var prevSelectedMonthIndex:Int!
+    var currentSelectedMonthIndex:Int = 0
     var delegate: MonthPickedDelegate?
     var data = Dictionary<MonthYear, Int>()
     
     @IBOutlet weak var lightboxView: UIView!
     @IBOutlet weak var monthPicker: UIPickerView!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -34,11 +35,7 @@ class MonthPickerViewController: UIViewController, UIPickerViewDelegate, UIPicke
         monthPicker.selectRow(prevSelectedMonthIndex, inComponent: 0, animated: true)
     }
     
-    
-    @IBAction func CloseWindow(sender: UIButton) {
-        self.dismissViewControllerAnimated(false, completion: nil)
-    }
-    
+        
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -65,12 +62,14 @@ class MonthPickerViewController: UIViewController, UIPickerViewDelegate, UIPicke
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        
-        self.delegate?.changeMonth(row)
+  
+        currentSelectedMonthIndex = row
         
     }
     
     @IBAction func closeWindow(sender: AnyObject) {
+        
+        self.delegate?.changeMonth(currentSelectedMonthIndex)
         
         self.dismissViewControllerAnimated(false, completion: nil)
     

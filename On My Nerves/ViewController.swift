@@ -27,6 +27,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var progressView: OverallProgressView!
     @IBOutlet weak var startLabel: UILabel!    
     @IBOutlet weak var helpAboutButton: UIButton!
+    @IBOutlet weak var fabricDisplayView: UIView!
+    @IBOutlet weak var createFabricsList: UIButton!
     
     var startTime:NSDate!
     var myStopTime:NSDate!
@@ -58,7 +60,8 @@ class ViewController: UIViewController {
         // recreate the arrays saving the data
         if NSUserDefaults.standardUserDefaults().objectForKey("fabricNames") != nil {
             
-         //   println("loading the data")
+            fabricDisplayView.hidden = false
+            createFabricsList.hidden = true
             
             fabricNamesArray = NSUserDefaults.standardUserDefaults().objectForKey("fabricNames") as! [String]
             
@@ -93,6 +96,11 @@ class ViewController: UIViewController {
             nextButton.enabled = false
             cancelButton.enabled = false
             startStopTimerButton.enabled = false
+            
+            // instead of showing the fabric, show the "Edit" button
+            fabricDisplayView.hidden = true
+            createFabricsList.hidden = false
+            
             
         }
         
@@ -146,7 +154,7 @@ class ViewController: UIViewController {
         }
         
         
-        createDummyData()
+    //    createDummyData()
         
     }// view did load
     
@@ -156,18 +164,20 @@ class ViewController: UIViewController {
 //        fabricCompletedArray = NSUserDefaults.standardUserDefaults().objectForKey("fabricCompleted") as! [String]
         
         fabricCompletedArray = [String]()
+        fabricCompletedArray.append("09/05/2015")
+        fabricCompletedArray.append("09/04/2015")
         fabricCompletedArray.append("09/03/2015")
         fabricCompletedArray.append("09/01/2015")
-        fabricCompletedArray.append("08/30/2015")
-        fabricCompletedArray.append("08/13/2015")
-        fabricCompletedArray.append("08/11/2015")
-        fabricCompletedArray.append("08/10/2015")
-        fabricCompletedArray.append("08/03/2015")
-        fabricCompletedArray.append("07/21/2015")
-        fabricCompletedArray.append("07/20/2015")
-        fabricCompletedArray.append("07/14/2015")
-        fabricCompletedArray.append("07/01/2015")
-        fabricCompletedArray.append("06/30/2015")
+//        fabricCompletedArray.append("08/30/2015")
+//        fabricCompletedArray.append("08/13/2015")
+//        fabricCompletedArray.append("08/11/2015")
+//        fabricCompletedArray.append("08/10/2015")
+//        fabricCompletedArray.append("08/03/2015")
+//        fabricCompletedArray.append("07/21/2015")
+//        fabricCompletedArray.append("07/20/2015")
+//        fabricCompletedArray.append("07/14/2015")
+//        fabricCompletedArray.append("07/01/2015")
+//        fabricCompletedArray.append("06/30/2015")
         
         NSUserDefaults.standardUserDefaults().setObject(fabricCompletedArray, forKey: "fabricCompleted")
     
@@ -296,6 +306,7 @@ class ViewController: UIViewController {
             // no editing while running - can only do it from ResetUI (startover or finish fabric cycle)
             self.navigationController!.navigationBar.userInteractionEnabled = false
             self.navigationItem.rightBarButtonItem?.tintColor = UIColor.darkGrayColor()
+            self.navigationItem.leftBarButtonItem?.tintColor = UIColor.darkGrayColor()
             
             // no getting info b/c alerts will show below the info screen
             helpAboutButton.enabled = false
@@ -450,7 +461,8 @@ class ViewController: UIViewController {
         
         // and can edit by default
         self.navigationController!.navigationBar.userInteractionEnabled = true
-        self.navigationItem.rightBarButtonItem?.tintColor = UIColor(red: 0, green: 0, blue: 255, alpha: 255)
+        self.navigationItem.rightBarButtonItem?.tintColor = UIColor(red: 0, green: 122/255, blue: 255/255, alpha: 1.0)
+        self.navigationItem.leftBarButtonItem?.tintColor = UIColor(red: 0, green: 122/255, blue: 255/255, alpha: 1.0)
         
     }
     
@@ -498,8 +510,12 @@ class ViewController: UIViewController {
         progressView.numOfLines = fabrics.count
         progressView.numOfCompletedLines = currentFabricIndex + 1
         
+        // if we have fabrics in the list
         if (fabrics.count > 0) {
 
+            fabricDisplayView.hidden = false
+            createFabricsList.hidden = true
+            
             resetFabricDetails()
             
             startStopTimerButton.enabled = true
@@ -528,14 +544,22 @@ class ViewController: UIViewController {
             
         } else {
             
+            // we don't have fabrics in the list
             startStopTimerButton.enabled = false
             prevButton.enabled = false
             nextButton.enabled = false
-        }
+            
+            fabricDisplayView.hidden = true
+            createFabricsList.hidden = false
 
+        }
+        
         if (fabricTimer.valid) {
+            
             cancelButton.enabled = true
+            
         } else {
+            
             cancelButton.enabled = false
         }
         
