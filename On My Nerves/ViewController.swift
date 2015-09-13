@@ -153,35 +153,57 @@ class ViewController: UIViewController {
             
         }
         
-        
-    //    createDummyData()
-        
     }// view did load
     
     
-    func createDummyData() {
-    
-//        fabricCompletedArray = NSUserDefaults.standardUserDefaults().objectForKey("fabricCompleted") as! [String]
-        
-        fabricCompletedArray = [String]()
-        fabricCompletedArray.append("09/05/2015")
-        fabricCompletedArray.append("09/04/2015")
-        fabricCompletedArray.append("09/03/2015")
-        fabricCompletedArray.append("09/01/2015")
+//    func createDummyData() {
+//    
+////        fabricCompletedArray = NSUserDefaults.standardUserDefaults().objectForKey("fabricCompleted") as! [String]
+//        
+//        fabricCompletedArray = [String]()
+//
+//        fabricCompletedArray.append("09/10/2015")
+//        fabricCompletedArray.append("09/09/2015")
+//        fabricCompletedArray.append("09/08/2015")
+//        fabricCompletedArray.append("09/07/2015")
+//        fabricCompletedArray.append("09/06/2015")
+//        fabricCompletedArray.append("09/05/2015")
+//        fabricCompletedArray.append("09/04/2015")
+//        fabricCompletedArray.append("09/03/2015")
+//        fabricCompletedArray.append("09/01/2015")
+//        
 //        fabricCompletedArray.append("08/30/2015")
+//        fabricCompletedArray.append("08/29/2015")
+//        fabricCompletedArray.append("08/28/2015")
+//        fabricCompletedArray.append("08/27/2015")
+//        fabricCompletedArray.append("08/26/2015")
+//        fabricCompletedArray.append("08/25/2015")
+//        fabricCompletedArray.append("08/24/2015")
+//        fabricCompletedArray.append("08/23/2015")
+//        fabricCompletedArray.append("08/22/2015")
+//        fabricCompletedArray.append("08/20/2015")
+//        fabricCompletedArray.append("08/19/2015")
+//        fabricCompletedArray.append("08/18/2015")
+//        fabricCompletedArray.append("08/17/2015")
+//        fabricCompletedArray.append("08/16/2015")
+//        fabricCompletedArray.append("08/15/2015")
 //        fabricCompletedArray.append("08/13/2015")
+//        fabricCompletedArray.append("08/12/2015")
 //        fabricCompletedArray.append("08/11/2015")
 //        fabricCompletedArray.append("08/10/2015")
+//        fabricCompletedArray.append("08/09/2015")
+//        fabricCompletedArray.append("08/08/2015")
+//        fabricCompletedArray.append("08/06/2015")
+//        fabricCompletedArray.append("08/05/2015")
+//        fabricCompletedArray.append("08/04/2015")
 //        fabricCompletedArray.append("08/03/2015")
-//        fabricCompletedArray.append("07/21/2015")
-//        fabricCompletedArray.append("07/20/2015")
-//        fabricCompletedArray.append("07/14/2015")
-//        fabricCompletedArray.append("07/01/2015")
-//        fabricCompletedArray.append("06/30/2015")
-        
-        NSUserDefaults.standardUserDefaults().setObject(fabricCompletedArray, forKey: "fabricCompleted")
-    
-    }
+//        fabricCompletedArray.append("08/02/2015")
+//        fabricCompletedArray.append("08/01/2015")
+//
+//        
+//        NSUserDefaults.standardUserDefaults().setObject(fabricCompletedArray, forKey: "fabricCompleted")
+//    
+//    }
     
     
     @IBAction func cancelFabrics(sender: UIButton) {
