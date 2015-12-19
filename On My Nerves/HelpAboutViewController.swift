@@ -28,7 +28,7 @@ class HelpAboutViewController: UIViewController {
             "Use at own risk\n\n" +
             "Copyright (c) 2015 Sara Ford. All rights reserved."
         
-        HelpAboutText.font = UIFont(name: HelpAboutText.font.fontName, size: 18)
+        HelpAboutText.font = UIFont(name: HelpAboutText.font!.fontName, size: 18)
         
         HelpAboutText.scrollRangeToVisible(NSRange(location:0, length:0))
 

@@ -43,7 +43,6 @@ class PieChartView: UIView {
         let startAngle: CGFloat = 0
         
         let context = UIGraphicsGetCurrentContext()
-        let colorspace = CGColorSpaceCreateDeviceRGB()
         
         CGContextSetFillColorWithColor(context, color.CGColor)
         CGContextMoveToPoint(context, center.x, center.y)

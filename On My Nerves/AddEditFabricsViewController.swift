@@ -24,33 +24,33 @@ class AddEditFabricsViewController: UIViewController, UITextFieldDelegate,  UINa
         if (passedValue == nil) {
             
             // newly created fabric
-            var index: Int = 0
-            if (fabrics.count > 0) {
-                index = fabrics.count - 1
-            }
+//            var index: Int = 0
+//            if (fabrics.count > 0) {
+//                index = fabrics.count - 1
+//            }
             
             // create a new fabric
-            var newFabric = Fabric()
+            let newFabric = Fabric()
             
-            newFabric.fabricName = fabricName.text
-            newFabric.fabricTime = fabricTime.text.toInt()!
+            newFabric.fabricName = fabricName.text!
+            newFabric.fabricTime = Int(fabricTime.text!)!
             
             fabrics.append(newFabric)
             
             // add data to the arrays to save to disk
-            fabricNamesArray.append(fabricName.text)
-            fabricTimesArray.append(fabricTime.text.toInt()!)
+            fabricNamesArray.append(fabricName.text!)
+            fabricTimesArray.append(Int(fabricTime.text!)!)
             
             
         } else {
             
             // save the info the user entered into the fields
-            fabrics[passedValue].fabricName = fabricName.text
-            fabrics[passedValue].fabricTime = fabricTime.text.toInt()!
+            fabrics[passedValue].fabricName = fabricName.text!
+            fabrics[passedValue].fabricTime = Int(fabricTime.text!)!
 
             // update data to the arrays to save to disk
-            fabricNamesArray[passedValue] = fabricName.text
-            fabricTimesArray[passedValue] = fabricTime.text.toInt()!
+            fabricNamesArray[passedValue] = fabricName.text!
+            fabricTimesArray[passedValue] = Int(fabricTime.text!)!
             
             passedValue = nil
         }
@@ -142,7 +142,7 @@ class AddEditFabricsViewController: UIViewController, UITextFieldDelegate,  UINa
     }
     
     // if the user taps outside the keyboard to add the item
-    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.view.endEditing(true)
         
         checkErrorMessage()
@@ -158,7 +158,7 @@ class AddEditFabricsViewController: UIViewController, UITextFieldDelegate,  UINa
             return true
         }
        
-        let newLength = count(textField.text.utf16) + count(string.utf16) - range.length
+        let newLength = textField.text!.utf16.count + string.utf16.count - range.length
         
         return newLength <= 3
         
@@ -168,13 +168,13 @@ class AddEditFabricsViewController: UIViewController, UITextFieldDelegate,  UINa
         
         var errors = false
         
-        if fabricName.text.isEmpty {
+        if fabricName.text!.isEmpty {
             
             errors = true
             errorMessage.hidden = false
             errorMessage.text = "Sorry, fabric name is required"
             
-        } else if fabricTime.text.isEmpty {
+        } else if fabricTime.text!.isEmpty {
             
             errors = true
             errorMessage.hidden = false
@@ -200,7 +200,7 @@ class AddEditFabricsViewController: UIViewController, UITextFieldDelegate,  UINa
             doneButton.enabled = true
         }
         
-        if fabricTime.text.isEmpty && fabricName.text.isEmpty {
+        if fabricTime.text!.isEmpty && fabricName.text!.isEmpty {
             doneButton.enabled = false
         }
         

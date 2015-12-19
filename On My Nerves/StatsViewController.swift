@@ -17,7 +17,7 @@ extension StatsViewController: MonthPickedDelegate {
         
         self.lastSelectedMonthIndex = row
         
-        var key = (Array(data.keys)[row])
+        let key = (Array(data.keys)[row])
         self.monthButton.setTitle("\(key.monthName) \(key.year)", forState: UIControlState.Normal)
         
         updatePieChart(row)
@@ -37,11 +37,11 @@ class StatsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var dataExists = loadStatsFromDisk()
+        let dataExists = loadStatsFromDisk()
 
         if (dataExists) {
 
-            var key = (Array(data.keys)[lastSelectedMonthIndex])
+            let key = (Array(data.keys)[lastSelectedMonthIndex])
             
             self.monthButton.setTitle("\(key.monthName) \(key.year)", forState: UIControlState.Normal)
             self.monthButton.setTitleColor(defaultBlue, forState: .Normal)
@@ -64,7 +64,7 @@ class StatsViewController: UIViewController {
     
     @IBAction func showMonthPicker(sender: AnyObject) {
         
-        var monthPickerVC = self.storyboard?.instantiateViewControllerWithIdentifier("myMonthPicker") as! MonthPickerViewController
+        let monthPickerVC = self.storyboard?.instantiateViewControllerWithIdentifier("myMonthPicker") as! MonthPickerViewController
         
         // all this stuff needed to get the lightbox control effect
         monthPickerVC.providesPresentationContextTransitionStyle = true
@@ -84,13 +84,13 @@ class StatsViewController: UIViewController {
     
     func updatePieChart(row: Int) {
 
-        var key = (Array(data.keys)[row])
-        var days = data[key]!
+        let key = (Array(data.keys)[row])
+        let days = data[key]!
 
         // subtracting one because current day shouldn't count
-        var totalPossibleDaysInMonthThusFar = key.daysInMonth - 1
+        let totalPossibleDaysInMonthThusFar = key.daysInMonth - 1
         
-        var percentageCompleted = Float(days) / Float(totalPossibleDaysInMonthThusFar)
+        let percentageCompleted = Float(days) / Float(totalPossibleDaysInMonthThusFar)
 
         // update chart
         pieChart.completedPercentage = CGFloat(percentageCompleted)
@@ -99,7 +99,7 @@ class StatsViewController: UIViewController {
         if (key.isCurrentMonthYear()) {
 
             // subtracting because the current day shouldn't count
-            var today = getTodaysDay() - 1
+            let today = getTodaysDay() - 1
             
             statsLabel.text = "So far in \(key.monthName), you have completed \(Int(days)) days out of \(today) days for a score of \(ceil(percentageCompleted * 100))%"
             
@@ -112,11 +112,11 @@ class StatsViewController: UIViewController {
     
     func getTodaysDay() -> Int {
 
-        var now = NSDate()
+        let now = NSDate()
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "dd"
         let cal = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
-        let day = cal!.components(NSCalendarUnit.CalendarUnitDay, fromDate: now)
+        let day = cal!.components(NSCalendarUnit.Day, fromDate: now)
         
         return day.day
         
@@ -131,16 +131,15 @@ class StatsViewController: UIViewController {
 
             let dateFormatter = NSDateFormatter()
             dateFormatter.dateFormat = "MM/dd/yyyy"
-            let cal = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
             
             // display data
             for stat in fabricCompletedArray {
                 
-                var monthYear = MonthYear(stat: stat)
+                let monthYear = MonthYear(stat: stat)
                 
                 if let countForMonth = data[monthYear] {
                     
-                    var newCount = countForMonth + 1
+                    let newCount = countForMonth + 1
                     
                     data.updateValue(newCount, forKey: monthYear)
                     
@@ -165,7 +164,7 @@ class StatsViewController: UIViewController {
     
     func printStats() {
         
-        println(data)
+        print(data)
         
     }
     

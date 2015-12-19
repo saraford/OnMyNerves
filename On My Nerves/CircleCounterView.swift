@@ -42,7 +42,7 @@ let π:CGFloat = CGFloat(M_PI)
         let startAngle: CGFloat = 0
         let endAngle: CGFloat = 2 * π
         
-        var path = UIBezierPath(arcCenter: center,
+        let path = UIBezierPath(arcCenter: center,
             radius: radius/2 - arcWidth/2,
             startAngle: startAngle,
             endAngle: endAngle,
@@ -54,11 +54,10 @@ let π:CGFloat = CGFloat(M_PI)
         
         //Draw the timer
 
-        let startAngleTimer: CGFloat = 0
         let timerLengthPerSecond: CGFloat = (2.0 * π) / CGFloat(NumOfSeconds)
         let endAngleTimer: CGFloat = timerLengthPerSecond * CGFloat(counter)
 
-        var pathTimer = UIBezierPath(arcCenter: center,
+        let pathTimer = UIBezierPath(arcCenter: center,
             radius: radius/2 - arcWidth/2,
             startAngle: startAngle,
             endAngle: endAngleTimer,

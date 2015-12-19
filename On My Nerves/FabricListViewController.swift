@@ -62,7 +62,7 @@ class FabricListViewController: UIViewController, UITableViewDelegate {
         // so going to do this less elegant solution approach
         if (segue.identifier == "fabricSegue") {
 
-            var viewController = segue.destinationViewController as! AddEditFabricsViewController
+            let viewController = segue.destinationViewController as! AddEditFabricsViewController
             
             if (fromTableView) {
                
@@ -85,16 +85,16 @@ class FabricListViewController: UIViewController, UITableViewDelegate {
     func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
 
         // need to move the objects first
-        var fabricToMove = fabrics[fromIndexPath.row]
+        let fabricToMove = fabrics[fromIndexPath.row]
         fabrics.removeAtIndex(fromIndexPath.row)
         fabrics.insert(fabricToMove, atIndex: toIndexPath.row)
         
         // now the arrays for the data we're saving to disk
-        var nameToMove = fabricNamesArray[fromIndexPath.row]
+        let nameToMove = fabricNamesArray[fromIndexPath.row]
         fabricNamesArray.removeAtIndex(fromIndexPath.row)
         fabricNamesArray.insert(nameToMove, atIndex: toIndexPath.row)
 
-        var timeToMove = fabricTimesArray[fromIndexPath.row]
+        let timeToMove = fabricTimesArray[fromIndexPath.row]
         fabricTimesArray.removeAtIndex(fromIndexPath.row)
         fabricTimesArray.insert(timeToMove, atIndex: toIndexPath.row)
 
@@ -109,7 +109,7 @@ class FabricListViewController: UIViewController, UITableViewDelegate {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 
-        let cell = fabricsTable.dequeueReusableCellWithIdentifier("fabricCell") as! UITableViewCell
+        let cell = fabricsTable.dequeueReusableCellWithIdentifier("fabricCell")! as UITableViewCell
         
         (cell.contentView.viewWithTag(1) as! UIImageView).image = createDarkBlueImage()
         (cell.contentView.viewWithTag(2) as! UILabel).text = fabrics[indexPath.row].fabricName
@@ -139,7 +139,7 @@ class FabricListViewController: UIViewController, UITableViewDelegate {
         // swipe to the left
         if (editingStyle == UITableViewCellEditingStyle.Delete) {
 
-            var index = indexPath.row
+            let index = indexPath.row
             
             // delete the object
             fabrics.removeAtIndex(index)
@@ -158,7 +158,7 @@ class FabricListViewController: UIViewController, UITableViewDelegate {
     
     func createDarkBlueImage() -> UIImage {
         
-        var size = CGSize(width: 100, height: 100)
+        let size = CGSize(width: 100, height: 100)
         
         let rect = CGRectMake(0, 0, 100, 100)
         

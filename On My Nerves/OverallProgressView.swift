@@ -35,41 +35,36 @@ class OverallProgressView: UIView {
         
     }
     
-    
     func drawOverallProgress() {
         
         let context = UIGraphicsGetCurrentContext()
-//        var width:CGFloat = bounds.width
         
         // line width
         CGContextSetLineWidth(context, 20.0)
         
-        // setup color
-        let colorSpace = CGColorSpaceCreateDeviceRGB()
-        
         // the height of the container
-        var height:Float = Float(bounds.height)
+        let height:Float = Float(bounds.height)
         
         if (numOfLines == 1) {
             
              CGContextSetStrokeColorWithColor(context, stillToGoColor.CGColor)
             
-            drawLine(CGFloat(0.0), endPoint: CGFloat(height), context: context)
+            drawLine(CGFloat(0.0), endPoint: CGFloat(height), context: context!)
             
             
         } else if (numOfLines > 1) {
             
-            var div: Float = height * 0.01
-            var numOfDivs:Float = Float(numOfLines - 1)
+            let div: Float = height * 0.01
+            let numOfDivs:Float = Float(numOfLines - 1)
             
             // get the length of each line
-            var length:Float = (height - (div * Float(numOfDivs))) / Float(numOfLines)
+            let length:Float = (height - (div * Float(numOfDivs))) / Float(numOfLines)
             
             for (var i:Int = 0; i < numOfLines; i++) {
                 
                 // starting point
-                var startPoint = CGFloat(Float(i) * (length + div))
-                var endPoint = startPoint + CGFloat(length)
+                let startPoint = CGFloat(Float(i) * (length + div))
+                let endPoint = startPoint + CGFloat(length)
                 
                 if (i <= numOfCompletedLines - 1) {
 
@@ -80,10 +75,8 @@ class OverallProgressView: UIView {
                     CGContextSetStrokeColorWithColor(context, stillToGoColor.CGColor)
                     
                 }
-                
-                
-                
-                drawLine(startPoint, endPoint: endPoint, context: context)
+            
+                drawLine(startPoint, endPoint: endPoint, context: context!)
                 
             }
             

@@ -73,7 +73,7 @@ class ViewController: UIViewController {
                 // create the Fabric class and fill it in
                 for var index = 0; index < fabricNamesArray.count; index++ {
                     
-                    var newFabric = Fabric()
+                    let newFabric = Fabric()
                     
                     newFabric.fabricName = fabricNamesArray[index]
                     
@@ -112,7 +112,7 @@ class ViewController: UIViewController {
             if (self.fabricTimer.valid) {
                 
                 // from docs: current scheduled local notifications - a notification is only current if it has *not* gone off yet. otherwise this list will be 0.
-                var notifications = UIApplication.sharedApplication().scheduledLocalNotifications as! [UILocalNotification]
+                let notifications = UIApplication.sharedApplication().scheduledLocalNotifications! as [UILocalNotification]
                 
                 // if the count is 0, means either user has tapped notification or has missed it
                 if (notifications.count == 0) {
@@ -210,7 +210,7 @@ class ViewController: UIViewController {
     
         // we're not running and need to pause
   
-        var myImage = UIImage(named: "playButton")
+        let myImage = UIImage(named: "playButton")
         startStopTimerButton.setImage(myImage, forState: UIControlState.Normal)
         startLabel.text = "Start"
         
@@ -321,7 +321,7 @@ class ViewController: UIViewController {
         // we're not running and need to start
         if !(fabricTimer.valid) {
             
-            var myImage = UIImage(named: "pauseButton")
+            let myImage = UIImage(named: "pauseButton")
             startStopTimerButton.setImage(myImage, forState: UIControlState.Normal)
             startLabel.text = "Pause"
             
@@ -359,7 +359,7 @@ class ViewController: UIViewController {
             // there is no pause on a NSTimer, so we kill timer and recreate
             isPaused = true
             
-            var myImage = UIImage(named: "playButton")
+            let myImage = UIImage(named: "playButton")
             startStopTimerButton.setImage(myImage, forState: UIControlState.Normal)
             startLabel.text = "Start"
             
@@ -375,17 +375,17 @@ class ViewController: UIViewController {
     func printFabrics() {
         
         for fabric in fabrics {
-            println(fabric.fabricName)
-            println(fabric.fabricTime)
-            println()
+            print(fabric.fabricName)
+            print(fabric.fabricTime)
+            print("")
         }
         
-        println("-----------------")
+        print("-----------------")
     }
 
     func resetFabricDetails() {
 
-        var currentFabric = fabrics[currentFabricIndex]
+        let currentFabric = fabrics[currentFabricIndex]
   
         timeRemaining = currentFabric.fabricTime
         displayTimeLabel.text = "\(timeRemaining)"
@@ -422,7 +422,7 @@ class ViewController: UIViewController {
         skipBecauseUserDidNotTapNotification = false
         
         // schedule local notification
-        var notification = UILocalNotification()
+        let notification = UILocalNotification()
         notification.alertBody = "Time to switch fabrics!"
         notification.alertAction = "Next Fabric"
         notification.soundName = UILocalNotificationDefaultSoundName
@@ -475,7 +475,7 @@ class ViewController: UIViewController {
         
         resetFabricDetails()
         
-        var myImage = UIImage(named: "playButton")
+        let myImage = UIImage(named: "playButton")
         startStopTimerButton.setImage(myImage, forState: UIControlState.Normal)
         startLabel.text = "Start"
         
@@ -595,7 +595,7 @@ class ViewController: UIViewController {
         if !(skipBecauseUserDidNotTapNotification) {
         
             NSLog("I'm stopping the timer")
-            var trueStopTime = NSDate()
+            _ = NSDate()
             
             //   NSLog("Stop Time:")
             // printDate(trueStopTime)
@@ -693,13 +693,13 @@ class ViewController: UIViewController {
             }
             
             // record that user has completed the fabric end-to-end
-            var date = NSDate()
+            let date = NSDate()
             let formatter = NSDateFormatter()
             formatter.dateFormat = "MM/dd/yyyy"
             let saveDate = formatter.stringFromDate(date)
             
             // right now only save once a day
-            if !contains(fabricCompletedArray, saveDate) {
+            if !fabricCompletedArray.contains(saveDate) {
                 
                 fabricCompletedArray.append(saveDate)
                 NSUserDefaults.standardUserDefaults().setObject(fabricCompletedArray, forKey: "fabricCompleted")
@@ -718,9 +718,9 @@ class ViewController: UIViewController {
     
 
     func printDate(date:NSDate) {
-        var formatter = NSDateFormatter();
+        let formatter = NSDateFormatter();
         formatter.dateFormat = "HH:mm:ss";
-        let defaultTimeZoneStr = formatter.stringFromDate(date);
+//        let defaultTimeZoneStr = formatter.stringFromDate(date);
         
        // NSLog(defaultTimeZoneStr);
     }
@@ -733,13 +733,15 @@ class ViewController: UIViewController {
 
     // cut and pasted from SO
     func setupAudioPlayerWithFile(file:NSString, type:NSString) -> AVAudioPlayer  {
-        var path = NSBundle.mainBundle().pathForResource(file as String, ofType: type as String)
-        var url = NSURL.fileURLWithPath(path!)
-        
-        var error: NSError?
+        let path = NSBundle.mainBundle().pathForResource(file as String, ofType: type as String)
+        let url = NSURL.fileURLWithPath(path!)
         
         var audioPlayer:AVAudioPlayer?
-        audioPlayer = AVAudioPlayer(contentsOfURL: url, error: &error)
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOfURL: url)
+        } catch {
+            audioPlayer = nil
+        }
         
         return audioPlayer!
     }

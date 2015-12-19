@@ -55,8 +55,8 @@ class MonthPickerViewController: UIViewController, UIPickerViewDelegate, UIPicke
     // The data to return for the row and component (column) that's being passed in
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         
-        var monthYear = Array(data.keys)[row]
-        var displayString = "\(monthYear.monthName) \(monthYear.year)"
+        let monthYear = Array(data.keys)[row]
+        let displayString = "\(monthYear.monthName) \(monthYear.year)"
         
         return "\(displayString)"
     }
