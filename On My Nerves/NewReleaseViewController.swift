@@ -10,11 +10,16 @@ import UIKit
 
 class NewReleaseViewController: UIViewController {
 
-    @IBOutlet weak var lightboxView: UITextView!
+    var textToShow:String!
+    
+    @IBOutlet weak var lightboxView: UIView!
+    @IBOutlet weak var messageText: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        messageText.text = textToShow
+        
         lightboxView.layer.cornerRadius = 10.0
         lightboxView.layer.masksToBounds = true
 

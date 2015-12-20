@@ -54,20 +54,26 @@ class ViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
 
-        
-        // display what's new if applicable
-        if NSUserDefaults.standardUserDefaults().objectForKey("NewRelease" + String(currentRelease)) == nil {
-
-            let newReleaseViewController = storyboard?.instantiateViewControllerWithIdentifier("NewRelease") as! NewReleaseViewController
+        // if first time ever launched
+        if NSUserDefaults.standardUserDefaults().objectForKey("firstTimeEver") == nil {
             
-            // all this stuff needed to get the lightbox control effect
-            newReleaseViewController.providesPresentationContextTransitionStyle = true
-            newReleaseViewController.definesPresentationContext = true
-            newReleaseViewController.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
-            
-            self.presentViewController(newReleaseViewController, animated: true, completion: nil)
+            // setting NewRelease bit since everything is new for a first time ever user
+            NSUserDefaults.standardUserDefaults().setObject(1, forKey: "firstTimeEver")
             NSUserDefaults.standardUserDefaults().setObject(1, forKey: "NewRelease" + String(currentRelease))
-         
+            
+            showNewReleaseLightbox("Hello!\n\nFor this app to work, please allow On My Nerves to send you notifications. Otherwise, you'll never know when the alarm has gone off!")
+            
+            UIApplication.sharedApplication().registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [UIUserNotificationType.Alert, UIUserNotificationType.Sound], categories: nil))
+        }
+        
+        
+        if NSUserDefaults.standardUserDefaults().objectForKey("NewRelease" + String(currentRelease)) == nil {
+            
+            // display what's new if applicable
+            showNewReleaseLightbox("What's new in release 1.3:\n\n• Feature 1\n\n• Feature 2\n\n• Feature 3")
+            
+            NSUserDefaults.standardUserDefaults().setObject(1, forKey: "NewRelease" + String(currentRelease))
+            
             // if there was a previous release, delete that bit on disk
             if NSUserDefaults.standardUserDefaults().objectForKey("NewRelease" + String(currentRelease - 1)) != nil {
                 NSUserDefaults.standardUserDefaults().removeObjectForKey("NewRelease" + String(currentRelease - 1))
@@ -82,6 +88,21 @@ class ViewController: UIViewController {
         appDelegate.application(UIApplication.sharedApplication(), didFinishLaunchingWithOptions: nil)
         
     }
+    
+    func showNewReleaseLightbox(textToShow:String) {
+        let newReleaseViewController = storyboard?.instantiateViewControllerWithIdentifier("NewRelease") as! NewReleaseViewController
+        
+        // all this stuff needed to get the lightbox control effect
+        newReleaseViewController.providesPresentationContextTransitionStyle = true
+        newReleaseViewController.definesPresentationContext = true
+        newReleaseViewController.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
+        
+        newReleaseViewController.textToShow = textToShow
+        
+        self.presentViewController(newReleaseViewController, animated: true, completion: nil)
+    }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()

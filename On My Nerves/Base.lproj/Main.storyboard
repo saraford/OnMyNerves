@@ -166,7 +166,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="lightboxView" destination="Mg2-MV-Itd" id="18A-WB-G1w"/>
+                        <outlet property="lightboxView" destination="Din-9A-4mr" id="f2L-wR-98U"/>
+                        <outlet property="messageText" destination="Mg2-MV-Itd" id="UJw-od-Pwi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="23O-QA-kcH" userLabel="First Responder" sceneMemberID="firstResponder"/>
