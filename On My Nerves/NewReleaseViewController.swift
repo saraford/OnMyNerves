@@ -33,7 +33,7 @@ class NewReleaseViewController: UIViewController {
     @IBAction func closeWindow(sender: AnyObject) {
         
         self.dismissViewControllerAnimated(false, completion: nil)
-        
+        UIApplication.sharedApplication().registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [UIUserNotificationType.Alert, UIUserNotificationType.Sound], categories: nil))
     }
 
     

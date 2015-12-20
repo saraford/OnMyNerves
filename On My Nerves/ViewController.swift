@@ -63,7 +63,6 @@ class ViewController: UIViewController {
             
             showNewReleaseLightbox("Hello!\n\nFor this app to work, please allow On My Nerves to send you notifications. Otherwise, you'll never know when the alarm has gone off!")
             
-            UIApplication.sharedApplication().registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [UIUserNotificationType.Alert, UIUserNotificationType.Sound], categories: nil))
         }
         
         
