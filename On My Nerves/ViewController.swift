@@ -54,19 +54,15 @@ class ViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
 
-        // if first time ever launched
         if NSUserDefaults.standardUserDefaults().objectForKey("firstTimeEver") == nil {
-            
-            // setting NewRelease bit since everything is new for a first time ever user
+
+            // if first time ever launched
             NSUserDefaults.standardUserDefaults().setObject(1, forKey: "firstTimeEver")
-            NSUserDefaults.standardUserDefaults().setObject(1, forKey: "NewRelease" + String(currentRelease))
             
-            showNewReleaseLightbox("Hello!\n\nFor this app to work, please allow On My Nerves to send you notifications. Otherwise, you'll never know when the alarm has gone off!")
+            showNewReleaseLightbox("Hello!\n\nFor this app to work, please allow On My Nerves to send you notifications. You'll be asked in the next window.\n\nOtherwise, you'll never know when the alarm has gone off!")
             
         }
-        
-        
-        if NSUserDefaults.standardUserDefaults().objectForKey("NewRelease" + String(currentRelease)) == nil {
+        else if NSUserDefaults.standardUserDefaults().objectForKey("NewRelease" + String(currentRelease)) == nil {
             
             // display what's new if applicable
             showNewReleaseLightbox("What's new in release 1.3:\n\n• Feature 1\n\n• Feature 2\n\n• Feature 3")
