@@ -12,7 +12,7 @@ import AVFoundation
 var fabrics : [Fabric] = [Fabric]()
 var fabricNamesArray : [String] = [String]()
 var fabricTimesArray : [Int] = [Int]()
-var fabricCompletedArray : [String] = [String]()
+//var fabricCompletedArray : [String] = [String]()
 
 class ViewController: UIViewController {
 
@@ -145,13 +145,14 @@ class ViewController: UIViewController {
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "resetUI", name: "Terminating", object: nil)
         
-        
+
+        // TODO: STATS: To be replaced by Core Data
         // load any previously saved completions, in case user finishes and we need to tack on
-        if NSUserDefaults.standardUserDefaults().objectForKey("fabricCompleted") != nil {
-            
-            fabricCompletedArray = NSUserDefaults.standardUserDefaults().objectForKey("fabricCompleted") as! [String]
-            
-        }
+//        if NSUserDefaults.standardUserDefaults().objectForKey("fabricCompleted") != nil {
+//            
+//            fabricCompletedArray = NSUserDefaults.standardUserDefaults().objectForKey("fabricCompleted") as! [String]
+//            
+//        }
         
     }// view did load
     
@@ -692,20 +693,19 @@ class ViewController: UIViewController {
                 self.alarmAudio.currentTime = 0.0
             }
             
+            // TODO: STATS: Here's where we will save
             // record that user has completed the fabric end-to-end
-            let date = NSDate()
-            let formatter = NSDateFormatter()
-            formatter.dateFormat = "MM/dd/yyyy"
-            let saveDate = formatter.stringFromDate(date)
-            
+//            let date = NSDate()
+//            let formatter = NSDateFormatter()
+//            formatter.dateFormat = "MM/dd/yyyy"
+//            let saveDate = formatter.stringFromDate(date)
+//            
             // right now only save once a day
-            if !fabricCompletedArray.contains(saveDate) {
-                
-                fabricCompletedArray.append(saveDate)
-                NSUserDefaults.standardUserDefaults().setObject(fabricCompletedArray, forKey: "fabricCompleted")
-                
-            }
-            
+//            if !fabricCompletedArray.contains(saveDate) {
+//                
+//                fabricCompletedArray.append(saveDate)
+//                NSUserDefaults.standardUserDefaults().setObject(fabricCompletedArray, forKey: "fabricCompleted")
+//            }
             
             // we're all done
             self.resetUI()

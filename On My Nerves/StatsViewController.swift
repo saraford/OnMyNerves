@@ -36,9 +36,11 @@ class StatsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+  
+        //TODO: STATS: Here's where to load stats
+//        let dataExists = loadStatsFromDisk()
+        let dataExists = false
         
-        let dataExists = loadStatsFromDisk()
-
         if (dataExists) {
 
             let key = (Array(data.keys)[lastSelectedMonthIndex])
@@ -122,43 +124,46 @@ class StatsViewController: UIViewController {
         
     }
     
+    // TODO: STATS: Replace using Core Data
     func loadStatsFromDisk() -> Bool {
         
-        // load data
-        if NSUserDefaults.standardUserDefaults().objectForKey("fabricCompleted") != nil {
-            
-            fabricCompletedArray = NSUserDefaults.standardUserDefaults().objectForKey("fabricCompleted") as! [String]
-
-            let dateFormatter = NSDateFormatter()
-            dateFormatter.dateFormat = "MM/dd/yyyy"
-            
-            // display data
-            for stat in fabricCompletedArray {
-                
-                let monthYear = MonthYear(stat: stat)
-                
-                if let countForMonth = data[monthYear] {
-                    
-                    let newCount = countForMonth + 1
-                    
-                    data.updateValue(newCount, forKey: monthYear)
-                    
-                } else {
-                    
-                    // didn't find monthYear, so add it
-                    data[monthYear] = 1
-                    
-                }
-                
-            }
+        return false
         
-            return true
-            
-        }
-        else {
-            
-            return false
-        }
+//        // load data
+//        if NSUserDefaults.standardUserDefaults().objectForKey("fabricCompleted") != nil {
+//            
+//            fabricCompletedArray = NSUserDefaults.standardUserDefaults().objectForKey("fabricCompleted") as! [String]
+//
+//            let dateFormatter = NSDateFormatter()
+//            dateFormatter.dateFormat = "MM/dd/yyyy"
+//            
+//            // display data
+//            for stat in fabricCompletedArray {
+//                
+//                let monthYear = MonthYear(stat: stat)
+//                
+//                if let countForMonth = data[monthYear] {
+//                    
+//                    let newCount = countForMonth + 1
+//                    
+//                    data.updateValue(newCount, forKey: monthYear)
+//                    
+//                } else {
+//                    
+//                    // didn't find monthYear, so add it
+//                    data[monthYear] = 1
+//                    
+//                }
+//                
+//            }
+//        
+//            return true
+//            
+//        }
+//        else {
+//            
+//            return false
+//        }
 
     }
     
