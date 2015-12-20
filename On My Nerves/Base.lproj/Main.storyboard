@@ -339,7 +339,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Fabrics" id="nIV-sP-dNc">
-                        <barButtonItem key="leftBarButtonItem" title="Stats" id="oWZ-T7-cgJ">
+                        <barButtonItem key="leftBarButtonItem" enabled="NO" title="Stats" id="oWZ-T7-cgJ">
                             <connections>
                                 <segue destination="d96-X3-OY1" kind="presentation" id="SfK-8j-grS"/>
                             </connections>
