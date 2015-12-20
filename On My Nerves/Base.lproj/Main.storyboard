@@ -105,6 +105,74 @@
             </objects>
             <point key="canvasLocation" x="1599" y="-238"/>
         </scene>
+        <!--New Release View Controller-->
+        <scene sceneID="2F0-Dt-deE">
+            <objects>
+                <viewController storyboardIdentifier="NewRelease" id="Uug-fQ-TNs" customClass="NewReleaseViewController" customModule="On_My_Nerves" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1sW-wy-sUQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="D8P-ww-MDO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8Q6-xh-Mgc">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view alpha="0.34999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1nE-rC-h2G">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Din-9A-4mr" userLabel="Lightbox View">
+                                <rect key="frame" x="175" y="175" width="250" height="250"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3yT-tT-V8H">
+                                        <rect key="frame" x="104" y="202" width="42" height="30"/>
+                                        <state key="normal" title="Got it!"/>
+                                        <connections>
+                                            <action selector="closeWindow:" destination="Uug-fQ-TNs" eventType="touchUpInside" id="tuY-uS-ZLA"/>
+                                        </connections>
+                                    </button>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mg2-MV-Itd">
+                                        <rect key="frame" x="5" y="8" width="240" height="181"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <string key="text">What's new in release 1.3:
+• Feature 1
+• Feature 2
+• Feature 3</string>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="Mg2-MV-Itd" secondAttribute="bottom" constant="61" id="3uZ-mA-8FS"/>
+                                    <constraint firstAttribute="width" constant="250" id="GEB-pY-uzo"/>
+                                    <constraint firstItem="3yT-tT-V8H" firstAttribute="bottom" secondItem="Din-9A-4mr" secondAttribute="bottomMargin" constant="-10" id="SQu-Hz-wyK"/>
+                                    <constraint firstItem="Mg2-MV-Itd" firstAttribute="top" secondItem="Din-9A-4mr" secondAttribute="top" constant="8" id="VSQ-ar-EaL"/>
+                                    <constraint firstItem="3yT-tT-V8H" firstAttribute="centerX" secondItem="Din-9A-4mr" secondAttribute="centerX" id="jeG-ab-6ht"/>
+                                    <constraint firstItem="Mg2-MV-Itd" firstAttribute="leading" secondItem="Din-9A-4mr" secondAttribute="leading" constant="5" id="noZ-Qx-o2Y"/>
+                                    <constraint firstAttribute="trailing" secondItem="Mg2-MV-Itd" secondAttribute="trailing" constant="5" id="o9J-mQ-TZs"/>
+                                    <constraint firstAttribute="height" constant="250" id="pRE-lZ-T1w"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="1nE-rC-h2G" firstAttribute="top" secondItem="8Q6-xh-Mgc" secondAttribute="topMargin" id="GFz-jr-4Ka"/>
+                            <constraint firstItem="1nE-rC-h2G" firstAttribute="leading" secondItem="8Q6-xh-Mgc" secondAttribute="leadingMargin" constant="-20" id="NKY-MF-CC6"/>
+                            <constraint firstItem="D8P-ww-MDO" firstAttribute="top" secondItem="1nE-rC-h2G" secondAttribute="bottom" id="PmX-3M-cAk"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="1nE-rC-h2G" secondAttribute="trailing" constant="-20" id="UoE-7p-1F2"/>
+                            <constraint firstItem="Din-9A-4mr" firstAttribute="centerY" secondItem="8Q6-xh-Mgc" secondAttribute="centerY" id="W6f-vt-Tko"/>
+                            <constraint firstItem="Din-9A-4mr" firstAttribute="centerX" secondItem="8Q6-xh-Mgc" secondAttribute="centerX" id="jmi-Px-guy"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="lightboxView" destination="Mg2-MV-Itd" id="18A-WB-G1w"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="23O-QA-kcH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="861" y="-252"/>
+        </scene>
         <!--Fabrics-->
         <scene sceneID="tne-QT-ifu">
             <objects>

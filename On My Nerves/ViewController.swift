@@ -9,6 +9,9 @@
 import UIKit
 import AVFoundation
 
+// to display the "what's new" message box
+let currentRelease : Int = 13
+
 var fabrics : [Fabric] = [Fabric]()
 var fabricNamesArray : [String] = [String]()
 var fabricTimesArray : [Int] = [Int]()
@@ -49,9 +52,40 @@ class ViewController: UIViewController {
     // we be rocking them beats
     var alarmAudio:AVAudioPlayer!
     
+    override func viewDidAppear(animated: Bool) {
+
+        
+        // display what's new if applicable
+        if NSUserDefaults.standardUserDefaults().objectForKey("NewRelease" + String(currentRelease)) == nil {
+
+            let newReleaseViewController = storyboard?.instantiateViewControllerWithIdentifier("NewRelease") as! NewReleaseViewController
+            
+            // all this stuff needed to get the lightbox control effect
+            newReleaseViewController.providesPresentationContextTransitionStyle = true
+            newReleaseViewController.definesPresentationContext = true
+            newReleaseViewController.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
+            
+            self.presentViewController(newReleaseViewController, animated: true, completion: nil)
+            NSUserDefaults.standardUserDefaults().setObject(1, forKey: "NewRelease" + String(currentRelease))
+         
+            // if there was a previous release, delete that bit on disk
+            if NSUserDefaults.standardUserDefaults().objectForKey("NewRelease" + String(currentRelease - 1)) != nil {
+                NSUserDefaults.standardUserDefaults().removeObjectForKey("NewRelease" + String(currentRelease - 1))
+            }
+            
+        }
+        
+        // get a reference to the app delegate
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        // call didFinishLaunchWithOptions ... why?
+        appDelegate.application(UIApplication.sharedApplication(), didFinishLaunchingWithOptions: nil)
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-                
+        
         alarmAudio = AVAudioPlayer()
         alarmAudio = self.setupAudioPlayerWithFile("IronBacon", type:"m4a")
         alarmAudio.numberOfLoops = -1 // play until stop() is called
