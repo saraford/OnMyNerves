@@ -121,7 +121,7 @@ class ViewController: UIViewController {
             
             case ButtonTag.StartStop.rawValue:
 
-                imageName = "startStopButton"
+                imageName = "playButton"
 
             case ButtonTag.Next.rawValue:
                 
@@ -129,7 +129,7 @@ class ViewController: UIViewController {
             
             case ButtonTag.Help.rawValue:
                 
-                imageName = "helpButton"
+                imageName = "infoButton"
                 
             default:
                 print("sad trombone")
