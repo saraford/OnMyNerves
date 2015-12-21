@@ -19,6 +19,14 @@ var fabricTimesArray : [Int] = [Int]()
 
 class ViewController: UIViewController {
 
+    enum ButtonTag: Int {
+        case Cancel = 1
+        case Prev = 2
+        case StartStop = 3
+        case Next = 4
+        case Help = 5
+    }
+    
     @IBOutlet weak var displayTimeLabel: UILabel!
     @IBOutlet weak var startStopTimerButton: UIButton!
     @IBOutlet weak var currentFabricName: UILabel!
@@ -97,7 +105,50 @@ class ViewController: UIViewController {
         self.presentViewController(newReleaseViewController, animated: true, completion: nil)
     }
     
+    func setButtonEnabledState(button:UIButton, enabled:Bool) {
+        
+        var imageName:String = ""
+        
+        switch button.tag {
     
+            case ButtonTag.Cancel.rawValue:
+                
+                imageName = "cancelButton"
+            
+            case ButtonTag.Prev.rawValue:
+
+                imageName = "prevButton"
+            
+            case ButtonTag.StartStop.rawValue:
+
+                imageName = "startStopButton"
+
+            case ButtonTag.Next.rawValue:
+                
+                imageName = "nextButton"
+            
+            case ButtonTag.Help.rawValue:
+                
+                imageName = "helpButton"
+                
+            default:
+                print("sad trombone")
+        }
+        
+        if (enabled) {
+
+            button.enabled = true
+            
+        } else {
+        
+            button.enabled = false
+            imageName = imageName + "Disabled"
+        }
+        
+        if let myImage = UIImage(named: imageName) {
+            button.setImage(myImage, forState: UIControlState.Normal)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -142,10 +193,10 @@ class ViewController: UIViewController {
         else {
             
             // there is no data, so no buttons are enabled
-            prevButton.enabled = false
-            nextButton.enabled = false
-            cancelButton.enabled = false
-            startStopTimerButton.enabled = false
+            setButtonEnabledState(prevButton, enabled: false)
+            setButtonEnabledState(nextButton, enabled: false)
+            setButtonEnabledState(cancelButton, enabled: false)
+            setButtonEnabledState(startStopTimerButton, enabled: false)
             
             // instead of showing the fabric, show the "Edit" button
             fabricDisplayView.hidden = true
@@ -265,7 +316,7 @@ class ViewController: UIViewController {
         startStopTimerButton.setImage(myImage, forState: UIControlState.Normal)
         startLabel.text = "Start"
         
-        helpAboutButton.enabled = true
+        setButtonEnabledState(helpAboutButton, enabled: true)
         
         stopTimer()
         
@@ -276,7 +327,7 @@ class ViewController: UIViewController {
     
     @IBAction func nextFabric(sender: UIButton) {
 
-        prevButton.enabled = true
+        setButtonEnabledState(prevButton, enabled: true)
         
         // verify just in case
         if (currentFabricIndex < fabrics.count - 1) {
@@ -305,7 +356,7 @@ class ViewController: UIViewController {
             if (currentFabricIndex == fabrics.count - 1) {
                 
                 // can't go no farther
-                nextButton.enabled = false
+                setButtonEnabledState(nextButton, enabled: false)
                 
             }
         
@@ -317,7 +368,7 @@ class ViewController: UIViewController {
     
     @IBAction func prevButton(sender: UIButton) {
 
-        nextButton.enabled = true
+        setButtonEnabledState(nextButton, enabled: true)
         
         // verify just in case
         if (currentFabricIndex > 0) {
@@ -346,7 +397,7 @@ class ViewController: UIViewController {
             if (currentFabricIndex == 0) {
                 
                 // can't go no farther
-                prevButton.enabled = false
+                setButtonEnabledState(prevButton, enabled: false)
                 
             }
             
@@ -382,7 +433,7 @@ class ViewController: UIViewController {
             self.navigationItem.leftBarButtonItem?.tintColor = UIColor.darkGrayColor()
             
             // no getting info b/c alerts will show below the info screen
-            helpAboutButton.enabled = false
+            setButtonEnabledState(helpAboutButton, enabled: false)
             
             if (isPaused) {
                 
@@ -414,7 +465,7 @@ class ViewController: UIViewController {
             startStopTimerButton.setImage(myImage, forState: UIControlState.Normal)
             startLabel.text = "Start"
             
-            helpAboutButton.enabled = true
+            setButtonEnabledState(helpAboutButton, enabled: true)
             
             // stop Timer and cancel the notifications
             stopTimer()
@@ -480,7 +531,7 @@ class ViewController: UIViewController {
         notification.fireDate = NSDate(timeIntervalSinceNow: NSTimeInterval(timeRemaining))
         UIApplication.sharedApplication().scheduleLocalNotification(notification)
         
-        cancelButton.enabled = true
+        setButtonEnabledState(cancelButton, enabled: true)
         
         // no more edits allowed
         self.navigationController!.navigationBar.userInteractionEnabled = false
@@ -502,27 +553,26 @@ class ViewController: UIViewController {
         
         if (fabrics.count == 0) {
         
-            prevButton.enabled = false
-            nextButton.enabled = false
-            cancelButton.enabled = false
-            startStopTimerButton.enabled = false
+            setButtonEnabledState(prevButton, enabled: false)
+            setButtonEnabledState(nextButton, enabled: false)
+            setButtonEnabledState(cancelButton, enabled: false)
+            setButtonEnabledState(startStopTimerButton, enabled: false)
             
         } else if (fabrics.count == 1) {
           
-            prevButton.enabled = false
-            nextButton.enabled = false
-            cancelButton.enabled = false
-            startStopTimerButton.enabled = true
+            setButtonEnabledState(prevButton, enabled: false)
+            setButtonEnabledState(nextButton, enabled: false)
+            setButtonEnabledState(cancelButton, enabled: false)
+            setButtonEnabledState(startStopTimerButton, enabled: true)
             
             
         } else {
             
-            prevButton.enabled = false
-            nextButton.enabled = true
-            cancelButton.enabled = false
-
+            setButtonEnabledState(prevButton, enabled: false)
+            setButtonEnabledState(nextButton, enabled: true)
+            setButtonEnabledState(cancelButton, enabled: false)
+            
         }
-        
         
         resetFabricDetails()
         
@@ -530,7 +580,7 @@ class ViewController: UIViewController {
         startStopTimerButton.setImage(myImage, forState: UIControlState.Normal)
         startLabel.text = "Start"
         
-        helpAboutButton.enabled = true
+        setButtonEnabledState(helpAboutButton, enabled: true)
         
         // and can edit by default
         self.navigationController!.navigationBar.userInteractionEnabled = true
@@ -591,36 +641,36 @@ class ViewController: UIViewController {
             
             resetFabricDetails()
             
-            startStopTimerButton.enabled = true
+            setButtonEnabledState(startStopTimerButton, enabled: true)
         
             if (fabrics.count == 1) {
 
-                prevButton.enabled = false
-                nextButton.enabled = false
+                setButtonEnabledState(prevButton, enabled: false)
+                setButtonEnabledState(nextButton, enabled: false)
                 
             } else if (currentFabricIndex == 0) {
                 
-                prevButton.enabled = false
-                nextButton.enabled = true
+                setButtonEnabledState(prevButton, enabled: false)
+                setButtonEnabledState(nextButton, enabled: true)
             
             } else if (currentFabricIndex == fabrics.count - 2) {
-                
-                prevButton.enabled = true
-                nextButton.enabled = false
+
+                setButtonEnabledState(prevButton, enabled: true)
+                setButtonEnabledState(nextButton, enabled: false)
                 
             } else {
-                
-                prevButton.enabled = true
-                nextButton.enabled = true
 
+                setButtonEnabledState(prevButton, enabled: true)
+                setButtonEnabledState(nextButton, enabled: true)
+                
             }
             
         } else {
             
             // we don't have fabrics in the list
-            startStopTimerButton.enabled = false
-            prevButton.enabled = false
-            nextButton.enabled = false
+            setButtonEnabledState(startStopTimerButton, enabled: false)
+            setButtonEnabledState(prevButton, enabled: false)
+            setButtonEnabledState(nextButton, enabled: false)
             
             fabricDisplayView.hidden = true
             createFabricsList.hidden = false
@@ -629,11 +679,11 @@ class ViewController: UIViewController {
         
         if (fabricTimer.valid) {
             
-            cancelButton.enabled = true
+            setButtonEnabledState(cancelButton, enabled: true)
             
         } else {
             
-            cancelButton.enabled = false
+            setButtonEnabledState(cancelButton, enabled: false)
         }
         
         
@@ -663,10 +713,10 @@ class ViewController: UIViewController {
             currentFabricIndex++
             progressView.numOfCompletedLines = currentFabricIndex + 1
         
-            prevButton.enabled = true
+            setButtonEnabledState(prevButton, enabled: true)
         
             if (currentFabricIndex == fabrics.count - 1) {
-                nextButton.enabled = false
+                setButtonEnabledState(nextButton, enabled: false)
             }
             
             if (currentFabricIndex < fabrics.count) {
