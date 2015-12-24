@@ -67,13 +67,13 @@ class ViewController: UIViewController {
             // if first time ever launched
             NSUserDefaults.standardUserDefaults().setObject(1, forKey: "firstTimeEver")
             
-            showNewReleaseLightbox("Hello!\n\nFor this app to work, please allow On My Nerves to send you notifications. You'll be asked in the next message box.\nIf you don't agree, you'll never know when the alarm has gone off! :)")
+            showNewReleaseLightbox("Hello!\n\nFor this app to work, please allow On My Nerves to send you notifications. You'll be asked in the next popup window.\n\nIf you don't agree, you'll never know when the alarm has gone off! O_o")
             
         }
         else if NSUserDefaults.standardUserDefaults().objectForKey("NewRelease" + String(currentRelease)) == nil {
             
             // display what's new if applicable
-            showNewReleaseLightbox("What's new in release 1.3:\n\n• Feature 1\n\n• Feature 2\n\n• Feature 3")
+            showNewReleaseLightbox("What's new in release 1.1:\n\n• Easier to use 1st time setup UI\n\n• Minor bug fixes\n\n• This what's new popup window :)")
             
             NSUserDefaults.standardUserDefaults().setObject(1, forKey: "NewRelease" + String(currentRelease))
             
