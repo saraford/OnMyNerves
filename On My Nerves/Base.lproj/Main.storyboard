@@ -309,7 +309,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HzM-rm-8mt">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HzM-rm-8mt" userLabel="Create Fabrics List Image">
                                 <rect key="frame" x="250" y="250" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="7Ts-7V-bQz"/>
@@ -322,12 +322,14 @@
                                     <segue destination="gVO-92-i6A" kind="show" id="c7H-lx-YjM"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Add Fabrics" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oT5-De-YRs">
-                                <rect key="frame" x="215" y="381" width="169" height="39"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rdp-bU-8kc" userLabel="Create Fabrics List Text">
+                                <rect key="frame" x="247" y="373" width="107" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Add Fabrics"/>
+                                <connections>
+                                    <segue destination="gVO-92-i6A" kind="show" id="70G-cY-I78"/>
+                                </connections>
+                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LFr-QG-r7g" userLabel="Fabric Display View">
                                 <rect key="frame" x="4" y="64" width="581" height="445"/>
                                 <subviews>
@@ -386,29 +388,27 @@
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="FGh-Ed-IBr" firstAttribute="top" secondItem="aF8-aA-VR4" secondAttribute="bottom" constant="14" id="1Vc-wj-skQ"/>
-                            <constraint firstItem="oT5-De-YRs" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="1y3-Db-jao"/>
                             <constraint firstItem="LFr-QG-r7g" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="5pY-zR-uli"/>
-                            <constraint firstItem="oT5-De-YRs" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="100" id="61y-YA-WEh"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="LFr-QG-r7g" secondAttribute="bottom" constant="91" id="6xw-kt-Z0f"/>
                             <constraint firstItem="Pc9-SB-m7c" firstAttribute="top" secondItem="bT0-ol-e49" secondAttribute="bottom" constant="-4" id="7rG-jU-9PF"/>
                             <constraint firstItem="STb-K9-JWT" firstAttribute="centerX" secondItem="Cws-gE-jJK" secondAttribute="centerX" constant="0.5" id="8Uh-ju-pKf"/>
                             <constraint firstItem="IY2-xA-5A0" firstAttribute="top" secondItem="gwb-fe-dlI" secondAttribute="bottom" constant="1" id="9i4-Fb-cev"/>
                             <constraint firstItem="Cws-gE-jJK" firstAttribute="leading" secondItem="bT0-ol-e49" secondAttribute="trailing" constant="-5" id="AUo-gE-mRB"/>
-                            <constraint firstItem="HzM-rm-8mt" firstAttribute="leading" secondItem="oT5-De-YRs" secondAttribute="trailing" constant="-134" id="Ade-wz-8Zh"/>
                             <constraint firstAttribute="centerX" secondItem="Cws-gE-jJK" secondAttribute="centerX" id="C7c-0y-KjI"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="gwb-fe-dlI" secondAttribute="bottom" constant="38" id="GVK-MT-fQJ"/>
                             <constraint firstItem="MxV-Di-hoR" firstAttribute="top" secondItem="FGh-Ed-IBr" secondAttribute="bottom" constant="1" id="Gvo-2I-QWj"/>
                             <constraint firstItem="dbe-dX-8np" firstAttribute="leading" secondItem="Cws-gE-jJK" secondAttribute="trailing" constant="1" id="KAS-Mm-od9"/>
+                            <constraint firstItem="Rdp-bU-8kc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Kl4-M0-dnS"/>
                             <constraint firstItem="gwb-fe-dlI" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="1" id="MKw-ZL-veg"/>
                             <constraint firstItem="MxV-Di-hoR" firstAttribute="centerX" secondItem="FGh-Ed-IBr" secondAttribute="centerX" constant="0.5" id="NyC-fd-e0h"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Cws-gE-jJK" secondAttribute="bottom" constant="23" id="QHb-Sk-c1k"/>
                             <constraint firstItem="gwb-fe-dlI" firstAttribute="centerX" secondItem="IY2-xA-5A0" secondAttribute="centerX" id="Ql8-ty-3E6"/>
                             <constraint firstItem="LFr-QG-r7g" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="UJ3-PZ-I8v"/>
-                            <constraint firstItem="oT5-De-YRs" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="VJP-71-sBd"/>
                             <constraint firstItem="xUc-9n-qje" firstAttribute="top" secondItem="dbe-dX-8np" secondAttribute="bottom" constant="-4" id="VXO-S4-GfT"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="FGh-Ed-IBr" secondAttribute="bottom" constant="37" id="Wt7-zX-S8h"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="bT0-ol-e49" secondAttribute="bottom" constant="33" id="X2r-OU-WtL"/>
                             <constraint firstItem="aF8-aA-VR4" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="aIM-X7-T8u"/>
+                            <constraint firstItem="Rdp-bU-8kc" firstAttribute="top" secondItem="HzM-rm-8mt" secondAttribute="bottom" constant="23" id="b8D-LH-r3F"/>
                             <constraint firstItem="HzM-rm-8mt" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="eW0-y6-wTp"/>
                             <constraint firstItem="Pc9-SB-m7c" firstAttribute="centerX" secondItem="bT0-ol-e49" secondAttribute="centerX" constant="0.5" id="jgI-ad-dTm"/>
                             <constraint firstItem="aF8-aA-VR4" firstAttribute="leading" secondItem="LFr-QG-r7g" secondAttribute="trailing" constant="1" id="mOA-IK-QaU"/>
@@ -419,11 +419,6 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="dbe-dX-8np" secondAttribute="bottom" constant="33" id="wuG-P6-A0G"/>
                             <constraint firstAttribute="trailingMargin" secondItem="aF8-aA-VR4" secondAttribute="trailing" constant="-16" id="zG9-Ug-JBu"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="1y3-Db-jao"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Fabrics" id="nIV-sP-dNc">
                         <barButtonItem key="leftBarButtonItem" enabled="NO" title="Stats" id="oWZ-T7-cgJ">
