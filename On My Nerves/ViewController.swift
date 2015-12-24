@@ -67,7 +67,7 @@ class ViewController: UIViewController {
             // if first time ever launched
             NSUserDefaults.standardUserDefaults().setObject(1, forKey: "firstTimeEver")
             
-            showNewReleaseLightbox("Hello!\n\nFor this app to work, please allow On My Nerves to send you notifications. You'll be asked in the next window.\n\nOtherwise, you'll never know when the alarm has gone off!")
+            showNewReleaseLightbox("Hello!\n\nFor this app to work, please allow On My Nerves to send you notifications. You'll be asked in the next message box.\nIf you don't agree, you'll never know when the alarm has gone off! :)")
             
         }
         else if NSUserDefaults.standardUserDefaults().objectForKey("NewRelease" + String(currentRelease)) == nil {
@@ -831,7 +831,6 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    // cut and pasted from SO
     func setupAudioPlayerWithFile(file:NSString, type:NSString) -> AVAudioPlayer  {
         let path = NSBundle.mainBundle().pathForResource(file as String, ofType: type as String)
         let url = NSURL.fileURLWithPath(path!)
