@@ -32,9 +32,14 @@ class HelpAboutViewController: UIViewController {
         
         HelpAboutText.scrollRangeToVisible(NSRange(location:0, length:0))
 
-        
     }
 
+    // force to scroll at the top of the view
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        HelpAboutText.setContentOffset(CGPointZero, animated: false)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
