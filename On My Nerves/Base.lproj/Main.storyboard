@@ -619,7 +619,7 @@
                                         <rect key="frame" x="0.0" y="22" width="592" height="110"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Fxk-63-B3V" id="MRM-aO-C4E">
-                                            <rect key="frame" x="0.0" y="0.0" width="592" height="109"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="592" height="110"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W4a-Gy-hSx">
