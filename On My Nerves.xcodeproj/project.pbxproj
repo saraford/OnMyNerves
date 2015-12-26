@@ -11,6 +11,7 @@
 		46A508971B9A2EFE007AF666 /* PieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A508961B9A2EFE007AF666 /* PieChartView.swift */; };
 		46C1EEB21C2637FB006DCC5B /* NewReleaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C1EEB11C2637FB006DCC5B /* NewReleaseViewController.swift */; };
 		46D1BBD31B6F123300F92D78 /* Fabric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D1BBD21B6F123300F92D78 /* Fabric.swift */; };
+		46D9B2801C2E1A3D006CB97A /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 46D9B27E1C2E1A3D006CB97A /* Model.xcdatamodeld */; };
 		46E26D441B99E9B800095119 /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E26D431B99E9B800095119 /* StatsViewController.swift */; };
 		46E966E11B89216B00973280 /* CircleCounterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E966E01B89216B00973280 /* CircleCounterView.swift */; };
 		46ECB9CF1B9CE4E40086C8E4 /* MonthPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46ECB9CE1B9CE4E40086C8E4 /* MonthPickerViewController.swift */; };
@@ -42,6 +43,7 @@
 		46A508961B9A2EFE007AF666 /* PieChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieChartView.swift; sourceTree = "<group>"; };
 		46C1EEB11C2637FB006DCC5B /* NewReleaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewReleaseViewController.swift; sourceTree = "<group>"; };
 		46D1BBD21B6F123300F92D78 /* Fabric.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fabric.swift; sourceTree = "<group>"; };
+		46D9B27F1C2E1A3D006CB97A /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		46E26D431B99E9B800095119 /* StatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
 		46E966E01B89216B00973280 /* CircleCounterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleCounterView.swift; sourceTree = "<group>"; };
 		46ECB9CE1B9CE4E40086C8E4 /* MonthPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthPickerViewController.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 				46F3BAB71B9A81C200550B32 /* MonthYear.swift */,
 				46ECB9CE1B9CE4E40086C8E4 /* MonthPickerViewController.swift */,
 				46C1EEB11C2637FB006DCC5B /* NewReleaseViewController.swift */,
+				46D9B27E1C2E1A3D006CB97A /* Model.xcdatamodeld */,
 			);
 			path = "On My Nerves";
 			sourceTree = "<group>";
@@ -255,6 +258,7 @@
 				467AC2D31B8A2E2D004A2517 /* OverallProgressView.swift in Sources */,
 				46F3BAB81B9A81C200550B32 /* MonthYear.swift in Sources */,
 				46F0D5901B6C6F7300229D7D /* ViewController.swift in Sources */,
+				46D9B2801C2E1A3D006CB97A /* Model.xcdatamodeld in Sources */,
 				46F0D58E1B6C6F7300229D7D /* AppDelegate.swift in Sources */,
 				46C1EEB21C2637FB006DCC5B /* NewReleaseViewController.swift in Sources */,
 				46F0D63E1B6D178500229D7D /* AddEditFabricsViewController.swift in Sources */,
@@ -485,6 +489,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		46D9B27E1C2E1A3D006CB97A /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				46D9B27F1C2E1A3D006CB97A /* Model.xcdatamodel */,
+			);
+			currentVersion = 46D9B27F1C2E1A3D006CB97A /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 46F0D5801B6C6F7300229D7D /* Project object */;
 }
