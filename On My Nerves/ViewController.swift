@@ -16,7 +16,7 @@ let currentRelease : Int = 13
 var fabrics : [Fabric] = [Fabric]()
 var fabricNamesArray : [String] = [String]()
 var fabricTimesArray : [Int] = [Int]()
-var fabricCompletedArray : [String] = [String]()
+var context: NSManagedObjectContext!
 
 class ViewController: UIViewController {
 
@@ -63,7 +63,6 @@ class ViewController: UIViewController {
     
     // Core Data 
     let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-    var context: NSManagedObjectContext!
     
     override func viewDidAppear(animated: Bool) {
 
@@ -158,6 +157,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // set the core data context - TODO: is this the right place?
         context = appDel.managedObjectContext
         
         alarmAudio = AVAudioPlayer()
@@ -254,9 +254,8 @@ class ViewController: UIViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "resetUI", name: "Terminating", object: nil)
         
         
-        //TODO: REMOVE: adding dummy data
-        createDummyData()
-        
+        createDummyDataIfEmpty()
+//        viewUsagesData()
 
         // TODO: STATS: To be replaced by Core Data
         // load any previously saved completions, in case user finishes and we need to tack on
@@ -269,7 +268,28 @@ class ViewController: UIViewController {
     }// view did load
     
     
-    func createDummyData() {
+    func createDummyDataIfEmpty() {
+        
+        // make sure there's no previous entries
+        let request = NSFetchRequest(entityName: "Usages")
+        request.returnsObjectsAsFaults = false
+        
+        do {
+            
+            let results = try context.executeFetchRequest(request)
+            
+            if results.count > 0 {
+                
+                // do nothing
+                return
+            }
+            
+        } catch {
+            
+            print("Fetch failed" + String(error))
+        }
+        
+        var fabricCompletedArray : [String] = [String]()
         
         fabricCompletedArray.append("09-10-2015")
         fabricCompletedArray.append("09-09-2015")
@@ -307,18 +327,17 @@ class ViewController: UIViewController {
         fabricCompletedArray.append("08-03-2015")
         fabricCompletedArray.append("08-02-2015")
         fabricCompletedArray.append("08-01-2015")
-
+        
         let dateFormatter = NSDateFormatter()
+        
         for (_, element) in fabricCompletedArray.enumerate() {
-
-            // HOW TO SAVE
-            let newUsage = NSEntityDescription.insertNewObjectForEntityForName("Usages", inManagedObjectContext: context)
             
-//            dateFormatter.dateFormat = "yyyy-MM-dd"
             dateFormatter.dateFormat = "MM-dd-yyyy"
             let date = dateFormatter.dateFromString(element)
-
-            newUsage.setValue(date, forKey: "timestamp")
+            
+            let newUsageObject = NSEntityDescription.insertNewObjectForEntityForName("Usages", inManagedObjectContext: context)
+            
+            newUsageObject.setValue(date, forKey: "timestamp")
             
             do {
                 
@@ -326,45 +345,11 @@ class ViewController: UIViewController {
                 
             } catch let error as NSError {
                 
-                print("there was an error: " + String(error))
+                print("there was an error saving the date: " + String(error))
                 
             }
         }
-        
-        // HOW TO VIEW DATA
-        let request = NSFetchRequest(entityName: "Usages")
-        
-        // need to set to false to see content for all results
-        request.returnsObjectsAsFaults = false
-        
-        // how to just print out the value and not the gobbly gook
-        do {
-            
-            let results = try context.executeFetchRequest(request)
-            
-            if results.count > 0 {
-                
-                for result in results as! [NSManagedObject] {
-
-//                    print(result)
-                    // convert to its actual object type
-                    if let timestamp = result.valueForKey("timestamp") as? NSDate {
-                        print(timestamp)
-                    }
-                    
-                }
-                
-            }
-            
-        } catch {
-            
-            print("Fetch failed" + String(error))
-        }
-
-        
-        
     }
-    
     
     @IBAction func cancelFabrics(sender: UIButton) {
     
@@ -851,26 +836,156 @@ class ViewController: UIViewController {
                 self.alarmAudio.currentTime = 0.0
             }
             
-            // TODO: STATS: Here's where we will save
             // record that user has completed the fabric end-to-end
-//            let date = NSDate()
-//            let formatter = NSDateFormatter()
-//            formatter.dateFormat = "MM/dd/yyyy"
-//            let saveDate = formatter.stringFromDate(date)
-//            
-            // right now only save once a day
-//            if !fabricCompletedArray.contains(saveDate) {
-//                
-//                fabricCompletedArray.append(saveDate)
-//                NSUserDefaults.standardUserDefaults().setObject(fabricCompletedArray, forKey: "fabricCompleted")
-//            }
+            self.saveResultIfUnique()
             
             // we're all done
             self.resetUI()
             
+            //TODO: Remove me
+            self.printWhatsInStorage()
+            
         }))
         
         self.presentViewController(alertController, animated: true, completion: nil)
+    }
+
+    
+    func saveResultIfUnique() {
+        
+        let today = NSDate()
+        let calendar = NSCalendar.currentCalendar()
+
+        // the magic line of code
+        let startDate = calendar.startOfDayForDate(today)
+        
+        let request = NSFetchRequest(entityName: "Usages")
+
+        // if the timestamp is greater than midnight on the dot
+        request.predicate = NSPredicate(format: "timestamp > %@", startDate)
+        
+        // need to set to false to see content for all results
+        request.returnsObjectsAsFaults = false
+        
+        do {
+            
+            let results = try context.executeFetchRequest(request)
+            
+            if results.count == 0 {
+                
+                // print("Didn't find a date for today already saved, so saving " + String(today))
+                
+                // this does the insert - but doesn't save any info to this entry
+                let newUsageObject = NSEntityDescription.insertNewObjectForEntityForName("Usages", inManagedObjectContext: context)
+                
+                // save the value if there isn't one previously
+                newUsageObject.setValue(today, forKey: "timestamp")
+                
+                do {
+                    
+                    try context.save()
+                    
+                } catch let error as NSError {
+                    
+                    print("there was an error: " + String(error))
+                    
+                }
+                
+            } else {
+                // print("found today's date in storage, so not saving it twice")
+            }
+            
+        } catch {
+            
+            print("Fetch failed" + String(error))
+        }
+        
+    }
+    
+    // STARTHERE: i think this loads stuff
+//    func dateFoundInStorage() -> Bool {
+        
+//        let request = NSFetchRequest(entityName: "Usages")
+//        request.returnsObjectsAsFaults = false
+//        
+//        //TODO: Need to figure out how to only save the month, day, year.
+//        request.predicate
+//        
+//        do {
+//            
+//            let results = try context.executeFetchRequest(request)
+//            
+//            
+//            if results.count > 0 {
+//                
+//                for result in results as! [NSManagedObject] {
+//                    
+//                    if let timestamp = result.valueForKey("timestamp") as? NSDate {
+//                        
+//                        let monthYear = MonthYear(date: timestamp)
+//                        
+//                        if let countForMonth = data[monthYear] {
+//                            
+//                            let newCount = countForMonth + 1
+//                            
+//                            data.updateValue(newCount, forKey: monthYear)
+//                            
+//                        } else {
+//                            
+//                            // didn't find monthYear, so add it ???
+//                            data[monthYear] = 1
+//                            
+//                        }
+//                        
+//                    }
+//                    
+//                }
+//                
+//            }
+//            
+//        } catch {
+//            
+//            print("Fetch failed" + String(error))
+//            return false
+//        }
+        
+//        return true
+//    }
+
+    func printWhatsInStorage() {
+        
+        // HOW TO VIEW DATA
+        let request = NSFetchRequest(entityName: "Usages")
+        
+        request.returnsObjectsAsFaults = false
+        
+        // how to just print out the value and not the gobbly gook
+        do {
+            
+            let results = try context.executeFetchRequest(request)
+            
+            if results.count > 0 {
+                
+                print("Count of " + String(results.count))
+                
+                // how to enumerate
+                for result in results as! [NSManagedObject] {
+                    
+                    // convert to its actual object type
+                    //                    if let timestamp = result.valueForKey("timestamp") as? NSDate {
+                    //                        print(timestamp)
+                    //                    }
+                    
+                    print(result)
+                    
+                }
+            }
+            
+        } catch {
+            
+            print("Fetch failed" + String(error))
+        }
+        
     }
 
     

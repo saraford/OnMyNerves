@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import CoreData
 
 // Needed for the MonthPicker Lightbox view controller to send
 // the selected Month picked back to this Stats view controller
@@ -37,9 +37,7 @@ class StatsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
   
-        //TODO: STATS: Here's where to load stats
-//        let dataExists = loadStatsFromDisk()
-        let dataExists = false
+        let dataExists = loadStatsFromDisk()
         
         if (dataExists) {
 
@@ -124,47 +122,49 @@ class StatsViewController: UIViewController {
         
     }
     
-    // TODO: STATS: Replace using Core Data
     func loadStatsFromDisk() -> Bool {
         
-        return false
+        let request = NSFetchRequest(entityName: "Usages")
+        request.returnsObjectsAsFaults = false
         
-//        // load data
-//        if NSUserDefaults.standardUserDefaults().objectForKey("fabricCompleted") != nil {
-//            
-//            fabricCompletedArray = NSUserDefaults.standardUserDefaults().objectForKey("fabricCompleted") as! [String]
-//
-//            let dateFormatter = NSDateFormatter()
-//            dateFormatter.dateFormat = "MM/dd/yyyy"
-//            
-//            // display data
-//            for stat in fabricCompletedArray {
-//                
-//                let monthYear = MonthYear(stat: stat)
-//                
-//                if let countForMonth = data[monthYear] {
-//                    
-//                    let newCount = countForMonth + 1
-//                    
-//                    data.updateValue(newCount, forKey: monthYear)
-//                    
-//                } else {
-//                    
-//                    // didn't find monthYear, so add it
-//                    data[monthYear] = 1
-//                    
-//                }
-//                
-//            }
-//        
-//            return true
-//            
-//        }
-//        else {
-//            
-//            return false
-//        }
+        do {
+            
+            let results = try context.executeFetchRequest(request)
+            
+            if results.count > 0 {
+                
+                for result in results as! [NSManagedObject] {
+                    
+                    if let timestamp = result.valueForKey("timestamp") as? NSDate {
+                       
+                        let monthYear = MonthYear(date: timestamp)
+                        
+                        if let countForMonth = data[monthYear] {
+                            
+                            let newCount = countForMonth + 1
+                            
+                            data.updateValue(newCount, forKey: monthYear)
+                            
+                        } else {
+                            
+                            // didn't find monthYear, so add it ???
+                            data[monthYear] = 1
+                            
+                        }
+                        
+                    }
+                    
+                }
+                
+            }
+            
+        } catch {
+            
+            print("Fetch failed" + String(error))
+            return false
+        }
 
+        return true
     }
     
     func printStats() {
@@ -172,8 +172,6 @@ class StatsViewController: UIViewController {
         print(data)
         
     }
-    
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

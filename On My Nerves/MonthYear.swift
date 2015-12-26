@@ -21,19 +21,15 @@ class MonthYear : Hashable, Equatable, CustomStringConvertible {
     var year:Int!
     var date:NSDate!
     
-    init(stat:String) {
-        
-        let formatter = NSDateFormatter()
-        formatter.dateFormat = "MM/dd/yyyy"
-        let restoredDate = formatter.dateFromString(stat)
+    init(date:NSDate) {
         
         let cal = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
-        let month = cal.components(NSCalendarUnit.Month, fromDate: restoredDate!)
-        let year = cal.components(NSCalendarUnit.Year, fromDate: restoredDate!)
+        let month = cal.components(NSCalendarUnit.Month, fromDate: date)
+        let year = cal.components(NSCalendarUnit.Year, fromDate: date)
 
         self.month = month.month
         self.year = year.year
-        self.date = restoredDate
+        self.date = date
     }
     
     func isCurrentMonthYear() -> Bool {
