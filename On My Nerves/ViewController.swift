@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import CoreData
 
 // to display the "what's new" message box
 let currentRelease : Int = 13
@@ -15,7 +16,7 @@ let currentRelease : Int = 13
 var fabrics : [Fabric] = [Fabric]()
 var fabricNamesArray : [String] = [String]()
 var fabricTimesArray : [Int] = [Int]()
-//var fabricCompletedArray : [String] = [String]()
+var fabricCompletedArray : [String] = [String]()
 
 class ViewController: UIViewController {
 
@@ -59,6 +60,10 @@ class ViewController: UIViewController {
     
     // we be rocking them beats
     var alarmAudio:AVAudioPlayer!
+    
+    // Core Data 
+    let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    var context: NSManagedObjectContext!
     
     override func viewDidAppear(animated: Bool) {
 
@@ -153,6 +158,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        context = appDel.managedObjectContext
+        
         alarmAudio = AVAudioPlayer()
         alarmAudio = self.setupAudioPlayerWithFile("IronBacon", type:"m4a")
         alarmAudio.numberOfLoops = -1 // play until stop() is called
@@ -246,6 +253,10 @@ class ViewController: UIViewController {
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "resetUI", name: "Terminating", object: nil)
         
+        
+        //TODO: REMOVE: adding dummy data
+        createDummyData()
+        
 
         // TODO: STATS: To be replaced by Core Data
         // load any previously saved completions, in case user finishes and we need to tack on
@@ -258,54 +269,101 @@ class ViewController: UIViewController {
     }// view did load
     
     
-//    func createDummyData() {
-//    
-////        fabricCompletedArray = NSUserDefaults.standardUserDefaults().objectForKey("fabricCompleted") as! [String]
-//        
-//        fabricCompletedArray = [String]()
-//
-//        fabricCompletedArray.append("09/10/2015")
-//        fabricCompletedArray.append("09/09/2015")
-//        fabricCompletedArray.append("09/08/2015")
-//        fabricCompletedArray.append("09/07/2015")
-//        fabricCompletedArray.append("09/06/2015")
-//        fabricCompletedArray.append("09/05/2015")
-//        fabricCompletedArray.append("09/04/2015")
-//        fabricCompletedArray.append("09/03/2015")
-//        fabricCompletedArray.append("09/01/2015")
-//        
-//        fabricCompletedArray.append("08/30/2015")
-//        fabricCompletedArray.append("08/29/2015")
-//        fabricCompletedArray.append("08/28/2015")
-//        fabricCompletedArray.append("08/27/2015")
-//        fabricCompletedArray.append("08/26/2015")
-//        fabricCompletedArray.append("08/25/2015")
-//        fabricCompletedArray.append("08/24/2015")
-//        fabricCompletedArray.append("08/23/2015")
-//        fabricCompletedArray.append("08/22/2015")
-//        fabricCompletedArray.append("08/20/2015")
-//        fabricCompletedArray.append("08/19/2015")
-//        fabricCompletedArray.append("08/18/2015")
-//        fabricCompletedArray.append("08/17/2015")
-//        fabricCompletedArray.append("08/16/2015")
-//        fabricCompletedArray.append("08/15/2015")
-//        fabricCompletedArray.append("08/13/2015")
-//        fabricCompletedArray.append("08/12/2015")
-//        fabricCompletedArray.append("08/11/2015")
-//        fabricCompletedArray.append("08/10/2015")
-//        fabricCompletedArray.append("08/09/2015")
-//        fabricCompletedArray.append("08/08/2015")
-//        fabricCompletedArray.append("08/06/2015")
-//        fabricCompletedArray.append("08/05/2015")
-//        fabricCompletedArray.append("08/04/2015")
-//        fabricCompletedArray.append("08/03/2015")
-//        fabricCompletedArray.append("08/02/2015")
-//        fabricCompletedArray.append("08/01/2015")
-//
-//        
-//        NSUserDefaults.standardUserDefaults().setObject(fabricCompletedArray, forKey: "fabricCompleted")
-//    
-//    }
+    func createDummyData() {
+        
+        fabricCompletedArray.append("09-10-2015")
+        fabricCompletedArray.append("09-09-2015")
+        fabricCompletedArray.append("09-08-2015")
+        fabricCompletedArray.append("09-07-2015")
+        fabricCompletedArray.append("09-06-2015")
+        fabricCompletedArray.append("09-05-2015")
+        fabricCompletedArray.append("09-04-2015")
+        fabricCompletedArray.append("09-03-2015")
+        fabricCompletedArray.append("09-01-2015")
+        fabricCompletedArray.append("08-30-2015")
+        fabricCompletedArray.append("08-29-2015")
+        fabricCompletedArray.append("08-28-2015")
+        fabricCompletedArray.append("08-27-2015")
+        fabricCompletedArray.append("08-26-2015")
+        fabricCompletedArray.append("08-25-2015")
+        fabricCompletedArray.append("08-24-2015")
+        fabricCompletedArray.append("08-23-2015")
+        fabricCompletedArray.append("08-22-2015")
+        fabricCompletedArray.append("08-20-2015")
+        fabricCompletedArray.append("08-19-2015")
+        fabricCompletedArray.append("08-18-2015")
+        fabricCompletedArray.append("08-17-2015")
+        fabricCompletedArray.append("08-16-2015")
+        fabricCompletedArray.append("08-15-2015")
+        fabricCompletedArray.append("08-13-2015")
+        fabricCompletedArray.append("08-12-2015")
+        fabricCompletedArray.append("08-11-2015")
+        fabricCompletedArray.append("08-10-2015")
+        fabricCompletedArray.append("08-09-2015")
+        fabricCompletedArray.append("08-08-2015")
+        fabricCompletedArray.append("08-06-2015")
+        fabricCompletedArray.append("08-05-2015")
+        fabricCompletedArray.append("08-04-2015")
+        fabricCompletedArray.append("08-03-2015")
+        fabricCompletedArray.append("08-02-2015")
+        fabricCompletedArray.append("08-01-2015")
+
+        let dateFormatter = NSDateFormatter()
+        for (_, element) in fabricCompletedArray.enumerate() {
+
+            // HOW TO SAVE
+            let newUsage = NSEntityDescription.insertNewObjectForEntityForName("Usages", inManagedObjectContext: context)
+            
+//            dateFormatter.dateFormat = "yyyy-MM-dd"
+            dateFormatter.dateFormat = "MM-dd-yyyy"
+            let date = dateFormatter.dateFromString(element)
+
+            newUsage.setValue(date, forKey: "timestamp")
+            
+            do {
+                
+                try context.save()
+                
+            } catch let error as NSError {
+                
+                print("there was an error: " + String(error))
+                
+            }
+        }
+        
+        // HOW TO VIEW DATA
+        let request = NSFetchRequest(entityName: "Usages")
+        
+        // need to set to false to see content for all results
+        request.returnsObjectsAsFaults = false
+        
+        // how to just print out the value and not the gobbly gook
+        do {
+            
+            let results = try context.executeFetchRequest(request)
+            
+            if results.count > 0 {
+                
+                for result in results as! [NSManagedObject] {
+
+//                    print(result)
+                    // convert to its actual object type
+                    if let timestamp = result.valueForKey("timestamp") as? NSDate {
+                        print(timestamp)
+                    }
+                    
+                }
+                
+            }
+            
+        } catch {
+            
+            print("Fetch failed" + String(error))
+        }
+
+        
+        
+    }
     
     
     @IBAction func cancelFabrics(sender: UIButton) {
