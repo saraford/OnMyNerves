@@ -77,7 +77,7 @@ class ViewController: UIViewController {
         else if NSUserDefaults.standardUserDefaults().objectForKey("NewRelease" + String(currentRelease)) == nil {
             
             // display what's new if applicable
-            showNewReleaseLightbox("What's new in release 1.1:\n\n• Easier to use 1st time setup UI\n\n• Minor bug fixes\n\n• This \"What's new\" popup window :)")
+            showNewReleaseLightbox("What's new in release Data 2.0:\n\n• Statistics! See '?' for more info.")
             
             NSUserDefaults.standardUserDefaults().setObject(1, forKey: "NewRelease" + String(currentRelease))
             
