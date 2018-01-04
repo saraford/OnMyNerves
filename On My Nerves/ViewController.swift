@@ -389,7 +389,7 @@ class ViewController: UIViewController {
         let currentFabric = fabrics[currentFabricIndex]
   
         timeRemaining = currentFabric.fabricTime
-        displayTimeLabel.text = "\(timeRemaining)"
+        displayTimeLabel.text = "\(timeRemaining!)"
         
         currentFabricName.text = currentFabric.fabricName
         
@@ -508,7 +508,7 @@ class ViewController: UIViewController {
 //        println("NumOfSeconds: \(fabrics[currentFabricIndex].fabricTime)")
 //        println()
         
-        displayTimeLabel.text = "\(timeRemaining)"
+        displayTimeLabel.text = "\(timeRemaining!)"
         
     }
     
