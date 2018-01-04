@@ -19,17 +19,17 @@ class MonthYear : Hashable, Equatable, CustomStringConvertible {
 
     var month:Int!
     var year:Int!
-    var date:NSDate!
+    var date:Date!
     
     init(stat:String) {
         
-        let formatter = NSDateFormatter()
+        let formatter = DateFormatter()
         formatter.dateFormat = "MM/dd/yyyy"
-        let restoredDate = formatter.dateFromString(stat)
+        let restoredDate = formatter.date(from: stat)
         
-        let cal = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
-        let month = cal.components(NSCalendarUnit.Month, fromDate: restoredDate!)
-        let year = cal.components(NSCalendarUnit.Year, fromDate: restoredDate!)
+        let cal = Calendar(identifier: Calendar.Identifier.gregorian)
+        let month = (cal as NSCalendar).components(NSCalendar.Unit.month, from: restoredDate!)
+        let year = (cal as NSCalendar).components(NSCalendar.Unit.year, from: restoredDate!)
 
         self.month = month.month
         self.year = year.year
@@ -38,14 +38,14 @@ class MonthYear : Hashable, Equatable, CustomStringConvertible {
     
     func isCurrentMonthYear() -> Bool {
         
-        let cal = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
+        let cal = Calendar(identifier: Calendar.Identifier.gregorian)
         
-        let completedMonth = cal.components(NSCalendarUnit.Month, fromDate: self.date)
-        let completedYear = cal.components(NSCalendarUnit.Year, fromDate: self.date)
+        let completedMonth = (cal as NSCalendar).components(NSCalendar.Unit.month, from: self.date)
+        let completedYear = (cal as NSCalendar).components(NSCalendar.Unit.year, from: self.date)
         
-        let now = NSDate()
-        let nowMonth = cal.components(NSCalendarUnit.Month, fromDate: now)
-        let nowYear = cal.components(NSCalendarUnit.Year, fromDate: now)
+        let now = Date()
+        let nowMonth = (cal as NSCalendar).components(NSCalendar.Unit.month, from: now)
+        let nowYear = (cal as NSCalendar).components(NSCalendar.Unit.year, from: now)
         
         // need to find out if the selected month is the current month
         return (completedYear.year == nowYear.year && completedMonth.month == nowMonth.month)
@@ -55,20 +55,20 @@ class MonthYear : Hashable, Equatable, CustomStringConvertible {
     
     var daysInMonth : Int {
         
-        let cal = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
+        let cal = Calendar(identifier: Calendar.Identifier.gregorian)
         
         // need to find out if the selected month is the current month
         if (isCurrentMonthYear()) {
 
-            let now = NSDate()
-            let today = cal.components(NSCalendarUnit.Day, fromDate: now)
+            let now = Date()
+            let today = (cal as NSCalendar).components(NSCalendar.Unit.day, from: now)
 
             let totalPossibleDaysInMonthThusFar = today.day
-            return totalPossibleDaysInMonthThusFar
+            return totalPossibleDaysInMonthThusFar!
             
         } else {
             
-            let days = cal.rangeOfUnit(.Day, inUnit: .Month, forDate: date)
+            let days = (cal as NSCalendar).range(of: .day, in: .month, for: date)
             return days.length
         }
     
@@ -76,7 +76,7 @@ class MonthYear : Hashable, Equatable, CustomStringConvertible {
     
     var monthName : String {
         
-        let formatter = NSDateFormatter()
+        let formatter = DateFormatter()
         return formatter.monthSymbols[month - 1] 
         
     }

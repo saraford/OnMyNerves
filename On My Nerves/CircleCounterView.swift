@@ -10,7 +10,7 @@
 
 import UIKit
 
-let π:CGFloat = CGFloat(M_PI)
+let π:CGFloat = CGFloat(Double.pi)
 
 //@IBDesignable class CircleCounterView: UIView {
   @IBDesignable class CircleCounterView: UIView {
@@ -28,10 +28,10 @@ let π:CGFloat = CGFloat(M_PI)
         }
     }
     
-    @IBInspectable var outlineColor: UIColor = UIColor.blueColor()
-    @IBInspectable var counterColor: UIColor = UIColor.orangeColor()
+    @IBInspectable var outlineColor: UIColor = UIColor.blue
+    @IBInspectable var counterColor: UIColor = UIColor.orange
     
-    override func drawRect(rect: CGRect) {
+    override func draw(_ rect: CGRect) {
         
         let center = CGPoint(x:bounds.width/2, y: bounds.height/2)
         

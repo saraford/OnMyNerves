@@ -23,12 +23,12 @@ class OverallProgressView: UIView {
     }
     
     
-    @IBInspectable var completedColor: UIColor = UIColor.grayColor()
-    @IBInspectable var stillToGoColor: UIColor = UIColor.redColor()
+    @IBInspectable var completedColor: UIColor = UIColor.gray
+    @IBInspectable var stillToGoColor: UIColor = UIColor.red
     
     // Only override drawRect: if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
-    override func drawRect(rect: CGRect) {
+    override func draw(_ rect: CGRect) {
         // Drawing code
         
         drawOverallProgress()
@@ -40,14 +40,14 @@ class OverallProgressView: UIView {
         let context = UIGraphicsGetCurrentContext()
         
         // line width
-        CGContextSetLineWidth(context, 20.0)
+        context?.setLineWidth(20.0)
         
         // the height of the container
         let height:Float = Float(bounds.height)
         
         if (numOfLines == 1) {
             
-             CGContextSetStrokeColorWithColor(context, stillToGoColor.CGColor)
+             context?.setStrokeColor(stillToGoColor.cgColor)
             
             drawLine(CGFloat(0.0), endPoint: CGFloat(height), context: context!)
             
@@ -60,7 +60,7 @@ class OverallProgressView: UIView {
             // get the length of each line
             let length:Float = (height - (div * Float(numOfDivs))) / Float(numOfLines)
             
-            for (var i:Int = 0; i < numOfLines; i++) {
+            for var i in (0 ..< numOfLines) {
                 
                 // starting point
                 let startPoint = CGFloat(Float(i) * (length + div))
@@ -68,11 +68,11 @@ class OverallProgressView: UIView {
                 
                 if (i <= numOfCompletedLines - 1) {
 
-                    CGContextSetStrokeColorWithColor(context, completedColor.CGColor)
+                    context?.setStrokeColor(completedColor.cgColor)
 
                 } else {
                     
-                    CGContextSetStrokeColorWithColor(context, stillToGoColor.CGColor)
+                    context?.setStrokeColor(stillToGoColor.cgColor)
                     
                 }
             
@@ -84,14 +84,14 @@ class OverallProgressView: UIView {
         
     }
     
-    func drawLine(startPoint:CGFloat, endPoint:CGFloat, context:CGContext) {
+    func drawLine(_ startPoint:CGFloat, endPoint:CGFloat, context:CGContext) {
         
         // the drawing
-        CGContextMoveToPoint(context, 0, startPoint)
-        CGContextAddLineToPoint(context, 0, endPoint)
+        context.move(to: CGPoint(x: 0, y: startPoint))
+        context.addLine(to: CGPoint(x: 0, y: endPoint))
         
         // draw the line
-        CGContextStrokePath(context)
+        context.strokePath()
         
     }
     

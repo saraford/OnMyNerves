@@ -22,10 +22,10 @@ class PieChartView: UIView {
         }
     }
     
-    var toBeCompletedColor = UIColor.cyanColor()
-    var completedColor = UIColor.blueColor()
+    var toBeCompletedColor = UIColor.cyan
+    var completedColor = UIColor.blue
     
-    override func drawRect(rect: CGRect) {
+    override func draw(_ rect: CGRect) {
 
         // draw an entire circle to represent the porportion not completed
         drawCircle(fullCircle, color: toBeCompletedColor)
@@ -36,7 +36,7 @@ class PieChartView: UIView {
         
     }
     
-    func drawCircle(endAngle:CGFloat, color:UIColor) {
+    func drawCircle(_ endAngle:CGFloat, color:UIColor) {
         
         let center = CGPoint(x:bounds.width/2, y: bounds.height/2)
         let radius: CGFloat = max(bounds.width, bounds.height) / 2
@@ -44,10 +44,11 @@ class PieChartView: UIView {
         
         let context = UIGraphicsGetCurrentContext()
         
-        CGContextSetFillColorWithColor(context, color.CGColor)
-        CGContextMoveToPoint(context, center.x, center.y)
-        CGContextAddArc(context, center.x, center.y, radius, startAngle, endAngle, 0)
-        CGContextFillPath(context)
+        context?.setFillColor(color.cgColor)
+        context?.move(to: CGPoint(x: center.x, y: center.y))
+        //CGContextAddArc(context, center.x, center.y, radius, startAngle, endAngle, 0)
+        context.addArc(center: center, radius: raidus, startAngle: startAngle, endAngle: endAngle, clockwise: true);
+        context.fillPath()
         
         
     }

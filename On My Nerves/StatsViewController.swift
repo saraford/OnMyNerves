@@ -12,13 +12,13 @@ import UIKit
 // Needed for the MonthPicker Lightbox view controller to send
 // the selected Month picked back to this Stats view controller
 extension StatsViewController: MonthPickedDelegate {
-    func changeMonth(row: Int) {
+    func changeMonth(_ row: Int) {
         // NSLog("getting data from TimePickerDelegate")
         
         self.lastSelectedMonthIndex = row
         
         let key = (Array(data.keys)[row])
-        self.monthButton.setTitle("\(key.monthName) \(key.year)", forState: UIControlState.Normal)
+        self.monthButton.setTitle("\(key.monthName) \(key.year)", for: UIControlState())
         
         updatePieChart(row)
     }
@@ -45,18 +45,18 @@ class StatsViewController: UIViewController {
 
             let key = (Array(data.keys)[lastSelectedMonthIndex])
             
-            self.monthButton.setTitle("\(key.monthName) \(key.year)", forState: UIControlState.Normal)
-            self.monthButton.setTitleColor(defaultBlue, forState: .Normal)
-            self.monthButton.enabled = true
+            self.monthButton.setTitle("\(key.monthName) \(key.year)", for: UIControlState())
+            self.monthButton.setTitleColor(defaultBlue, for: UIControlState())
+            self.monthButton.isEnabled = true
 
             updatePieChart(lastSelectedMonthIndex)
 
         } else {
         
             // there's no data. first run state
-            self.monthButton.setTitle("No Usage Found", forState: UIControlState.Normal)
-            self.monthButton.setTitleColor(UIColor.darkGrayColor(), forState: .Normal)
-            self.monthButton.enabled = false
+            self.monthButton.setTitle("No Usage Found", for: UIControlState())
+            self.monthButton.setTitleColor(UIColor.darkGray, for: UIControlState())
+            self.monthButton.isEnabled = false
 
             statsLabel.text = "Usage is recorded after finishing the last fabric in queue."
 
@@ -64,14 +64,14 @@ class StatsViewController: UIViewController {
         
     }
     
-    @IBAction func showMonthPicker(sender: AnyObject) {
+    @IBAction func showMonthPicker(_ sender: AnyObject) {
         
-        let monthPickerVC = self.storyboard?.instantiateViewControllerWithIdentifier("myMonthPicker") as! MonthPickerViewController
+        let monthPickerVC = self.storyboard?.instantiateViewController(withIdentifier: "myMonthPicker") as! MonthPickerViewController
         
         // all this stuff needed to get the lightbox control effect
         monthPickerVC.providesPresentationContextTransitionStyle = true
         monthPickerVC.definesPresentationContext = true
-        monthPickerVC.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
+        monthPickerVC.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
         
         // tell the picker what the previously-selected value is, if any.
         monthPickerVC.delegate = self
@@ -80,11 +80,11 @@ class StatsViewController: UIViewController {
         // give the data to the monthPicker
         monthPickerVC.data = data
         
-        self.presentViewController(monthPickerVC, animated: false, completion: nil)
+        self.present(monthPickerVC, animated: false, completion: nil)
 
     }
     
-    func updatePieChart(row: Int) {
+    func updatePieChart(_ row: Int) {
 
         let key = (Array(data.keys)[row])
         let days = data[key]!
@@ -114,11 +114,11 @@ class StatsViewController: UIViewController {
     
     func getTodaysDay() -> Int {
 
-        let now = NSDate()
-        let dateFormatter = NSDateFormatter()
+        let now = Date()
+        let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd"
-        let cal = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
-        let day = cal!.components(NSCalendarUnit.Day, fromDate: now)
+        let cal = Calendar(identifier: Calendar.Identifier.gregorian)
+        let day = (cal as NSCalendar).components(NSCalendar.Unit.day, from: now)
         
         return day.day
         
@@ -181,9 +181,9 @@ class StatsViewController: UIViewController {
     }
     
 
-    @IBAction func CloseWindow(sender: AnyObject) {
+    @IBAction func CloseWindow(_ sender: AnyObject) {
         
-        self.dismissViewControllerAnimated(false, completion: nil)
+        self.dismiss(animated: false, completion: nil)
         
     }
     
