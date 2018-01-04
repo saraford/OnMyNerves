@@ -47,8 +47,8 @@ class PieChartView: UIView {
         context?.setFillColor(color.cgColor)
         context?.move(to: CGPoint(x: center.x, y: center.y))
         //CGContextAddArc(context, center.x, center.y, radius, startAngle, endAngle, 0)
-        context.addArc(center: center, radius: raidus, startAngle: startAngle, endAngle: endAngle, clockwise: true);
-        context.fillPath()
+        context?.addArc(center: center, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: true);
+        context?.fillPath()
         
         
     }

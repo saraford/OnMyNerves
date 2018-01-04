@@ -120,7 +120,7 @@ class StatsViewController: UIViewController {
         let cal = Calendar(identifier: Calendar.Identifier.gregorian)
         let day = (cal as NSCalendar).components(NSCalendar.Unit.day, from: now)
         
-        return day.day
+        return day.day!
         
     }
     
