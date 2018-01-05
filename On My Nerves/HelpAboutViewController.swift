@@ -41,9 +41,9 @@ class HelpAboutViewController: UIViewController {
     }
     
 
-    @IBAction func closeHelpAbout(sender: UIButton) {
+    @IBAction func closeHelpAbout(_ sender: UIButton) {
         
-        self.dismissViewControllerAnimated(false, completion: nil)
+        self.dismiss(animated: false, completion: nil)
     
     }
     

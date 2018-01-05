@@ -16,14 +16,14 @@ class FabricListViewController: UIViewController, UITableViewDelegate {
     
     var fabricName: UILabel?
     
-    @IBAction func startEditing(sender: AnyObject) {
-        fabricsTable.editing = !fabricsTable.editing
-        newFabricButton.enabled = !fabricsTable.editing
+    @IBAction func startEditing(_ sender: AnyObject) {
+        fabricsTable.isEditing = !fabricsTable.isEditing
+        newFabricButton.isEnabled = !fabricsTable.isEditing
         
-        if (fabricsTable.editing) {
-            reorderButton.setTitle("Done", forState: UIControlState.Normal)
+        if (fabricsTable.isEditing) {
+            reorderButton.setTitle("Done", for: UIControlState())
         } else {
-            reorderButton.setTitle("Reorder", forState: UIControlState.Normal)
+            reorderButton.setTitle("Reorder", for: UIControlState())
         }
 
     }
@@ -42,27 +42,27 @@ class FabricListViewController: UIViewController, UITableViewDelegate {
     }
     
 
-    func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    func tableView(_ tableView: UITableView, canMoveRowAtIndexPath indexPath: IndexPath) -> Bool {
         return true
     }
     
     var valueToPass:Int!
     var fromTableView:Bool = false
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         valueToPass = indexPath.row
         fromTableView = true
-        performSegueWithIdentifier("fabricSegue", sender: self)
+        performSegue(withIdentifier: "fabricSegue", sender: self)
         
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
         // keep getting an error when trying to have two segues
         // so going to do this less elegant solution approach
         if (segue.identifier == "fabricSegue") {
 
-            let viewController = segue.destinationViewController as! AddEditFabricsViewController
+            let viewController = segue.destination as! AddEditFabricsViewController
             
             if (fromTableView) {
                
@@ -82,34 +82,34 @@ class FabricListViewController: UIViewController, UITableViewDelegate {
     }
     
     
-    func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, moveRowAtIndexPath fromIndexPath: IndexPath, toIndexPath: IndexPath) {
 
         // need to move the objects first
         let fabricToMove = fabrics[fromIndexPath.row]
-        fabrics.removeAtIndex(fromIndexPath.row)
-        fabrics.insert(fabricToMove, atIndex: toIndexPath.row)
+        fabrics.remove(at: fromIndexPath.row)
+        fabrics.insert(fabricToMove, at: toIndexPath.row)
         
         // now the arrays for the data we're saving to disk
         let nameToMove = fabricNamesArray[fromIndexPath.row]
-        fabricNamesArray.removeAtIndex(fromIndexPath.row)
-        fabricNamesArray.insert(nameToMove, atIndex: toIndexPath.row)
+        fabricNamesArray.remove(at: fromIndexPath.row)
+        fabricNamesArray.insert(nameToMove, at: toIndexPath.row)
 
         let timeToMove = fabricTimesArray[fromIndexPath.row]
-        fabricTimesArray.removeAtIndex(fromIndexPath.row)
-        fabricTimesArray.insert(timeToMove, atIndex: toIndexPath.row)
+        fabricTimesArray.remove(at: fromIndexPath.row)
+        fabricTimesArray.insert(timeToMove, at: toIndexPath.row)
 
         // resave everything
-        NSUserDefaults.standardUserDefaults().setObject(fabricNamesArray, forKey: "fabricNames")
-        NSUserDefaults.standardUserDefaults().setObject(fabricTimesArray, forKey: "fabricTimes")
+        UserDefaults.standard.set(fabricNamesArray, forKey: "fabricNames")
+        UserDefaults.standard.set(fabricTimesArray, forKey: "fabricTimes")
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return fabrics.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAtIndexPath indexPath: IndexPath) -> UITableViewCell {
 
-        let cell = fabricsTable.dequeueReusableCellWithIdentifier("fabricCell")! as UITableViewCell
+        let cell = fabricsTable.dequeueReusableCell(withIdentifier: "fabricCell")! as UITableViewCell
         
         (cell.contentView.viewWithTag(1) as! UIImageView).image = createDarkBlueImage()
         (cell.contentView.viewWithTag(2) as! UILabel).text = fabrics[indexPath.row].fabricName
@@ -118,39 +118,39 @@ class FabricListViewController: UIViewController, UITableViewDelegate {
         return cell
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
 
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         
         if (fabrics.count == 0) {
-            reorderButton.enabled = false
+            reorderButton.isEnabled = false
         } else {
-            reorderButton.enabled = true
+            reorderButton.isEnabled = true
         }
         
         fabricsTable.reloadData()
     }
     
     // swipe to left is considered editing
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: IndexPath) {
         
         // swipe to the left
-        if (editingStyle == UITableViewCellEditingStyle.Delete) {
+        if (editingStyle == UITableViewCellEditingStyle.delete) {
 
             let index = indexPath.row
             
             // delete the object
-            fabrics.removeAtIndex(index)
+            fabrics.remove(at: index)
             
             // delete stuff on the array to be saved to disk
-            fabricNamesArray.removeAtIndex(index)
-            fabricTimesArray.removeAtIndex(index)
+            fabricNamesArray.remove(at: index)
+            fabricTimesArray.remove(at: index)
 
             // resave everything
-            NSUserDefaults.standardUserDefaults().setObject(fabricNamesArray, forKey: "fabricNames")
-            NSUserDefaults.standardUserDefaults().setObject(fabricTimesArray, forKey: "fabricTimes")
+            UserDefaults.standard.set(fabricNamesArray, forKey: "fabricNames")
+            UserDefaults.standard.set(fabricTimesArray, forKey: "fabricTimes")
             
             fabricsTable.reloadData()
         }
@@ -160,7 +160,7 @@ class FabricListViewController: UIViewController, UITableViewDelegate {
         
         let size = CGSize(width: 100, height: 100)
         
-        let rect = CGRectMake(0, 0, 100, 100)
+        let rect = CGRect(x: 0, y: 0, width: 100, height: 100)
         
         UIGraphicsBeginImageContextWithOptions(size, false, 0)
 
@@ -168,7 +168,7 @@ class FabricListViewController: UIViewController, UITableViewDelegate {
         
         UIRectFill(rect)
         
-        let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()
+        let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         
         UIGraphicsEndImageContext()
         

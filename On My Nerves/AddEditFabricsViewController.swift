@@ -19,7 +19,7 @@ class AddEditFabricsViewController: UIViewController, UITextFieldDelegate,  UINa
     
     var passedValue: Int!
     
-    @IBAction func saveUpdate(sender: UIButton) {
+    @IBAction func saveUpdate(_ sender: UIButton) {
 
         if (passedValue == nil) {
             
@@ -56,16 +56,16 @@ class AddEditFabricsViewController: UIViewController, UITextFieldDelegate,  UINa
         }
         
         // and now update
-        NSUserDefaults.standardUserDefaults().setObject(fabricNamesArray, forKey: "fabricNames")
-        NSUserDefaults.standardUserDefaults().setObject(fabricTimesArray, forKey: "fabricTimes")
+        UserDefaults.standard.set(fabricNamesArray, forKey: "fabricNames")
+        UserDefaults.standard.set(fabricTimesArray, forKey: "fabricTimes")
         
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
     
-    @IBAction func cancelUpdate(sender: AnyObject) {
+    @IBAction func cancelUpdate(_ sender: AnyObject) {
     
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     
     }
     
@@ -77,7 +77,7 @@ class AddEditFabricsViewController: UIViewController, UITextFieldDelegate,  UINa
     }
     
     // this isn't called from the add (+), only from the edit
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
 
         // am I being called?
       // println("viewWillAppear")
@@ -94,17 +94,17 @@ class AddEditFabricsViewController: UIViewController, UITextFieldDelegate,  UINa
             
             // set UI as new fabric
             self.navBar.title = "Add new fabric"
-            doneButton.setTitle("Add", forState: UIControlState.Normal)
+            doneButton.setTitle("Add", for: UIControlState())
             
-            doneButton.enabled = false
+            doneButton.isEnabled = false
             
         } else {
             
             // Just making an edit
             self.navBar.title = "Edit fabric info"
-            doneButton.setTitle("Save", forState: UIControlState.Normal)
+            doneButton.setTitle("Save", for: UIControlState())
             
-            doneButton.enabled = false
+            doneButton.isEnabled = false
         }
         
         // set the UI 
@@ -133,7 +133,7 @@ class AddEditFabricsViewController: UIViewController, UITextFieldDelegate,  UINa
 
     // for handling the return key when it is clicked from the keyboard
     // requires UITextFieldDelegate
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
         checkErrorMessage()
         
@@ -142,16 +142,16 @@ class AddEditFabricsViewController: UIViewController, UITextFieldDelegate,  UINa
     }
     
     // if the user taps outside the keyboard to add the item
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
         
         checkErrorMessage()
     }
     
     // only allow numbers
-    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
-        errorMessage.hidden = true
+        errorMessage.isHidden = true
         
         // the seconds tag == 2
         if (textField.tag != 2) {
@@ -171,37 +171,37 @@ class AddEditFabricsViewController: UIViewController, UITextFieldDelegate,  UINa
         if fabricName.text!.isEmpty {
             
             errors = true
-            errorMessage.hidden = false
+            errorMessage.isHidden = false
             errorMessage.text = "Sorry, fabric name is required"
             
         } else if fabricTime.text!.isEmpty {
             
             errors = true
-            errorMessage.hidden = false
+            errorMessage.isHidden = false
             errorMessage.text = "Sorry, number of seconds is required"
             
         } else if fabricTime.text == "0" {
             
             errors = true
-            errorMessage.hidden = false
+            errorMessage.isHidden = false
             errorMessage.text = "Please specify seconds in the set of counting numbers :) "
             
         }
         else {
          
             errors = false
-            errorMessage.hidden = true
+            errorMessage.isHidden = true
             
         }
         
         if (errors) {
-            doneButton.enabled = false
+            doneButton.isEnabled = false
         } else {
-            doneButton.enabled = true
+            doneButton.isEnabled = true
         }
         
         if fabricTime.text!.isEmpty && fabricName.text!.isEmpty {
-            doneButton.enabled = false
+            doneButton.isEnabled = false
         }
         
     }

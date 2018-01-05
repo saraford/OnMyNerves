@@ -9,7 +9,7 @@
 import UIKit
 
 protocol MonthPickedDelegate {
-    func changeMonth(row: Int)
+    func changeMonth(_ row: Int)
 }
 
 class MonthPickerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
@@ -43,17 +43,17 @@ class MonthPickerViewController: UIViewController, UIPickerViewDelegate, UIPicke
     
     
     // The number of columns of data
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
     // The number of rows of data
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return data.count
     }
     
     // The data to return for the row and component (column) that's being passed in
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         
         let monthYear = Array(data.keys)[row]
         let displayString = "\(monthYear.monthName) \(monthYear.year)"
@@ -61,17 +61,17 @@ class MonthPickerViewController: UIViewController, UIPickerViewDelegate, UIPicke
         return "\(displayString)"
     }
     
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
   
         currentSelectedMonthIndex = row
         
     }
     
-    @IBAction func closeWindow(sender: AnyObject) {
+    @IBAction func closeWindow(_ sender: AnyObject) {
         
         self.delegate?.changeMonth(currentSelectedMonthIndex)
         
-        self.dismissViewControllerAnimated(false, completion: nil)
+        self.dismiss(animated: false, completion: nil)
     
     }
 
