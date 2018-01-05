@@ -24,6 +24,8 @@
 		46F0D63E1B6D178500229D7D /* AddEditFabricsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F0D63D1B6D178500229D7D /* AddEditFabricsViewController.swift */; };
 		46F0D6401B6D5CFA00229D7D /* FabricListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F0D63F1B6D5CFA00229D7D /* FabricListViewController.swift */; };
 		46F3BAB81B9A81C200550B32 /* MonthYear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F3BAB71B9A81C200550B32 /* MonthYear.swift */; };
+		8986F268501F132F4F0015D9 /* Pods_On_My_Nerves.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21361B9510360C6FFD8F2BDE /* Pods_On_My_Nerves.framework */; };
+		FAB57B66700766BE6B160FF9 /* Pods_On_My_NervesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65CD6FE8649E3EAD8F8CA200 /* Pods_On_My_NervesTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		21361B9510360C6FFD8F2BDE /* Pods_On_My_Nerves.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_On_My_Nerves.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3C2444C03A8F6EDE56690DD3 /* Pods-On My Nerves.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-On My Nerves.debug.xcconfig"; path = "Pods/Target Support Files/Pods-On My Nerves/Pods-On My Nerves.debug.xcconfig"; sourceTree = "<group>"; };
 		467AC2D21B8A2E2D004A2517 /* OverallProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverallProgressView.swift; sourceTree = "<group>"; };
 		46A508961B9A2EFE007AF666 /* PieChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieChartView.swift; sourceTree = "<group>"; };
 		46D1BBD21B6F123300F92D78 /* Fabric.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fabric.swift; sourceTree = "<group>"; };
@@ -58,6 +62,10 @@
 		46F0D63D1B6D178500229D7D /* AddEditFabricsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEditFabricsViewController.swift; sourceTree = "<group>"; };
 		46F0D63F1B6D5CFA00229D7D /* FabricListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FabricListViewController.swift; sourceTree = "<group>"; };
 		46F3BAB71B9A81C200550B32 /* MonthYear.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthYear.swift; sourceTree = "<group>"; };
+		5BE56510CA1CFAC9F66D26FB /* Pods-On My NervesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-On My NervesTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-On My NervesTests/Pods-On My NervesTests.debug.xcconfig"; sourceTree = "<group>"; };
+		65CD6FE8649E3EAD8F8CA200 /* Pods_On_My_NervesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_On_My_NervesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8CF37350F3799EC1E30B8EA4 /* Pods-On My Nerves.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-On My Nerves.release.xcconfig"; path = "Pods/Target Support Files/Pods-On My Nerves/Pods-On My Nerves.release.xcconfig"; sourceTree = "<group>"; };
+		DEEC81E1F8ECAD657ADFE4F2 /* Pods-On My NervesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-On My NervesTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-On My NervesTests/Pods-On My NervesTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8986F268501F132F4F0015D9 /* Pods_On_My_Nerves.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,6 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAB57B66700766BE6B160FF9 /* Pods_On_My_NervesTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,6 +94,8 @@
 				46F0D58A1B6C6F7300229D7D /* On My Nerves */,
 				46F0D5A01B6C6F7300229D7D /* On My NervesTests */,
 				46F0D5891B6C6F7300229D7D /* Products */,
+				5EC788BD50CC570EF5A1B131 /* Pods */,
+				F9954DB9AE722C1CD5002A6B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -145,6 +157,26 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		5EC788BD50CC570EF5A1B131 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3C2444C03A8F6EDE56690DD3 /* Pods-On My Nerves.debug.xcconfig */,
+				8CF37350F3799EC1E30B8EA4 /* Pods-On My Nerves.release.xcconfig */,
+				5BE56510CA1CFAC9F66D26FB /* Pods-On My NervesTests.debug.xcconfig */,
+				DEEC81E1F8ECAD657ADFE4F2 /* Pods-On My NervesTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		F9954DB9AE722C1CD5002A6B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				21361B9510360C6FFD8F2BDE /* Pods_On_My_Nerves.framework */,
+				65CD6FE8649E3EAD8F8CA200 /* Pods_On_My_NervesTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -152,9 +184,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 46F0D5A71B6C6F7300229D7D /* Build configuration list for PBXNativeTarget "On My Nerves" */;
 			buildPhases = (
+				F5D363626F6A976FA3300079 /* [CP] Check Pods Manifest.lock */,
 				46F0D5841B6C6F7300229D7D /* Sources */,
 				46F0D5851B6C6F7300229D7D /* Frameworks */,
 				46F0D5861B6C6F7300229D7D /* Resources */,
+				E8ABF3A54AC86AA4547337A7 /* [CP] Embed Pods Frameworks */,
+				319B05DCDD2D82C0F5D42822 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -169,9 +204,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 46F0D5AA1B6C6F7300229D7D /* Build configuration list for PBXNativeTarget "On My NervesTests" */;
 			buildPhases = (
+				15C3CB8B9975604A74E45F25 /* [CP] Check Pods Manifest.lock */,
 				46F0D5991B6C6F7300229D7D /* Sources */,
 				46F0D59A1B6C6F7300229D7D /* Frameworks */,
 				46F0D59B1B6C6F7300229D7D /* Resources */,
+				FF77AB3FDF829E868EF4DF6F /* [CP] Embed Pods Frameworks */,
+				657B8094A7A6A6B0E4E9B1A1 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -245,6 +283,105 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		15C3CB8B9975604A74E45F25 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-On My NervesTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		319B05DCDD2D82C0F5D42822 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-On My Nerves/Pods-On My Nerves-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		657B8094A7A6A6B0E4E9B1A1 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-On My NervesTests/Pods-On My NervesTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E8ABF3A54AC86AA4547337A7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-On My Nerves/Pods-On My Nerves-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F5D363626F6A976FA3300079 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-On My Nerves-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FF77AB3FDF829E868EF4DF6F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-On My NervesTests/Pods-On My NervesTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		46F0D5841B6C6F7300229D7D /* Sources */ = {
@@ -395,6 +532,7 @@
 		};
 		46F0D5A81B6C6F7300229D7D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3C2444C03A8F6EDE56690DD3 /* Pods-On My Nerves.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = WU32HVM7PY;
@@ -408,6 +546,7 @@
 		};
 		46F0D5A91B6C6F7300229D7D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8CF37350F3799EC1E30B8EA4 /* Pods-On My Nerves.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = WU32HVM7PY;
@@ -421,6 +560,7 @@
 		};
 		46F0D5AB1B6C6F7300229D7D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5BE56510CA1CFAC9F66D26FB /* Pods-On My NervesTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -442,6 +582,7 @@
 		};
 		46F0D5AC1B6C6F7300229D7D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DEEC81E1F8ECAD657ADFE4F2 /* Pods-On My NervesTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
