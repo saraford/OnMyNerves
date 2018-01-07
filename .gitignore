@@ -3,6 +3,12 @@
 # gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
 
 On\ My\ Nerves/keys.plist
+*.xcuserstate
+project.xcworkspace/
+xcuserdata/
+*.xcbkptlist
+*.pbxuser
+*.xcworkspace
 
 *.DS_Store
 Podfile.lock
