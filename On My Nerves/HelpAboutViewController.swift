@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AppCenterAnalytics
 
 class HelpAboutViewController: UIViewController {
 
@@ -14,6 +15,8 @@ class HelpAboutViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        MSAnalytics.trackEvent("Opened Help About")
 
         HelpAboutText.text =
             "Hello! \n\n" +

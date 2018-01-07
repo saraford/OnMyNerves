@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import AppCenterAnalytics
 
 var fabrics : [Fabric] = [Fabric]()
 var fabricNamesArray : [String] = [String]()
@@ -209,6 +210,8 @@ class ViewController: UIViewController {
     
     @IBAction func cancelFabrics(_ sender: UIButton) {
     
+        MSAnalytics.trackEvent("Cancel event")
+        
         // we're not running and need to pause
   
         let myImage = UIImage(named: "playButton")
@@ -225,6 +228,8 @@ class ViewController: UIViewController {
     
     
     @IBAction func nextFabric(_ sender: UIButton) {
+        
+        MSAnalytics.trackEvent("Next Fabric event")
 
         prevButton.isEnabled = true
         
@@ -267,6 +272,8 @@ class ViewController: UIViewController {
     
     @IBAction func prevButton(_ sender: UIButton) {
 
+        MSAnalytics.trackEvent("Previous Fabric event")
+        
         nextButton.isEnabled = true
         
         // verify just in case
@@ -311,7 +318,7 @@ class ViewController: UIViewController {
     var isPaused:Bool = false
     var elapsedTimePaused: Int!
     @IBAction func startPauseTimerAction(_ sender: UIButton) {
-
+        
         startPauseTimer()
         
     }
@@ -321,6 +328,8 @@ class ViewController: UIViewController {
         
         // we're not running and need to start
         if !(fabricTimer.isValid) {
+            
+            MSAnalytics.trackEvent("Play event", withProperties: ["FabricCount": String(fabrics.count)])
             
             let myImage = UIImage(named: "pauseButton")
             startStopTimerButton.setImage(myImage, for: UIControlState())
@@ -357,6 +366,8 @@ class ViewController: UIViewController {
         }
         else {
 
+            MSAnalytics.trackEvent("Pause event")
+            
             // there is no pause on a NSTimer, so we kill timer and recreate
             isPaused = true
             

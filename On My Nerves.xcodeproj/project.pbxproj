@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4621B56A200196A2006AA75F /* keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4621B569200196A1006AA75F /* keys.plist */; };
 		467AC2D31B8A2E2D004A2517 /* OverallProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467AC2D21B8A2E2D004A2517 /* OverallProgressView.swift */; };
 		46A508971B9A2EFE007AF666 /* PieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A508961B9A2EFE007AF666 /* PieChartView.swift */; };
 		46D1BBD31B6F123300F92D78 /* Fabric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D1BBD21B6F123300F92D78 /* Fabric.swift */; };
@@ -41,6 +42,7 @@
 /* Begin PBXFileReference section */
 		21361B9510360C6FFD8F2BDE /* Pods_On_My_Nerves.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_On_My_Nerves.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C2444C03A8F6EDE56690DD3 /* Pods-On My Nerves.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-On My Nerves.debug.xcconfig"; path = "Pods/Target Support Files/Pods-On My Nerves/Pods-On My Nerves.debug.xcconfig"; sourceTree = "<group>"; };
+		4621B569200196A1006AA75F /* keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = keys.plist; sourceTree = "<group>"; };
 		467AC2D21B8A2E2D004A2517 /* OverallProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverallProgressView.swift; sourceTree = "<group>"; };
 		46A508961B9A2EFE007AF666 /* PieChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieChartView.swift; sourceTree = "<group>"; };
 		46D1BBD21B6F123300F92D78 /* Fabric.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fabric.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 				46A508961B9A2EFE007AF666 /* PieChartView.swift */,
 				46F3BAB71B9A81C200550B32 /* MonthYear.swift */,
 				46ECB9CE1B9CE4E40086C8E4 /* MonthPickerViewController.swift */,
+				4621B569200196A1006AA75F /* keys.plist */,
 			);
 			path = "On My Nerves";
 			sourceTree = "<group>";
@@ -268,6 +271,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4621B56A200196A2006AA75F /* keys.plist in Resources */,
 				46ED16D11B7E343D003B026A /* IronBacon.m4a in Resources */,
 				46F0D5931B6C6F7300229D7D /* Main.storyboard in Resources */,
 				46F0D5981B6C6F7300229D7D /* LaunchScreen.xib in Resources */,

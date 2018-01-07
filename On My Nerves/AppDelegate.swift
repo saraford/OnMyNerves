@@ -8,6 +8,9 @@
 
 import UIKit
 import AVFoundation
+import AppCenter
+import AppCenterAnalytics
+import AppCenterCrashes
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,6 +20,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // grab AppCenter AppSecret
+        var keys: NSDictionary?
+        var appCenterSecret: String = ""
+        
+        if let path = Bundle.main.path(forResource: "keys", ofType: "plist") {
+            keys = NSDictionary(contentsOfFile: path)
+            appCenterSecret = keys!["AppCenterSecret"] as! String
+        }
+        
+        MSAppCenter.start(appCenterSecret, withServices:[
+            MSAnalytics.self,
+            MSCrashes.self
+            ])
         
         application.registerUserNotificationSettings(UIUserNotificationSettings(types: [UIUserNotificationType.sound, UIUserNotificationType.alert] , categories: nil))
         
