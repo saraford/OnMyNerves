@@ -21,16 +21,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        // grab AppCenter AppSecret
-        var keys: NSDictionary?
-        var appCenterSecret: String = ""
+//        // grab AppCenter AppSecret
+//        var keys: NSDictionary?
+//        var appCenterSecret: String = ""
+//        
+//        if let path = Bundle.main.path(forResource: "keys", ofType: "plist") {
+//            keys = NSDictionary(contentsOfFile: path)
+//            appCenterSecret = keys!["AppCenterSecret"] as! String
+//        }
         
-        if let path = Bundle.main.path(forResource: "keys", ofType: "plist") {
-            keys = NSDictionary(contentsOfFile: path)
-            appCenterSecret = keys!["AppCenterSecret"] as! String
-        }
-        
-        MSAppCenter.start(appCenterSecret, withServices:[
+        MSAppCenter.start("d104aeec-06d6-468c-82fa-238aa9d8ae17", withServices:[
             MSAnalytics.self,
             MSCrashes.self
             ])
