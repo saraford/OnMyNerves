@@ -637,6 +637,8 @@ class ViewController: UIViewController {
                 
             } else {
                 
+                MSAnalytics.trackEvent("Session completed event", withProperties: ["FabricCount": String(fabrics.count)])
+                
                 showAlertToEnd("We're all done!", message: "Have a good one!")
             }
 
